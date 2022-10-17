@@ -8,7 +8,6 @@ import Signup from './pages/Signup'
 import ChangePassword from './pages/ChangePassword'
 import ConfirmChangePassword from './pages/ConfirmChangePassword'
 
-
 function App() {
   return (
     <>
@@ -18,10 +17,13 @@ function App() {
           <Route path={'/Board'} element={<Board />} />
           <Route path={'/Job'} element={<Job />} />
         </Route>
-        <Route path={'/login'} element={<Login />}/>
-        <Route path={'/signup'} element={<Signup />}/>
-        <Route path={'/changePassword'} element={<ChangePassword />}/>
-        <Route path={'/confirmChangePassword'} element={<ConfirmChangePassword />}/>
+        <Route path={'/login'} element={<Login />} />
+        <Route path={'/signup'} element={<Signup />} />
+        <Route path={'/changePassword'} element={<ChangePassword />} />
+        <Route
+          path={'/confirmChangePassword'}
+          element={<ConfirmChangePassword />}
+        />
       </Routes>
     </>
   )
