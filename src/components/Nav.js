@@ -20,6 +20,8 @@ export default function Nav() {
     )
   }
 
+  console.log(navs)
+
   return (
     <div className={styles.container}>
       {navs.map((nav) => (

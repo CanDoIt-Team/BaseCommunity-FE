@@ -1,0 +1,111 @@
+.signUpContainer {
+  margin-top: 55px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 400px;
+}
+
+.inputArea {
+  width: 400px;
+  height: 50px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #b2b2b2;
+  border-radius: 4px;
+}
+
+.inputArea:focus {
+  outline: none;
+  border: 1px solid#35b729;
+}
+
+.inputAndBtnGroup {
+  display: flex;
+  align-content: center;
+}
+
+.inputCheckArea {
+  width: 320px;
+  height: 50px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #b2b2b2;
+  border-radius: 4px;
+}
+
+.inputCheckArea:focus {
+  outline: none;
+  border: 1px solid#35b729;
+}
+
+.idCheckButton {
+  width: 80px;
+  height: 50px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  background: #35b729;
+  color: white;
+  cursor: pointer;
+}
+
+.idCheckButton:hover {
+  background: #5acc4f;
+}
+
+.btnGroup {
+  display: flex;
+}
+
+.beforeBtn {
+  margin-top: 15px;
+  width: 190px;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  background: #888;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.beforeBtn:hover {
+  background: rgb(151, 151, 151);
+}
+
+.signinBtn {
+  margin-top: 15px;
+  width: 190px;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  background: #2e6afd;
+  color: white;
+  cursor: pointer;
+}
+
+.signinBtn:hover {
+  background: #5282fa;
+}
+
+.linkGroup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
