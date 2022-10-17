@@ -1,0 +1,82 @@
+.loginContainer {
+  padding: 125px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.inputArea {
+  width: 300px;
+  height: 45px;
+  padding: 0;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #b2b2b2;
+  border-radius: 4px;
+}
+
+.inputArea:focus {
+  outline: none;
+  border: 1px solid#35b729;
+}
+
+.loginBtn {
+  margin-top: 15px;
+  width: 300px;
+  height: 45px;
+  border: 1px solid #35b729;
+  border-radius: 4px;
+  background: #35b729;
+  color: white;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  background: #5acc4f;
+}
+
+.linkGroup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: c;
+  justify-content: center;
+}
+
+.link + .link {
+  padding-left: 28px;
+}
+
+.link + .link::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 12px;
+  width: 1px;
+  height: 18px;
+  border-radius: 0.5px;
+  background-color: #dadada;
+}
+
+.link > a {
+  color: #888;
+}
+
+.a:hover {
+  color: rgb(100, 98, 98);
+}

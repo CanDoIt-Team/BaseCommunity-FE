@@ -1,0 +1,34 @@
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.big {
+  width: 150px;
+  height: 150px;
+}
+
+.small {
+  width: 80px;
+  height: 80px;
+}
+
+.logoTitleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.logoTitle {
+  font-size: 52px;
+  line-height: 1;
+}
