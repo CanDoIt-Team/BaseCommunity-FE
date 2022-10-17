@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import styled from '../styles/Home.module.css'
 import Project from './Project'
 import Board from './Board'
@@ -13,11 +13,7 @@ export default function Home() {
         <Header />
         <div style={{ height: '20px' }}></div>
         <Nav />
-        <Routes>
-          <Route path={'/project'} element={<Project />} />
-          <Route path={'/Board'} element={<Board />} />
-          <Route path={'/Job'} element={<Job />} />
-        </Routes>
+        <Outlet />
       </div>
     </>
   )
