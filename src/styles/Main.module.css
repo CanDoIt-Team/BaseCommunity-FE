@@ -5,29 +5,27 @@
   max-width: 1024px;
   width: 100%;
   height: 100%;
-  margin-top: 40px;
-
+  margin-top: 60px;
 }
 
 .projectAndBoardWrap {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 100%;
 }
 
 @media (max-width: 1024px) {
-  .containerWrap {
-    /* padding: 20px 10px 10px; */
-  }
+
 }
 
 @media screen and (max-width: 640px) {
   
 }
+
 .boardWrap::-webkit-scrollbar {
   height: 6px;  /* 스크롤바의 너비 */
 }
@@ -38,6 +36,19 @@
 }
 
 .boardWrap::-webkit-scrollbar-track {
+  background: #e2e2e2;  /*스크롤바 뒷 배경 색상*/
+}
+
+.employmentWrap::-webkit-scrollbar {
+  height: 6px;  /* 스크롤바의 너비 */
+}
+
+.employmentWrap::-webkit-scrollbar-thumb {
+  background: #000000; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.employmentWrap::-webkit-scrollbar-track {
   background: #e2e2e2;  /*스크롤바 뒷 배경 색상*/
 }
 
@@ -62,10 +73,17 @@
 
 .containerMore {
   font-size: 12px;
+  padding-right: 3px;
 }
 
 .boardContainer
-.boardWrap {
+.boardWrap
+ {
+  overflow-x: auto;
+}
+
+.employmentContainer
+.employmentWrap {
   overflow-x: auto;
 }
 
@@ -136,7 +154,7 @@
 
 .techList {
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   width: 100%;
   overflow: hidden;
@@ -152,7 +170,7 @@
 
 .writer {
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   bottom: 0;
   width: 100%;
@@ -163,4 +181,103 @@
 
 .writer > span {
   padding-right: 15px;
+}
+
+.employmentContainer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+}
+
+.employmentWrap {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  height: 100%;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.employmentContent {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  padding: 10px 10px;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+  cursor: pointer;
+}
+
+.employmentContent:first-child {
+  border: 1px solid #cecece;
+}
+
+.companyNameAndCloseDt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #cecece;
+}
+
+.closeDt {
+  display: flex;
+  font-size: 15px;
+  padding: 10px 10px;
+  font-weight: 600;
+  color: #ff0000;
+}
+
+.companyName {
+  display: flex;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 15px 0;
+}
+
+.employmentTitle {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 0 15px 0;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.employmentInfo {
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.employmentInfo > p {
+  padding-right: 8px;
+  font-size: 13px;
+}
+
+.salWrap {
+  display: flex;
+  align-items: center;
+}
+
+.salTpNm {
+  display: flex;
+  padding-right: 5px;
+  font-size: 13px;
+}
+
+.sal {
+  font-size: 13px;
+}
+
+.regDt {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  font-size: 12px;
+  color: #9b9b9b;
 }
