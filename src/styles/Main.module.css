@@ -1,0 +1,166 @@
+.mainContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+
+}
+
+.projectAndBoardWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .containerWrap {
+    /* padding: 20px 10px 10px; */
+  }
+}
+
+@media screen and (max-width: 640px) {
+  
+}
+.boardWrap::-webkit-scrollbar {
+  height: 6px;  /* 스크롤바의 너비 */
+}
+
+.boardWrap::-webkit-scrollbar-thumb {
+  background: #000000; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.boardWrap::-webkit-scrollbar-track {
+  background: #e2e2e2;  /*스크롤바 뒷 배경 색상*/
+}
+
+.containerWrap {
+  max-width: 1200px;
+  width: 100%;
+  padding: 10px;
+}
+
+.containerTitleGroup {
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.containerTitle {
+  font-size: 28px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #35b729;
+}
+
+.containerMore {
+  font-size: 12px;
+}
+
+.boardContainer
+.boardWrap {
+  overflow-x: auto;
+}
+
+.boardContainer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+}
+
+.boardWrap {
+  display: flex;
+  width: 100%;
+  height: 280px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.boardContents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 243px;
+  min-width: 243px;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  border: 1px solid #cecece;
+  transition: all .2s;
+  border-radius: 8px;
+  padding-top: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.boardContents:last-child {
+  margin-right: 0;
+}
+
+.boardContents:hover {
+  border: 1px solid rgba(0, 0, 0,.3);
+}
+
+.startDate {
+  display: flex;
+  padding-bottom: 10px;
+  color: #9b9b9b;
+}
+
+.startDate > span:first-child {
+  padding-right: 5px;
+}
+
+
+.startDate > span {
+  font-size: 16px;
+}
+
+.projectTitle {
+  font-size: 25px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 20px 0;
+}
+
+.techList {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 20px 0 20px 0;
+}
+
+.techList > li {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.writer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #cecece;
+}
+
+.writer > span {
+  padding-right: 15px;
+}

@@ -1,5 +1,6 @@
 import styles from '../styles/Nav.module.css'
 import { Link } from 'react-router-dom'
+import { Logo } from './Logo'
 import { useState } from 'react'
 
 export default function Nav() {
@@ -20,21 +21,35 @@ export default function Nav() {
     )
   }
 
-  console.log(navs)
-
+  const handleLogoClick = () => {
+    setNavs(
+      navs.map(nav => ({...nav, state:false}))
+    )
+  }
+  
   return (
     <div className={styles.container}>
-      {navs.map((nav) => (
-        <div key={nav.id} className={`${styles.item}`}>
-          <Link
-            to={`/${nav.id}`}
-            className={nav.state ? styles.current : undefined}
-            onClick={(e) => handleClick(e)}
-          >
-            {nav.title}
-          </Link>
-        </div>
-      ))}
+      <div className={styles.logo}>
+        <Link to="/" onClick={handleLogoClick}>
+          <Logo size={'small'} />
+        </Link>
+      </div>
+      <div className={styles.navItmes}>
+        {navs.map((nav) => (
+          <div key={nav.id} className={`${styles.item}`}>
+            <Link
+              to={`/${nav.id}`}
+              className={nav.state ? styles.current : undefined}
+              onClick={(e) => handleClick(e)}
+            >
+              {nav.title}
+            </Link>
+          </div>
+        ))}
+        <Link to="/login" className={styles.login}>
+          로그인
+        </Link>
+      </div>
     </div>
   )
 }
