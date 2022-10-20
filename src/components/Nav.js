@@ -22,11 +22,9 @@ export default function Nav() {
   }
 
   const handleLogoClick = () => {
-    setNavs(
-      navs.map(nav => ({...nav, state:false}))
-    )
+    setNavs(navs.map((nav) => ({ ...nav, state: false })))
   }
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -48,6 +46,9 @@ export default function Nav() {
         ))}
         <Link to="/login" className={styles.login}>
           로그인
+        </Link>
+        <Link to="/Mypage" className={styles.mypage}>
+          마이페이지
         </Link>
       </div>
     </div>
