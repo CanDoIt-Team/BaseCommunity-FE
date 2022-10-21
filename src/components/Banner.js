@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
-import styled from '../styles/Banner.module.css'
+import styled from '../styles/Banner.module.scss'
 
 import banner1 from '../asset/Banner1.png'
 import banner2 from '../asset/Banner2.png'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
-import styled from '../styles/ChangePassword.module.css'
+import styled from '../styles/ChangePassword.module.scss'
 
 export function ConfirmChangePassword() {
   return (

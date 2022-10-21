@@ -1,15 +1,15 @@
 import { Outlet } from 'react-router-dom'
-import styled from './styles/Home.module.css'
+import styled from './styles/Home.module.scss'
 
-import Nav from './components/Nav'
 import Footer from './components/Footer'
+import Header from './components/Header'
 
 function App() {
   return (
     <>
       <div className={styled.mainContainer}>
         <div style={{ height: '20px' }}></div>
-        <Nav />
+        <Header />
         <Outlet />
       </div>
       <Footer />

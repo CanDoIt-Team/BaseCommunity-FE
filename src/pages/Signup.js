@@ -6,7 +6,7 @@ import { emailCheck, nicknameCheck, signupSubmit } from '../apis/signupApi'
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
 
-import styled from '../styles/Signup.module.css'
+import styled from '../styles/Signup.module.scss'
 
 /* 모달 라이브러리 */
 const swalWithBootstrapButtons = Swal.mixin({

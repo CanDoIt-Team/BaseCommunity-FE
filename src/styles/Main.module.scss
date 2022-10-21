@@ -118,29 +118,28 @@
   padding-top: 20px;
   cursor: pointer;
   margin-right: 10px;
-}
 
-.boardContents:last-child {
-  margin-right: 0;
-}
+  &:last-child {
+    margin-right: 0;
+  }
 
-.boardContents:hover {
-  border: 1px solid rgba(0, 0, 0,.3);
+  &:hover {
+    border: 1px solid rgba(0, 0, 0,.3);
+  }
 }
 
 .startDate {
   display: flex;
   padding-bottom: 10px;
   color: #9b9b9b;
-}
 
-.startDate > span:first-child {
-  padding-right: 5px;
-}
+  & > span:first-child {
+    padding-right: 5px;
+  }
 
-
-.startDate > span {
-  font-size: 16px;
+  & > span {
+    font-size: 16px;
+  }
 }
 
 .projectTitle {
@@ -161,11 +160,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 20px 0 20px 0;
-}
 
-.techList > li {
-  font-size: 18px;
-  padding-right: 10px;
+  & > li {
+    font-size: 18px;
+    padding-right: 10px;
+  }
 }
 
 .writer {
@@ -177,10 +176,10 @@
   padding-top: 20px;
   margin-top: 20px;
   border-top: 1px solid #cecece;
-}
 
-.writer > span {
-  padding-right: 15px;
+  & > span {
+    padding-right: 15px;
+  }
 }
 
 .employmentContainer {
@@ -210,10 +209,10 @@
   border-bottom: 1px solid #cecece;
   border-right: 1px solid #cecece;
   cursor: pointer;
-}
 
-.employmentContent:first-child {
-  border: 1px solid #cecece;
+  &:first-child {
+    border: 1px solid #cecece;
+  }
 }
 
 .companyNameAndCloseDt {

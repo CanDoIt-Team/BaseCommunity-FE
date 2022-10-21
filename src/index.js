@@ -13,6 +13,7 @@ import ChangePassword from './pages/ChangePassword'
 import ConfirmChangePassword from './pages/ConfirmChangePassword'
 
 import './index.css'
+import Mypage from './pages/Mypage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -21,6 +22,7 @@ root.render(
       <Routes>
         <Route path={'/'} element={<App />}>
           <Route path={'/'} element={<Home />} />
+          <Route path={'/mypage'} element={<Mypage />} />
           <Route path={'/project'} element={<Project />} />
           <Route path={'/Board'} element={<Board />} />
           <Route path={'/Job'} element={<Job />} />

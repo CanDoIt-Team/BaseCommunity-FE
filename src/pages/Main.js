@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styled from '../styles/Main.module.css'
+import styled from '../styles/Main.module.scss'
 
 export const Main = () => {
   return (

@@ -1,5 +1,5 @@
 import logo from '../asset/Logo.png'
-import styled from '../styles/Logo.module.css'
+import styled from '../styles/Logo.module.scss'
 
 export function LogoAndTitle() {
   return (
