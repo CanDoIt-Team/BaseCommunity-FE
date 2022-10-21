@@ -109,3 +109,13 @@
 .title {
   margin-bottom: 10px;
 }
+
+.btn {
+  border: 0;
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #35b729;
+  padding: 0.625em 1.1em;
+  color: #fff;
+  font-size: 1em;
+}
