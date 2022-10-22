@@ -2,7 +2,7 @@ import React from 'react'
 import { LogoAndTitle } from '../components/Logo'
 import styled from '../styles/Login.module.scss'
 import { Link } from 'react-router-dom'
-import { signIn } from '../apis/signupApi'
+import { signIn } from '../apis/signinApi'
 
 export function Login() {
 
@@ -51,7 +51,7 @@ export function Login() {
               <Link to="/signup">회원가입</Link>
             </li>
             <li className={styled.link}>
-              <Link to="/changePassword">비밀번호 찾기</Link>
+              <Link to="/findPassword">비밀번호 찾기</Link>
             </li>
           </ul>
         </form>

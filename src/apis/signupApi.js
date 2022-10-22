@@ -34,16 +34,5 @@ const signupSubmit = async ({
   return res
 }
 
-const findPassword = async (data) => {
-  const res = await axios.post(`/users/findPassword`, data)
 
-  return res
-}
-
-const signIn = async (data) => {
-  const res = await axios.post('/users/signin', data) 
-
-  console.log(res)
-  return res
-}
-export { emailCheck, nicknameCheck, signupSubmit, findPassword, signIn }
+export { emailCheck, nicknameCheck, signupSubmit }

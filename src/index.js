@@ -9,7 +9,7 @@ import Job from './pages/Job'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import ChangePassword from './pages/ChangePassword'
+import FindPassword from './pages/FindPassword'
 import ConfirmChangePassword from './pages/ConfirmChangePassword'
 
 import './index.css'
@@ -29,7 +29,7 @@ root.render(
         </Route>
         <Route path={'/login'} element={<Login />} />
         <Route path={'/signup'} element={<Signup />} />
-        <Route path={'/changePassword'} element={<ChangePassword />} />
+        <Route path={'/findPassword'} element={<FindPassword />} />
         <Route
           path={'/confirmChangePassword'}
           element={<ConfirmChangePassword />}
