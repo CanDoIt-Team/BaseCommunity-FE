@@ -1,29 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Swal from 'sweetalert2'
 
 import { emailCheck, nicknameCheck, signupSubmit } from '../apis/signupApi'
 
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
 
-import styled from '../styles/Signup.module.css'
+import styled from '../styles/Signup.module.scss'
 
-/* 모달 라이브러리 */
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: styled.btn,
-  },
-  buttonsStyling: false,
-  confirmButtonColor: '#35b729',
-})
-
-const modalShow = ({ title, ...rest }) => {
-  swalWithBootstrapButtons.fire({
-    title,
-    ...rest,
-    confirmButtonText: '확인', // confirm 버튼 텍스트 지정
-  })
-}
+import modalShow  from '../components/Modal'
 
 /* 컴포넌트 */
 const Label = ({ title }) => {

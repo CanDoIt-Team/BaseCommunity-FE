@@ -1,16 +1,37 @@
 import React from 'react'
 import { LogoAndTitle } from '../components/Logo'
-import styled from '../styles/Login.module.css'
+import styled from '../styles/Login.module.scss'
 import { Link } from 'react-router-dom'
+import { signIn } from '../apis/signinApi'
 
 export function Login() {
+
+  const data = {
+    email: "test@test",
+    password: "test"
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const result = await signIn(data)
+
+      if(result.data === 200) {
+        console.log(result.data)
+      }
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
-      <div className={styled.loginContainer}>
+      <div className={styled.loginContainer} >
         <Link to={'/'}>
           <LogoAndTitle />
         </Link>
-        <form className={styled.inputGroup}>
+        <form className={styled.inputGroup} onSubmit={handleSubmit}>
           <input
             className={styled.inputArea}
             type="text"
@@ -30,7 +51,7 @@ export function Login() {
               <Link to="/signup">회원가입</Link>
             </li>
             <li className={styled.link}>
-              <Link to="/changePassword">비밀번호 찾기</Link>
+              <Link to="/findPassword">비밀번호 찾기</Link>
             </li>
           </ul>
         </form>

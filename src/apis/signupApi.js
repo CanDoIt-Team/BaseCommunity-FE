@@ -34,4 +34,5 @@ const signupSubmit = async ({
   return res
 }
 
+
 export { emailCheck, nicknameCheck, signupSubmit }

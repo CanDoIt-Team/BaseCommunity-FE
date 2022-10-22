@@ -37,11 +37,11 @@
   margin-bottom: 10px;
   border: 1px solid #b2b2b2;
   border-radius: 4px;
-}
 
-.inputCheckArea:focus {
-  outline: none;
-  border: 1px solid#35b729;
+  &:focus {
+    outline: none;
+    border: 1px solid#35b729;
+  }
 }
 
 .idCheckButton {
@@ -53,10 +53,10 @@
   background: #35b729;
   color: white;
   cursor: pointer;
-}
 
-.idCheckButton:hover {
-  background: #5acc4f;
+  &:hover {
+    background: #5acc4f;
+  }
 }
 
 .btnGroup {
@@ -73,10 +73,10 @@
   color: white;
   cursor: pointer;
   margin-right: 20px;
-}
-
-.beforeBtn:hover {
-  background: rgb(151, 151, 151);
+  
+  &:hover{
+    background: rgb(151, 151, 151);
+  }
 }
 
 .signinBtn {
@@ -88,10 +88,10 @@
   background: #2e6afd;
   color: white;
   cursor: pointer;
-}
 
-.signinBtn:hover {
-  background: #5282fa;
+  &:hover {
+    background: #5282fa;
+  }
 }
 
 .linkGroup {
