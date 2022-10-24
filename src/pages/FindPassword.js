@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
 import styled from '../styles/FindPassword.module.scss'
-import { findPassword } from '../apis/signinApi'
+import { findPassword } from '../apis/signApi'
 
 export function FindPassword() {
   const [inputValue, setInputValue] = useState({
@@ -19,13 +19,13 @@ export function FindPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if(inputValue.email.length <= 0) {
-      console.log("이메일을 입력해주세요")
-      return;
+    if (inputValue.email.length <= 0) {
+      console.log('이메일을 입력해주세요')
+      return
     }
-    if(inputValue.name.length <= 0) {
-      console.log("이름을 입력해주세요")
-      return;
+    if (inputValue.name.length <= 0) {
+      console.log('이름을 입력해주세요')
+      return
     }
 
     try {

@@ -1,19 +1,24 @@
+import React, { useState } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { loginState, authToken } from '../store/store'
+
 import styles from '../styles/Header.module.scss'
 import { BsBell, BsPersonFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { Logo } from './Logo'
-import React, { useState } from 'react'
 
 export default function Header() {
-  const [login, setLogin] = useState(false)
-
   const [showMypage, setShowMypage] = useState(false)
+  const [login, setLogin] = useRecoilState(loginState)
 
   const [navs, setNavs] = useState([
     { id: 'project', title: '프로젝트', state: false },
     { id: 'board', title: '게시판', state: false },
     { id: 'job', title: '채용공고', state: false },
   ])
+
+  const token = useRecoilValue(authToken)
+  console.log(token)
 
   const handleClick = ({ target }) => {
     const textValue = target.innerHTML
@@ -53,18 +58,30 @@ export default function Header() {
             </Link>
           </div>
         ))}
-        {login ? (
-          <div className={styles.mypageAndAlarm}>
-            <BsBell className={styles.icon} />
-            <BsPersonFill className={styles.icon} onClick={handleMypageClick} />
-            {showMypage && (
-              <div className={styles.mypageList}>
-                <Link to="mypage" onClick={handleMypageClick}>
-                  마이페이지
-                </Link>
-              </div>
-            )}
-          </div>
+        {login.isLoading ? (
+          <>
+            <Link
+              to="/login"
+              className={styles.logout}
+              onClick={() => setLogin({ id: '', isLoading: false })}
+            >
+              로그아웃
+            </Link>
+            <div className={styles.mypageAndAlarm}>
+              <BsBell className={styles.icon} />
+              <BsPersonFill
+                className={styles.icon}
+                onClick={handleMypageClick}
+              />
+              {showMypage && (
+                <div className={styles.mypageList}>
+                  <Link to="mypage" onClick={handleMypageClick}>
+                    마이페이지
+                  </Link>
+                </div>
+              )}
+            </div>
+          </>
         ) : (
           <Link to="/login" className={styles.login}>
             로그인

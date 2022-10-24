@@ -10,12 +10,14 @@ const swalWithBootstrapButtons = Swal.mixin({
   confirmButtonColor: '#35b729',
 })
 
-export const modalShow = ({ title, ...rest }) => {
-  swalWithBootstrapButtons.fire({
-    title,
-    ...rest,
-    confirmButtonText: '확인', // confirm 버튼 텍스트 지정
-  })
+const modalShow = ({ title, ...rest }, callback) => {
+  swalWithBootstrapButtons
+    .fire({
+      title,
+      ...rest,
+      confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+    })
+    .then(callback)
 }
 
 export default modalShow

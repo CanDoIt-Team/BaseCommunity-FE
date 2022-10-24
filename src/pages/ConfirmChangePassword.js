@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
 import styled from '../styles/FindPassword.module.scss'
-import { newPassword } from '../apis/signinApi'
+import { newPassword } from '../apis/signApi'
 
 export function ConfirmChangePassword() {
   const [inputValue, setInputValue] = useState({
@@ -27,8 +27,8 @@ export function ConfirmChangePassword() {
         console.log('잘못된 값입니다.')
       }
     } catch (error) {
-      if(error.response && error.response.status === 500) {
-        console.log("데이터 없음")
+      if (error.response && error.response.status === 500) {
+        console.log('데이터 없음')
       }
     }
   }
