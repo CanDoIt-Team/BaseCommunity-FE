@@ -1,37 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import { emailCheck, nicknameCheck, signupSubmit } from '../apis/signupApi'
+import { emailCheck, nicknameCheck, signupSubmit } from '../apis/signApi'
 
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
+import { Label, Input } from '../components/sign/Sign'
 
 import styled from '../styles/Signup.module.scss'
-
-import modalShow  from '../components/Modal'
+import modalShow from '../components/Modal'
 
 /* 컴포넌트 */
-const Label = ({ title }) => {
-  return (
-    <>
-      <label className={styled.title}>{title}</label>
-    </>
-  )
-}
-
 const DoubleCheck = (props) => {
   return (
     <>
       <button className={styled.idCheckButton} type="button" {...props}>
         중복확인
       </button>
-    </>
-  )
-}
-
-const Input = (props) => {
-  return (
-    <>
-      <input className={styled.inputArea} {...props} />
     </>
   )
 }
@@ -76,7 +60,6 @@ const nicknameClick = async (nickname) => {
       if (res.data === false) {
         modalShow({
           title: '사용할 수 있는 닉네임입니다.',
-          text: '이메일을 확인해주세요',
         })
         return true
       } else {
@@ -98,7 +81,6 @@ const submitCheck = (
   { birth, email, name, nickname, password, confirmPassword, phone },
   state,
 ) => {
-  console.log(birth)
   /* 비어있는 Input 검증 */
   let blankString =
     email.length < 1 ||
@@ -210,20 +192,22 @@ export function Signup() {
 
     try {
       const result = await signupSubmit(userInputs)
-      if (result.data === 200) {
-        modalShow({
-          title: '회원가입이 정상적으로 진행되었습니다.',
-          text: '이메일을 확인해주세요',
-        })
+      if (result.status === 200) {
+        modalShow(
+          {
+            title: '회원가입이 성공했습니다.',
+            text: '이메일을 확인해주세요',
+          },
+          () => (window.location.href = 'login'),
+        )
       }
     } catch (err) {
-      console.log(err)
+      modalShow({
+        title: '회원가입을 실패했습니다.',
+        text: err.message,
+      })
     }
   }
-
-  useEffect(() => {
-    console.log(state)
-  }, [state])
 
   return (
     <>
@@ -232,9 +216,10 @@ export function Signup() {
           <LogoAndTitle />
         </Link>
         <form className={styled.inputGroup} onSubmit={handleSubmit}>
-          <Label title={'이메일'} />
+          <Label title={'이메일'} className={styled.title} />
           <div className={styled.inputAndBtnGroup}>
             <Input
+              className={styled.inputArea}
               type="text"
               name="email"
               onChange={handleChange}
@@ -243,9 +228,10 @@ export function Signup() {
             <DoubleCheck onClick={() => btnClick('이메일', userInputs)} />
           </div>
 
-          <Label title={'닉네임'} />
+          <Label title={'닉네임'} className={styled.title} />
           <div className={styled.inputAndBtnGroup}>
             <Input
+              className={styled.inputArea}
               type="text"
               name="nickname"
               onChange={handleChange}
@@ -254,16 +240,18 @@ export function Signup() {
             <DoubleCheck onClick={() => btnClick('닉네임', userInputs)} />
           </div>
 
-          <Label title={'이름'} />
+          <Label title={'이름'} className={styled.title} />
           <Input
+            className={styled.inputArea}
             type="text"
             name="name"
             onChange={handleChange}
             value={userInputs.name}
           />
 
-          <Label title={'비밀번호'} />
+          <Label title={'비밀번호'} className={styled.title} />
           <Input
+            className={styled.inputArea}
             type="password"
             autoComplete="on"
             name="password"
@@ -271,16 +259,18 @@ export function Signup() {
             value={userInputs.password}
           />
 
-          <Label title={'비밀번호 확인'} />
+          <Label title={'비밀번호 확인'} className={styled.title} />
           <Input
+            className={styled.inputArea}
             type="password"
             name="confirmPassword"
             onChange={handleChange}
             value={userInputs.confirmPassword}
           />
 
-          <Label title={'전화번호'} />
+          <Label title={'전화번호'} className={styled.title} />
           <Input
+            className={styled.inputArea}
             type="phoneNumber"
             placeholder=" '-' 없이 입력해주세요"
             name="phone"
@@ -288,8 +278,9 @@ export function Signup() {
             value={userInputs.phone}
           />
 
-          <Label title={'생년월일'} />
+          <Label title={'생년월일'} className={styled.title} />
           <Input
+            className={styled.inputArea}
             type="date"
             name="birth"
             onChange={handleChange}

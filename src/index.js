@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { RecoilRoot } from 'recoil'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import App from './App'
@@ -17,8 +18,8 @@ import Mypage from './pages/Mypage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <BrowserRouter>
-    <>
+  <RecoilRoot>
+    <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<App />}>
           <Route path={'/'} element={<Home />} />
@@ -35,6 +36,6 @@ root.render(
           element={<ConfirmChangePassword />}
         />
       </Routes>
-    </>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </RecoilRoot>,
 )
