@@ -13,6 +13,8 @@ import Signup from './pages/Signup'
 import FindPassword from './pages/FindPassword'
 import ConfirmChangePassword from './pages/ConfirmChangePassword'
 
+import Write from './components/project/Write'
+
 import './index.css'
 import Mypage from './pages/Mypage'
 
@@ -25,6 +27,7 @@ root.render(
           <Route path={'/'} element={<Home />} />
           <Route path={'/mypage'} element={<Mypage />} />
           <Route path={'/project'} element={<Project />} />
+          <Route path={'/project/write'} element={<Write />} />
           <Route path={'/Board'} element={<Board />} />
           <Route path={'/Job'} element={<Job />} />
         </Route>
