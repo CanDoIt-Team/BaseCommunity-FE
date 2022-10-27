@@ -7,9 +7,9 @@ import Header from './components/Header'
 function App() {
   return (
     <>
+      <Header />
       <div className={styled.mainContainer}>
         <div style={{ height: '20px' }}></div>
-        <Header />
         <Outlet />
       </div>
       <Footer />
