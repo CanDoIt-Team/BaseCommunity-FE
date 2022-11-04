@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
 import styled from '../styles/FindPassword.module.scss'
 import { findPassword } from '../apis/signApi'
+import modalShow from '../components/Modal'
 
 export function FindPassword() {
   const [inputValue, setInputValue] = useState({
     email: '',
     name: '',
   })
+  
   const [findSuccess, setFindSuccess] = useState(false)
 
   const handleChange = (e) => {
@@ -19,13 +21,19 @@ export function FindPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (inputValue.email.length <= 0) {
-      console.log('이메일을 입력해주세요')
-      return
+    console.log(process.env.REACT_APP_BASE_URL)
+
+    if(inputValue.email.length <= 0) {
+      modalShow({
+        title: "이메일을 입력해주세요."
+      })
+      return;
     }
-    if (inputValue.name.length <= 0) {
-      console.log('이름을 입력해주세요')
-      return
+    if(inputValue.name.length <= 0) {
+      modalShow({
+        title: "이름을 입력해주세요."
+      })
+      return;
     }
 
     try {
@@ -37,7 +45,14 @@ export function FindPassword() {
       }
     } catch (err) {
       if (err.response && err.response.status === 500) {
-        console.log('데이터 없음')
+        modalShow({
+          title: "입력하신 정보가 일치하지 않습니다."
+        })
+      }
+      if (err.response && err.response.status === 504) {
+        modalShow({
+          title: "입력하신 정보가 일치하지 않습니다."
+        })
       }
     }
   }

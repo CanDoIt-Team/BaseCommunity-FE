@@ -1,31 +1,16 @@
 .mypageContainer {
+  position: relative;
   display: flex;
-  justify-content: center;
   width: 100%;
-  height: 700px;
-  border: 1px solid #000000;
+  height: 100%;
+  // border: 1px solid #000000;
   margin-top: 20px;
 }
 
-.mypageList {
+.linkContainer {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 40px;
+  width: 25%;
+  height: 100%;
+  padding: 40px;
 }
 
-.mainTitle {
-  font-size: 28px;
-  font-weight: 600;
-  padding-bottom: 20px;
-}
-
-.myImg {
-  border-radius: 100%;
-  margin-bottom: 20px;
-}
-
-.subTitle {
-  font-size: 22px;
-  padding-bottom: 20px;
-}

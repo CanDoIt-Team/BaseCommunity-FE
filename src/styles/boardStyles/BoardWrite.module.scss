@@ -1,0 +1,85 @@
+.boardWriteContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.boardWriteTitleGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.boardWriteMainTitle {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.boardWriteSubTitle {
+
+}
+
+.boardWriteInputContainer {
+  margin-top: 40px;
+}
+
+.writeInputWrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.writeLabel {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.selectArea {
+  width: 100%;
+  font-size: 18px;
+  height: 40px;
+  border: 1px solid #adadad;
+  padding-left: 10px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.contentArea {
+  width: 100%;
+  font-size: 18px;
+  height: 300px;
+  border: 1px solid #adadad;
+  padding: 10px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.btnGroup {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.submitBtn {
+  width: 80px;
+  height: 35px;
+  color: white;
+  background: #477bff;
+  border-radius: 8px;
+}
+
+.cancelBtn {
+  width: 80px;
+  height: 35px;
+  color: white;
+  background: #fd5353;
+  border-radius: 8px;
+}

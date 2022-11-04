@@ -1,7 +1,9 @@
+import BoardContainer from '../components/board/BoardContainer'
+
 export default function Board() {
   return (
     <>
-      <div>Board</div>
+      <BoardContainer />
     </>
   )
 }

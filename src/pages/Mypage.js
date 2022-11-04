@@ -1,16 +1,19 @@
 import styled from '../styles/Mypage.module.scss'
+import { Link, Outlet } from 'react-router-dom'
 
 export const Mypage = () => {
-  return(
+  return (
     <div className={styled.mypageContainer}>
-      <div className={styled.mypageList}>
-        <h2 className={styled.mainTitle}>프로필</h2>
-        <img src='https://via.placeholder.com/100' alt='테스트 이미지' className={styled.myImg}/>
-        <span className={styled.subTitle}>nickname</span>
-        <span className={styled.subTitle}>E-mail</span>
-        <span className={styled.subTitle}>phoneNumber</span>
+      <div className={styled.linkContainer}>
+        <ul className={styled.linkGroup}>
+          <li className={styled.linkToPrifile}>
+            <Link to="/mypage">내 프로필</Link>
+          </li>
+          <li className={styled.linkToMyProject}>내 프로젝트</li>
+          <li className={styled.linkToMyBoard}>내가 쓴 게시글</li>
+        </ul>
       </div>
-      <div></div>
+      <Outlet />
     </div>
   )
 }
