@@ -41,14 +41,14 @@ const signinSubmit = async ({ email, password }) => {
   return res
 }
 
-const newPassword = async (data) => {
-  const res = await axios.post('/users/newpassword', data.password)
+const newPassword = async (data, uuid) => {
+  const res = await axios.post(`/users/password/new?uuid=${uuid}`, data)
 
   return res
 }
 
 const findPassword = async (data) => {
-  const res = await axios.post(`/users/findPassword`, data)
+  const res = await axios.post(`/users/password/user-info`, data)
 
   return res
 }

@@ -9,7 +9,6 @@ function App() {
     <>
       <Header />
       <div className={styled.mainContainer}>
-        <div style={{ height: '20px' }}></div>
         <Outlet />
       </div>
       <Footer />

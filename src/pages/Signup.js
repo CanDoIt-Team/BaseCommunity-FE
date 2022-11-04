@@ -57,6 +57,7 @@ const nicknameClick = async (nickname) => {
   } else {
     try {
       const res = await nicknameCheck(nickname)
+      console.log(nickname)
       if (res.data === false) {
         modalShow({
           title: '사용할 수 있는 닉네임입니다.',

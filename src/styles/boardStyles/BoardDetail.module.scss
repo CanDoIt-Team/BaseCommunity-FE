@@ -1,0 +1,182 @@
+.boardDetailContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0 117px;
+  margin-top: 30px;
+}
+
+.boardInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.userInfoGroup {
+  display: flex;
+}
+
+.writerInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.userImg {
+  margin-right: 10px;
+}
+
+.img {
+  border-radius: 100%;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userNickName {
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.writerTime {
+  font-size: 15px;
+  color: #9e9e9e;
+}
+
+.boardTitleAndCategory {
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.category {
+  color: #9e9e9e;
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 3px;
+  margin-bottom: 4px;
+}
+
+.commentWriterInfo {
+  display: flex;
+}
+
+.boardContents {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.commentWriteArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.commentWrite {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  border: 1px solid#afafaf;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.commentWriteBtnArea {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.commentWriteBtn {
+  width: 100px;
+  height: 40px;
+  color: white;
+  background: #477bff;
+  border-radius: 8px;
+}
+
+.boardComment {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  border-top: 1px solid #c9c9c9;
+}
+
+.commentNum {
+  padding: 15px 0;
+}
+
+.commentList {
+  margin-top: 20px;
+}
+
+.commentItem {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #c9c9c9;
+}
+
+.writerInfoWrap {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  width: 45px;
+  height: 25px;
+  margin: 2px;
+  color: white;
+  background: #477bff;
+  border-radius: 8px;
+}
+
+.btnDeleteAndCancel {
+  width: 45px;
+  height: 25px;
+  margin: 2px;
+  color: white;
+  background: #ff6969e7;
+  border-radius: 8px;
+}
+
+.updateInput {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+  justify-content: flex-end;
+  width: 120px;
+  height: 100%;
+}
+
+.moreInfoBtn {
+  font-size: 20px;
+  margin-right: 3px;
+  margin-bottom: 9px;
+}

@@ -17,9 +17,6 @@ export default function Header() {
     { id: 'job', title: '채용공고', state: false },
   ])
 
-  const token = useRecoilValue(authToken)
-  console.log(token)
-
   const handleClick = ({ target }) => {
     const textValue = target.innerHTML
     setNavs(
@@ -60,13 +57,6 @@ export default function Header() {
         ))}
         {login.isLoading ? (
           <>
-            <Link
-              to="/login"
-              className={styles.logout}
-              onClick={() => setLogin({ id: '', isLoading: false })}
-            >
-              로그아웃
-            </Link>
             <div className={styles.mypageAndAlarm}>
               <BsBell className={styles.icon} />
               <BsPersonFill
@@ -75,9 +65,40 @@ export default function Header() {
               />
               {showMypage && (
                 <div className={styles.mypageList}>
-                  <Link to="mypage" onClick={handleMypageClick}>
-                    마이페이지
-                  </Link>
+                  <div className={styles.pb10}>
+                    <Link
+                      to="mypage"
+                      className={styles.mypageLink}
+                      onClick={handleMypageClick}
+                    >
+                      마이페이지
+                    </Link>
+                  </div>
+                  <div className={styles.pb10}>
+                    <Link
+                      to="/mypage"
+                      className={styles.mypageLink}
+                    >
+                      내 프로젝트
+                    </Link>
+                  </div>
+                  <div className={styles.pb10}>
+                    <Link
+                      to="/mypage"
+                      className={styles.mypageLink}
+                    >
+                      내가 쓴 글
+                    </Link>
+                  </div>
+                  <div className={styles.pb10}>
+                    <Link
+                      to="/login"
+                      className={styles.mypageLink}
+                      onClick={() => setLogin({ id: '', isLoading: false })}
+                    >
+                      로그아웃
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
