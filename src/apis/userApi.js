@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil'
 
 const getUser = async (token) => {
   console.log(token)
-    const res = await axios.get(`/users/info`, {
+  const res = await axios.get(`/users/info`, {
     headers: {
       'auth-token': token,
     },
@@ -16,34 +16,33 @@ const uploadImg = async (token, data) => {
   const res = await axios.post(`/users/profile-img`, data, {
     headers: {
       'auth-token': token,
-      "Content-Type": `multipart/form-data`,
-    }
-  });
+      'Content-Type': `multipart/form-data`,
+    },
+  })
 
   return res
 }
 
 const userUpdate = async (token, data, skill) => {
-
   const res = await axios.post(`/users/info?skill=${skill}`, data, {
     headers: {
       'auth-token': token,
-    }
-  });
+    },
+  })
 
   console.log(data)
 
-  return res;
+  return res
 }
 
 const changePassword = async (token, data) => {
   const res = await axios.put('/users/password/change', data, {
     headers: {
       'auth-token': token,
-    }
+    },
   })
 
-  return res;
+  return res
 }
 
 export { getUser, uploadImg, userUpdate, changePassword }

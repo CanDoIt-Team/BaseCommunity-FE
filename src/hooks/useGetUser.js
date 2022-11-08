@@ -11,7 +11,7 @@ export function useGetUser(token) {
       set({ loading: true, data: null, error: null })
       try {
         const userData = await getUser(token)
-        console.log(userData)
+        // console.log(userData)
         set({ loading: false, data: userData.data, error: null })
       } catch (e) {
         set({ loading: false, data: null, error: e })

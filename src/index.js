@@ -13,6 +13,10 @@ import Signup from './pages/Signup'
 import FindPassword from './pages/FindPassword'
 import ConfirmChangePassword from './pages/ConfirmChangePassword'
 
+import Write from './components/project/Write'
+import Update from './components/project/Update'
+import ProjectDetail from './pages/ProjectDetail'
+
 import './index.css'
 import Mypage from './pages/Mypage'
 import { MypageUserInfo } from './components/mypage/MypageUserInfo'
@@ -32,6 +36,9 @@ root.render(
             <Route path={'/mypage'} element={<MypageUserInfo />} />
           </Route>
           <Route path={'/project'} element={<Project />} />
+          <Route path={'/project/:id'} element={<ProjectDetail />} />
+          <Route path={'/project/write'} element={<Write />} />
+          <Route path={'/project/update'} element={<Update />} />
           <Route path={'/board'} element={<Board />}>
             <Route path={'/board'} element={<BoardList />} />
             <Route path={'/board/:id'} element={<BoardDetail />} />
