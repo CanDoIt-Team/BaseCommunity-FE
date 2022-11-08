@@ -14,7 +14,6 @@ export const BoardCategory = ({ handleClick }) => {
           : { ...item, active: false },
       ),
     )
-    console.log(category)
   }
 
   return (

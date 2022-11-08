@@ -2,11 +2,7 @@ import { useState } from 'react'
 import { addComment } from '../../../apis/boardApi'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 
-export const BoardDetailComment = ({
-  data,
-  id,
-  token,
-}) => {
+export const BoardDetailComment = ({ data, id, token }) => {
   let count = data.comments.length
   const [commentValue, setCommentValue] = useState('')
 
