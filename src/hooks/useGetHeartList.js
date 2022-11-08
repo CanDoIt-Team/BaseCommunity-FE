@@ -10,10 +10,15 @@ export function useGetHeartList(token) {
     async (token) => {
       set({ data: null })
       try {
-        const heartData = await getHeart(token)
-        set({ data: heartData.data })
+        if (token) {
+          const heartData = await getHeart(token)
+          set({ data: heartData.data })
+        }
+        else {
+          set({ data: null })
+        }
       } catch (e) {
-        console.log(e)
+        console.log(1)
       }
     },
     [set],
@@ -27,4 +32,3 @@ export function useGetHeartList(token) {
     data,
   }
 }
-
