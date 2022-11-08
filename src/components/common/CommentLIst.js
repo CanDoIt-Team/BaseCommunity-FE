@@ -12,13 +12,13 @@ export const CommentList = ({ token, id, data, pages }) => {
   return (
     <>
       <div className={styled.commentList}>
-        {data.content &&
-          data.content.map((item, idx) => (
+        {data &&
+          data.map((item, idx) => (
             <CommentItem
               key={idx}
               item={item}
               idx={idx}
-              user={data.nickname}
+              user={item.member.nickname}
               token={token}
               id={id}
               setModify={setModify}
