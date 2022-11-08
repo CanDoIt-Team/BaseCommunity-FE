@@ -9,14 +9,14 @@ module.exports = (app) => {
     }),
   )
   app.use(
-    '/employments',
+    '/boards',
     createProxyMiddleware({
       target: 'http://118.67.128.16:8080',
       changeOrigin: true,
     }),
   )
   app.use(
-    '/boards',
+    '/employments',
     createProxyMiddleware({
       target: 'http://118.67.128.16:8080',
       changeOrigin: true,
