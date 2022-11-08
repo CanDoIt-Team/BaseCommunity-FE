@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { addComment } from '../../../apis/boardApi'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
+import modalShow from '../../Modal'
 
-export const BoardDetailComment = ({ data, id, token }) => {
+export const BoardDetailComment = ({ data, id, token, loginCheck }) => {
   let count = data.comments.length
   const [commentValue, setCommentValue] = useState('')
 
@@ -13,6 +14,14 @@ export const BoardDetailComment = ({ data, id, token }) => {
 
   const handleCommentAddBtn = async (id, data, token) => {
     const comment = { content: data }
+
+    if (loginCheck === false) {
+      modalShow({
+        title:
+          '로그인이 필요한 기능입니다.<br><br> 로그인 후 이용해주세요.<br>',
+      })
+      return
+    }
 
     try {
       const test = await addComment(id, comment, token)

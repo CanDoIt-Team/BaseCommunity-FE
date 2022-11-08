@@ -12,12 +12,6 @@ export const BoardPaginaition = ({ totalPage, page, setPage }) => {
       ? lastPage - (5 - ((pageGroup * 5) - lastPage + 1)) 
       : lastPage - (5 - 1)
 
-      // 14 - (5 - (15 - 14 + 1)) 3
-
-  console.log(firstPage)
-  console.log(lastPage - (pageGroup * 5 - 1) <= 0, lastPage - (5 - ((pageGroup * 5) - 15 + 1)) )
-  console.log(lastPage - (pageGroup * 5 - 1) <= 0, lastPage - (5 - 1))
-
   const handlePageClick = (page) => {
     console.log(page)
     setPage(page)

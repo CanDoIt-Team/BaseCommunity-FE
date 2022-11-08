@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { useGetBoardDetail } from '../../../hooks/useGetBoard'
 import { useGetUser } from '../../../hooks/useGetUser'
-import { authToken } from '../../../store/store'
+import { authToken, loginState } from '../../../store/store'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import BoardDetailComment from './BoardDetailCommentWrite'
 import BoardDetailCommentList from './BoardDetailCommentList'
@@ -12,16 +12,19 @@ import { useGetHeartList } from '../../../hooks/useGetHeartList'
 
 export const BoardDetail = () => {
   const token = useRecoilValue(authToken)
+  const [login, setLogin] = useRecoilState(loginState)
+  const [loginCheck, setLoginCheck] = useState(login.id !== '');
 
   const { id } = useParams()
   const { loading, data } = useGetBoardDetail(id)
+
   const { data: heart } = useGetHeartList(token)
   const { data: user } = useGetUser(token)
 
-
-
   const [boardData, setBoardData] = useState(null)
-  
+
+  console.log(heart)
+
   useEffect(() => {
     if (data) {
       setBoardData(data)
@@ -39,12 +42,14 @@ export const BoardDetail = () => {
             user={user}
             heart={heart}
             token={token}
+            loginCheck={loginCheck}
           />
           <BoardDetailComment
             id={id}
             token={token}
             data={boardData}
             user={user}
+            loginCheck={loginCheck}
           />
           <BoardDetailCommentList
             id={id}
