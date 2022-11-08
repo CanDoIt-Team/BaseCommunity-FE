@@ -18,7 +18,6 @@ export const MypageUserInfo = () => {
   const [skill, setSkill] = useState(null)
   const [changeInfo, setChangeInfo] = useState({
     nickname: '',
-    // skill: '',
     phone: '',
     birth: '',
   })

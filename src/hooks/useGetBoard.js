@@ -3,15 +3,15 @@ import { useRecoilState } from 'recoil'
 import { getBoardDetail, getBoardList } from '../apis/boardApi'
 import { boardDetailStore, boardListState } from '../store/boardStore'
 
-export function useGetBoardList(category) {
+export function useGetBoardList(category, page) {
   const [{ loading, data }, set] = useRecoilState(boardListState)
 
   const fetchData = useCallback(
-    async (category) => {
+    async (category, page) => {
       set({ loading: true, data: null })
       try {
         console.log(category)
-        const boardData = await getBoardList(category)
+        const boardData = await getBoardList(category, page)
         set({ loading: false, data: boardData.data, error: null })
       } catch (e) {
         console.log(e)
@@ -21,8 +21,8 @@ export function useGetBoardList(category) {
   )
 
   useEffect(() => {
-    fetchData(category)
-  }, [fetchData, category])
+    fetchData(category, page)
+  }, [fetchData, category, page])
 
   return {
     loading,

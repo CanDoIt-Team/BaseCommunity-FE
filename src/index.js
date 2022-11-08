@@ -23,6 +23,7 @@ import { MypageUserInfo } from './components/mypage/MypageUserInfo'
 import BoardList from './components/board/list/BoardList'
 import BoardDetail from './components/board/detail/BoardDetail'
 import BoardWrite from './components/board/write/BoardWrite'
+import BoardModify from './components/board/modify/BoardModify'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -41,7 +42,8 @@ root.render(
           <Route path={'/board'} element={<Board />}>
             <Route path={'/board'} element={<BoardList />} />
             <Route path={'/board/:id'} element={<BoardDetail />} />
-            <Route path={'/board/Write'} element={<BoardWrite />} />
+            <Route path={'/board/write'} element={<BoardWrite />} />
+            <Route path={'/board/modify/:id'} element={<BoardModify />} />
           </Route>
           <Route path={'/Job'} element={<Job />} />
         </Route>

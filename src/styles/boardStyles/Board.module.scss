@@ -98,7 +98,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 
 .itemHeader {
@@ -125,18 +125,57 @@
 .writerInfo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.imgAndTitle {
+  display: flex;
 }
 
 .writerName {
-  padding: 0 10px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.wirteTime {
+  font-size: 15px;
+  color: #9e9e9e;
 }
 
 .wirterImg {
   border-radius: 100%;
 }
 
+.categoryAndcomment {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
 .itemCategory {
-  margin-top: 10px;
+  font-size: 15px;
+  color: #8a8a8a;
+}
+
+.commentCountArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    fill: #8a8a8a
+  }
+}
+
+.commentCount {
+  padding-left: 5px;
+  margin-bottom: 3px;
+  color: #8a8a8a;
+}
+
+.category {
+  color: black;
 }
 
 .itembottom {
@@ -144,17 +183,68 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 10px 0;
+  margin: 7px 0;
 }
 
 .itemTitle {
   display: flex;
   align-items: center;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .comment {
   display: flex;
   align-items: center;
+}
+
+.paginationContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+}
+
+.directionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.directionIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.directionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+.pageContainer {
+  display: flex;
+
+}
+
+.selectNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2e6afd;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  padding-right: 1px;
+  margin: 0 5px;
+}
+
+.num {
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  margin: 0 5px;
 }

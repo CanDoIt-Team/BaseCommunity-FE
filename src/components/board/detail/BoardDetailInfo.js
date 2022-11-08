@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { deleteBoard } from '../../../apis/boardApi'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { addHearts, deleteBoard } from '../../../apis/boardApi'
+import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
-export const BoardDetailInfo = ({ data, user, token }) => {
+export const BoardDetailInfo = ({ id, data, heart, user, token }) => {
   const [moreInfo, setMoreInfo] = useState(false)
 
-  let {id} = useParams();
+  const [heartState, setHeartState] = useState(false)
 
-  console.log(id)
+  const wrtieTime = useGetTime(data?.updateAt)
 
   const handleMoreInfoClick = () => {
     setMoreInfo(!moreInfo)
@@ -18,7 +20,7 @@ export const BoardDetailInfo = ({ data, user, token }) => {
     try {
       const result = await deleteBoard(token, boardId)
 
-      if(result.status === 200) {
+      if (result.status === 200) {
         window.location.replace(`/board`)
       }
     } catch (e) {
@@ -26,11 +28,43 @@ export const BoardDetailInfo = ({ data, user, token }) => {
     }
   }
 
-  console.log(data)
+  const handleHeartClick = async (token, boardId) => {
+    try {
+      const result = await addHearts(token, boardId)
+
+      if (result.status === 200) {
+        console.log(result)
+        setHeartState(result.data)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    const heartNum = heart?.content.map((item) => item.id)
+    const heartIdxState = heartNum?.indexOf(Number(id)) !== -1
+
+    setHeartState(heartIdxState)
+  }, [heart?.content, id])
 
   if (data)
     return (
       <div className={styled.boardInfo}>
+        <div className={styled.categoryAndheart}>
+          <div className={styled.category}>{data.category}</div>
+          <div className={styled.iconArea}>
+            {heartState ? (
+              <button onClick={() => handleHeartClick(token, data.boardId)}>
+                <AiFillHeart className={styled.redicon} />
+              </button>
+            ) : (
+              <button onClick={() => handleHeartClick(token, data.boardId)}>
+                <AiOutlineHeart className={styled.icon} />
+              </button>
+            )}
+          </div>
+        </div>
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
@@ -42,7 +76,7 @@ export const BoardDetailInfo = ({ data, user, token }) => {
             </div>
             <div className={styled.userInfo}>
               <div className={styled.userNickName}>{data.nickname}</div>
-              <div className={styled.writerTime}>글작성시간</div>
+              <div className={styled.writerTime}>{wrtieTime}</div>
             </div>
           </div>
           {user && data?.nickname === user?.nickname ? (
@@ -53,10 +87,13 @@ export const BoardDetailInfo = ({ data, user, token }) => {
               >
                 ...
               </button>
+
               {moreInfo && (
                 <div className={styled.btnGroup}>
                   <>
-                    <button className={styled.btn}>수정</button>
+                    <Link to={`/board/modify/${data.id}`}>
+                      <button className={styled.btn}>수정</button>
+                    </Link>
                     <button
                       className={styled.btnDeleteAndCancel}
                       type="button"
@@ -70,8 +107,7 @@ export const BoardDetailInfo = ({ data, user, token }) => {
             </div>
           ) : null}
         </div>
-        <div className={styled.boardTitleAndCategory}>
-          <div className={styled.category}>{data.category}</div>
+        <div className={styled.boardTitle}>
           <h1 className={styled.title}>{data.title}</h1>
         </div>
         <div className={styled.boardContents}>

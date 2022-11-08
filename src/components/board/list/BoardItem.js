@@ -1,29 +1,38 @@
 import { Link } from 'react-router-dom'
-import { useGetBoardDetail } from '../../../hooks/useGetBoard'
+import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/Board.module.scss'
+import { BiCommentDetail } from 'react-icons/bi'
 
 export const BoardItem = ({ item }) => {
-
+  const wrtieTime = useGetTime(item?.createdAt)
+  console.log(item.boardId)
   return (
     <>
       <div className={styled.boardItem}>
         <div className={styled.itemHeader}>
           <div className={styled.writerInfo}>
-            <img
-              className={styled.wirterImg}
-              src="https://via.placeholder.com/30"
-              alt="이미지"
-            />
-            <div className={styled.writerName}>{item.nickname}</div>
+            <div className={styled.imgAndTitle}>
+              <img
+                className={styled.wirterImg}
+                src="https://via.placeholder.com/20"
+                alt="이미지"
+              />
+              <div className={styled.writerName}>{item.member.nickname}</div>
+            </div>
+            <div className={styled.wirteTime}>{wrtieTime}</div>
           </div>
-          <div className={styled.wirteTime}>3시간 전</div>
         </div>
-        <div className={styled.itemCategory}>{item.category}</div>
         <div className={styled.itembottom}>
-          <Link to={`/board/${item.boardId}`}>
+          <Link to={`/board/${item.id}`}>
             <div className={styled.itemTitle}>{item.title}</div>
           </Link>
-          <div className={styled.comment}>댓글 수 </div>
+        </div>
+        <div className={styled.categoryAndcomment}>
+          <span className={styled.itemCategory}>{item.category}</span>
+          <div className={styled.commentCountArea}>
+            <BiCommentDetail />
+            <span className={styled.commentCount}>{item.comments.length}</span>
+          </div>
         </div>
       </div>
     </>
