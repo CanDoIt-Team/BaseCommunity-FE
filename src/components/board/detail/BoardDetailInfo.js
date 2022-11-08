@@ -4,8 +4,9 @@ import { addHearts, deleteBoard } from '../../../apis/boardApi'
 import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import modalShow from '../../Modal'
 
-export const BoardDetailInfo = ({ id, data, heart, user, token }) => {
+export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) => {
   const [moreInfo, setMoreInfo] = useState(false)
 
   const [heartState, setHeartState] = useState(false)
@@ -29,6 +30,14 @@ export const BoardDetailInfo = ({ id, data, heart, user, token }) => {
   }
 
   const handleHeartClick = async (token, boardId) => {
+
+    if(loginCheck === false) {
+      modalShow({
+        title: '로그인이 필요한 기능입니다.<br><br> 로그인 후 이용해주세요.<br>'
+      })
+      return
+    }
+
     try {
       const result = await addHearts(token, boardId)
 
@@ -43,7 +52,7 @@ export const BoardDetailInfo = ({ id, data, heart, user, token }) => {
 
   useEffect(() => {
     const heartNum = heart?.content.map((item) => item.id)
-    const heartIdxState = heartNum?.indexOf(Number(id)) !== -1
+    const heartIdxState = heartNum?.indexOf(Number(id)) !== -1 && heartNum !== undefined
 
     setHeartState(heartIdxState)
   }, [heart?.content, id])
