@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import BoardBody from './BoardBody'
 import BoardCategory from './BoadrCategory'
 import BoardSearchBar from './BoardSearchBar'

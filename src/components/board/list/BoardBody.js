@@ -1,21 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
+import Pagination from 'react-js-pagination'
 import { Link } from 'react-router-dom'
 import { useGetBoardList } from '../../../hooks/useGetBoard'
 import styled from '../../../styles/boardStyles/Board.module.scss'
-import BoardCategory from './BoadrCategory'
 import BoardItemList from './BoardItemList'
-import BoardSearchBar from './BoardSearchBar'
+import BoardPaginaition from './BoardPaginaition'
 
 export const BoardBody = ({ category, boardSearch }) => {
-  console.log(category)
-  const { loading, data } = useGetBoardList(category)
+  const [page, setPage] = useState(1)
+  const [total, setTotal] = useState(0)
+  const { loading, data } = useGetBoardList(category, page)
+
+  console.log(data)
 
   const [boardList, setBoardList] = useState('')
-  // const [boardSearch, setBoardSearch] = useState('')
-
-  // const handleChange = (e) => {
-  //   setBoardSearch(e.target.value)
-  // }
 
   useEffect(() => {
     console.log(boardList)
@@ -37,7 +35,12 @@ export const BoardBody = ({ category, boardSearch }) => {
   }, [boardSearch, category])
 
   useEffect(() => {
-    if (data) setBoardList(data.board)
+    if (data) {
+      setBoardList(data.content)
+      setTotal(data.totalPages)
+    }
+
+    console.log(total)
   }, [data])
 
   if (loading) return null
@@ -46,11 +49,12 @@ export const BoardBody = ({ category, boardSearch }) => {
       <>
         <div className={styled.boardBody}>
           <div className={styled.writeBoard}>
-            <Link to="/board/Write">
+            <Link to="/board/write">
               <button className={styled.writeBtn}>작성하기</button>
             </Link>
           </div>
           <BoardItemList boardList={boardList} />
+          <BoardPaginaition totalPage={data?.totalPages} page={page} setPage={setPage}/>
         </div>
       </>
     )

@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-const getBoardList = async (category) => {
+const getBoardList = async (category, page) => {
   console.log(category)
   if (category === '전체') {
     console.log('api', category)
-    const res = await axios.get(`/boards`)
+    const res = await axios.get(`/boards?page=${page}`)
     return res
   } else {
     console.log('api', category)
-    const res = await axios.get(`/boards?category=${category}`)
+    const res = await axios.get(`/boards?category=${category}&page=${page}`)
     return res
   }
 }
@@ -22,7 +22,7 @@ const getBoardDetail = async (id) => {
 const addBoard = async (token, data) => {
   const res = await axios.post(`/boards`, data, {
     headers: {
-      'auth-token': token,
+      'x-auth-token': token,
     },
   })
 
@@ -32,7 +32,7 @@ const addBoard = async (token, data) => {
 const deleteBoard = async (token, boardId) => {
   const res = await axios.delete(`/boards/${boardId}`, {
     headers: {
-      'auth-token': token,
+      'x-auth-token': token,
     },
   })
 
@@ -40,9 +40,10 @@ const deleteBoard = async (token, boardId) => {
 }
 
 const updateBoard = async (token, boardId, data) => {
+  console.log(boardId, data)
   const res = await axios.put(`/boards/${boardId}`, data, {
     headers: {
-      'auth-token': token,
+      'x-auth-token': token,
     },
   })
 
@@ -52,7 +53,7 @@ const updateBoard = async (token, boardId, data) => {
 const addComment = async (id, data, token) => {
   const res = await axios.post(`/boards/${id}/comments`, data, {
     headers: {
-      'auth-token': token,
+      'x-auth-token': token,
     },
   })
 
@@ -63,7 +64,7 @@ const deleteComment = async (id, token) => {
   console.log(id)
   const res = await axios.delete(`/boards/comments/${id}`, {
     headers: {
-      'auth-token': token,
+      'x-auth-token': token,
     },
   })
 
@@ -74,12 +75,33 @@ const updateComment = async (id, token, data) => {
   console.log(id)
   const res = await axios.put(`/boards/comments/${id}`, data, {
     headers: {
-      'auth-token': token,
+      'x-auth-token': token,
     },
   })
 
   return res
 }
+
+const addHearts = async(token, boardId) => {
+  const res = await axios.get(`/boards/${boardId}/hearts`, {
+    headers: {
+      'x-auth-token': token,
+    }
+  })
+
+  return res
+}
+
+const getHeart = async(token) => {
+  const res = await axios.get(`/boards/myHeartList`, {
+    headers: {
+      'x-auth-token': token,
+    }
+  })
+
+  return res
+}
+
 
 export {
   getBoardList,
@@ -90,4 +112,6 @@ export {
   updateComment,
   deleteBoard,
   updateBoard,
+  addHearts,
+  getHeart,
 }

@@ -1,5 +1,10 @@
 import { useState } from 'react'
-import { deleteBoard, deleteComment, updateComment } from '../../../apis/boardApi'
+import {
+  deleteBoard,
+  deleteComment,
+  updateComment,
+} from '../../../apis/boardApi'
+import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import modalShow from '../../Modal'
 
@@ -14,6 +19,8 @@ export const BoardDetailCommentItem = ({
 }) => {
   const [updateValue, setUpdateValue] = useState('')
   const [moreInfo, setMoreInfo] = useState(false)
+
+  const wrtieTime = useGetTime(item?.updateAt)
 
   const handleMoreInfoClick = () => {
     setMoreInfo(!moreInfo)
@@ -77,68 +84,73 @@ export const BoardDetailCommentItem = ({
             </div>
             <div className={styled.userInfo}>
               <div className={styled.userNickName}>{item?.nickname}</div>
-              <div className={styled.writerTime}>글작성시간</div>
+              <div className={styled.writerTime}>{wrtieTime}</div>
             </div>
           </div>
-          {user && item?.nickname === user?.nickname ? (
-            <div className={styled.moreInfo}>
-              <button
-                className={styled.moreInfoBtn}
-                onClick={handleMoreInfoClick}
-              >
-                ...
-              </button>
-              {moreInfo && (
-                <div className={styled.btnGroup}>
-                  {isSelected ? (
-                    <>
-                      <button
-                        className={styled.btn}
-                        onClick={() =>
-                          handleCommentUpdateBtnClick(
-                            id,
-                            item.commentId,
-                            updateValue,
-                            token,
-                          )
-                        }
-                      >
-                        수정
-                      </button>
-                      <button
-                        className={styled.btnDeleteAndCancel}
-                        type="button"
-                        onClick={handleModifyCancel}
-                      >
-                        취소
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button className={styled.btn} onClick={handleModify}>
-                        수정
-                      </button>
-                      <button
-                        className={styled.btnDeleteAndCancel}
-                        type="button"
-                        onClick={() =>
-                          handleCommentDeleteBtnClick(id, item.commentId, token)
-                        }
-                      >
-                        삭제
-                      </button>
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-          ) : null}
+          <div className={styled.moreInfo}>
+            {user && item?.nickname === user?.nickname ? (
+              <>
+                <button
+                  className={styled.moreInfoBtn}
+                  onClick={handleMoreInfoClick}
+                >
+                  ...
+                </button>
+                {moreInfo && (
+                  <div className={styled.btnGroup}>
+                    {isSelected ? (
+                      <>
+                        <button
+                          className={styled.btn}
+                          onClick={() =>
+                            handleCommentUpdateBtnClick(
+                              id,
+                              item.commentId,
+                              updateValue,
+                              token,
+                            )
+                          }
+                        >
+                          수정
+                        </button>
+                        <button
+                          className={styled.btnDeleteAndCancel}
+                          type="button"
+                          onClick={handleModifyCancel}
+                        >
+                          취소
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button className={styled.btn} onClick={handleModify}>
+                          수정
+                        </button>
+                        <button
+                          className={styled.btnDeleteAndCancel}
+                          type="button"
+                          onClick={() =>
+                            handleCommentDeleteBtnClick(
+                              id,
+                              item.commentId,
+                              token,
+                            )
+                          }
+                        >
+                          삭제
+                        </button>
+                      </>
+                    )}
+                  </div>
+                )}
+              </>
+            ) : null}
+          </div>
         </div>
         {isSelected ? (
           <input
             className={styled.updateInput}
             type="text"
-            defaultValue={item?.comment}
             value={updateValue}
             onChange={handleUpdateValueChange}
           />

@@ -1,17 +1,17 @@
 import { useRecoilValue } from 'recoil'
-import { addBoard } from '../../../apis/boardApi'
+import { addBoard, updateBoard } from '../../../apis/boardApi'
 import { authToken } from '../../../store/store'
 import styled from '../../../styles/boardStyles/BoardWrite.module.scss'
 
-export const BoardWriteBtnGroup = ({ inputValue }) => {
+export const BoardModifyBtnGroup = ({ inputValue, boardId }) => {
   const token = useRecoilValue(authToken)
-  const handleSubmit = async (token, data) => {
+  const handleSubmit = async (token, boardId, data) => {
     try {
-      const result = await addBoard(token, data)
+      const result = await updateBoard(token, boardId, data)
 
-      // if (result.status === 200) {
-      //   window.location.replace('/board')
-      // }
+      if (result.status === 200) {
+        window.location.replace('/board')
+      }
     } catch (e) {
       console.log(e)
     }
@@ -26,7 +26,7 @@ export const BoardWriteBtnGroup = ({ inputValue }) => {
       <div className={styled.btnGroup}>
         <button
           className={styled.submitBtn}
-          onClick={() => handleSubmit(token, inputValue)}
+          onClick={() => handleSubmit(token, boardId, inputValue)}
         >
           작성
         </button>
@@ -38,4 +38,4 @@ export const BoardWriteBtnGroup = ({ inputValue }) => {
   )
 }
 
-export default BoardWriteBtnGroup
+export default BoardModifyBtnGroup

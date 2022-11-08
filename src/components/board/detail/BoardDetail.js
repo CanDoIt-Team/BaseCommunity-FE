@@ -8,28 +8,38 @@ import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import BoardDetailComment from './BoardDetailCommentWrite'
 import BoardDetailCommentList from './BoardDetailCommentList'
 import BoardDetailInfo from './BoardDetailInfo'
+import { useGetHeartList } from '../../../hooks/useGetHeartList'
 
 export const BoardDetail = () => {
   const token = useRecoilValue(authToken)
 
   const { id } = useParams()
   const { loading, data } = useGetBoardDetail(id)
+  const { data: heart } = useGetHeartList(token)
   const { data: user } = useGetUser(token)
 
-  const [boardData, setBoardData] = useState(null)
 
+
+  const [boardData, setBoardData] = useState(null)
+  
   useEffect(() => {
     if (data) {
       setBoardData(data)
     }
-  }, [boardData, data])
+  }, [boardData, data, heart])
 
   if (loading) return null
   if (boardData)
     return (
       <>
         <div className={styled.boardDetailContainer}>
-          <BoardDetailInfo data={boardData} user={user} token={token} />
+          <BoardDetailInfo
+            id={id}
+            data={boardData}
+            user={user}
+            heart={heart}
+            token={token}
+          />
           <BoardDetailComment
             id={id}
             token={token}
