@@ -13,7 +13,13 @@ const Input = (props) => {
 
 const DateInput = (props) => {
   return (
-    <DatePicker className={styled.dateArea} locale={ko} withPortal {...props} />
+    <DatePicker
+      className={styled.dateArea}
+      locale={ko}
+      withPortal
+      {...props}
+      selectsEnd
+    />
   )
 }
 

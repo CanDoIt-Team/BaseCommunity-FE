@@ -7,3 +7,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.btnGroup button {
+  margin: 20px;
+}

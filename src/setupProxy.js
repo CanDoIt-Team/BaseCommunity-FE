@@ -16,8 +16,14 @@ module.exports = (app) => {
     }),
   )
   app.use(
-    '/projects',
     '/boards',
+    createProxyMiddleware({
+      target: 'http://118.67.128.16:8080',
+      changeOrigin: true,
+    }),
+  )
+  app.use(
+    '/projects',
     createProxyMiddleware({
       target: 'http://118.67.128.16:8080',
       changeOrigin: true,

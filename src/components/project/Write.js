@@ -9,7 +9,7 @@ import modalShow from '../../components/Modal'
 
 import styled from '../../styles/project/Write.module.scss'
 
-import skiils from '../../skills.json'
+import Tech from '../tech/ProjectTech'
 
 const dateFormat = (d) => {
   return (
@@ -25,16 +25,24 @@ const dateFormat = (d) => {
 
 export default function Write() {
   const [startDate, setStartDate] = useState('')
-  // const [skill, setSkill] = useState([])
+  const [skill, setSkill] = useState([])
   const [projectInputs, setProjectInputs] = useState({
     content: '',
     developPeriod: '',
     startDate: '',
     title: '',
+    maxTotal: 0,
     projectSkills: [],
   })
-
   const token = useRecoilValue(authToken)
+
+  useEffect(() => {
+    skillChange(skill)
+  }, [skill])
+
+  useEffect(() => {
+    console.log(projectInputs)
+  }, [projectInputs])
 
   const handleDateChange = (date) => {
     setStartDate(date)
@@ -42,16 +50,13 @@ export default function Write() {
     setProjectInputs({ ...projectInputs, startDate: dateString })
   }
 
-  const skillChange = (e) => {
-    console.log(skiils)
-    const newItem = {
-      name: e.target.value,
-    }
-    setProjectInputs({ ...projectInputs, projectSkills: newItem })
+  const skillChange = (skill) => {
+    console.log(skill)
+    // let skillChange = JSON.stringify(skill)
+    setProjectInputs({ ...projectInputs, projectSkills: skill })
   }
 
   const handleChange = (e) => {
-    console.log(e)
     setProjectInputs({ ...projectInputs, [e.target.name]: e.target.value })
   }
 
@@ -65,10 +70,6 @@ export default function Write() {
       console.log(err)
     }
   }
-
-  useEffect(() => {
-    console.log(projectInputs)
-  }, [projectInputs])
 
   return (
     <>
@@ -100,12 +101,8 @@ export default function Write() {
             placeholder="모집 인원"
             onChange={handleChange}
           />
-          <Input
-            type="text"
-            name="projectSkills"
-            placeholder="개발 사용 언어"
-            onChange={skillChange}
-          />
+          <Tech techValue={skill} setTechValue={setSkill} />
+
           <TextArea
             name="content"
             placeholder="상세 내용"

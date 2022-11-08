@@ -19,7 +19,7 @@ export const Tech = ({ techValue, setTechValue }) => {
   }, [])
 
   const handleTechClick = (tech) => {
-    const duplicateValues = techValue.map((itme) => itme.value)
+    const duplicateValues = techValue.map((itme) => itme.name)
 
     if (duplicateValues.indexOf(tech) !== -1) {
       modalShow({
@@ -28,7 +28,7 @@ export const Tech = ({ techValue, setTechValue }) => {
       setTechSearch('')
       return
     }
-    setTechValue((techValue) => [...techValue, { value: tech }])
+    setTechValue((techValue) => [...techValue, { name: tech }])
     setTechSearch('')
   }
 

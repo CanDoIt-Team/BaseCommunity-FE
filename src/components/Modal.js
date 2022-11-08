@@ -5,17 +5,21 @@ import styled from '../styles/Modal.module.scss'
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: styled.btn,
+    cancelButton: styled.cancel,
   },
   buttonsStyling: false,
   confirmButtonColor: '#35b729',
 })
 
-const modalShow = ({ title, ...rest }, callback) => {
+const modalShow = (
+  { title, confirmButtonText = '확인', ...rest },
+  callback,
+) => {
   swalWithBootstrapButtons
     .fire({
       title,
       ...rest,
-      confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+      confirmButtonText, // confirm 버튼 텍스트 지정
     })
     .then(callback)
 }

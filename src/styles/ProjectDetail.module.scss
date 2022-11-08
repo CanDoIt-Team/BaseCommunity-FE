@@ -49,3 +49,20 @@
   min-height: 400px;
   resize: none;
 }
+
+.skillTitle {
+  margin-right: 10px;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.btnGroup button {
+  margin: 20px;
+}
+
+.commentList {
+  margin-top: 20px;
+}

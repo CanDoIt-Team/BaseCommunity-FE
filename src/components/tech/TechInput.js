@@ -13,7 +13,9 @@ export const TechInput = ({
         {techValue &&
           techValue.map((tech, idx) => (
             <div className={styled.techTitleAndBtn} key={`${tech}_${idx}`}>
-              <div className={styled.tech}>{tech.value}</div>
+              <div className={styled.tech}>
+                {tech.value ? tech.value : tech.name}
+              </div>
               <button
                 className={styled.techCancelBtn}
                 onClick={() => handleTechCancel(tech)}
