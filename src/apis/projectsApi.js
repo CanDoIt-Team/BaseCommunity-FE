@@ -21,8 +21,10 @@ const updateAPI = async (data, token) => {
 }
 
 // 프로젝트 조회
-const showAPI = async () => {
-  const res = await axios.get(`/projects`)
+const showAPI = async (page = 1, size = 4) => {
+  const res = await axios.get(
+    `/projects?paged=true&pageNumber=${page}&pageSize=${size}`,
+  )
 
   return res
 }

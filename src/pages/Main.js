@@ -1,7 +1,31 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { EmploymentsAPI } from '../apis/employmentsApi'
 import styled from '../styles/Main.module.scss'
+import modalShow from '../components/Modal'
 
 export const Main = () => {
+  const [employments, SetEmployments] = useState({})
+
+  useEffect(() => {
+    const getEmployments = async () => {
+      try {
+        const result = await EmploymentsAPI(1, 5)
+        SetEmployments(result.data.content)
+      } catch {
+        modalShow({
+          title: '데이터를 가져올 수 없습니다.',
+        })
+      }
+    }
+
+    getEmployments()
+  }, [])
+
+  useEffect(() => {
+    console.log(employments)
+  }, [employments])
+
   return (
     <div className={styled.mainContainer}>
       <div className={styled.projectAndBoardWrap}>
@@ -163,101 +187,32 @@ export const Main = () => {
           </div>
           <ul className={styled.employmentContainer}>
             <div className={styled.employmentWrap}>
-              <li className={styled.employmentContent}>
-                <div className={styled.companyNameAndCloseDt}>
-                  <p className={styled.companyName}>제로베이스</p>
-                  <p className={styled.closeDt}>D-24</p>
-                </div>
-                <div className={styled.employmentTitle}>
-                  [제로베이스]백엔드/프론트엔드 개발자 모집
-                </div>
-                <div className={styled.employmentInfo}>
-                  <p className={styled.region}>서울전체</p>
-                  <p className={styled.minEdubg}>학력무관</p>
-                  <p className={styled.holidayTpNm}>주5일근무</p>
-                </div>
-                {/* <div className={styled.salWrap}>
+              {employments.length > 0 &&
+                employments.map((employment) => (
+                  <li
+                    key={employment.wantedAuthNo}
+                    className={styled.employmentContent}
+                  >
+                    <div className={styled.companyNameContainer}>
+                      <p className={styled.companyName}>{employment.company}</p>
+                    </div>
+                    <div className={styled.employmentTitle}>
+                      {employment.title}
+                    </div>
+                    <div className={styled.employmentInfo}>
+                      <p className={styled.region}>{employment.region}</p>
+                      <p className={styled.minEdubg}>{employment.minEdubg}</p>
+                      <p className={styled.holidayTpNm}>
+                        {employment.holidayTpNm}
+                      </p>
+                    </div>
+                    {/* <div className={styled.salWrap}>
                   <p className={styled.salTpNm}>연봉 : </p>
                   <p className={styled.sal}>5000만원 ~ 7000만원</p>
                 </div> */}
-                <p className={styled.regDt}>등록일 : 22-10-20</p>
-              </li>
-              <li className={styled.employmentContent}>
-                <div className={styled.companyNameAndCloseDt}>
-                  <p className={styled.companyName}>제로베이스</p>
-                  <p className={styled.closeDt}>D-24</p>
-                </div>
-                <div className={styled.employmentTitle}>
-                  [제로베이스]백엔드/프론트엔드 개발자 모집
-                </div>
-                <div className={styled.employmentInfo}>
-                  <p className={styled.region}>서울전체</p>
-                  <p className={styled.minEdubg}>학력무관</p>
-                  <p className={styled.holidayTpNm}>주5일근무</p>
-                </div>
-                {/* <div className={styled.salWrap}>
-                  <p className={styled.salTpNm}>연봉 : </p>
-                  <p className={styled.sal}>5000만원 ~ 7000만원</p>
-                </div> */}
-                <p className={styled.regDt}>등록일 : 22-10-20</p>
-              </li>
-              <li className={styled.employmentContent}>
-                <div className={styled.companyNameAndCloseDt}>
-                  <p className={styled.companyName}>제로베이스</p>
-                  <p className={styled.closeDt}>D-24</p>
-                </div>
-                <div className={styled.employmentTitle}>
-                  [제로베이스]백엔드/프론트엔드 개발자 모집
-                </div>
-                <div className={styled.employmentInfo}>
-                  <p className={styled.region}>서울전체</p>
-                  <p className={styled.minEdubg}>학력무관</p>
-                  <p className={styled.holidayTpNm}>주5일근무</p>
-                </div>
-                {/* <div className={styled.salWrap}>
-                  <p className={styled.salTpNm}>연봉 : </p>
-                  <p className={styled.sal}>5000만원 ~ 7000만원</p>
-                </div> */}
-                <p className={styled.regDt}>등록일 : 22-10-20</p>
-              </li>
-              <li className={styled.employmentContent}>
-                <div className={styled.companyNameAndCloseDt}>
-                  <p className={styled.companyName}>제로베이스</p>
-                  <p className={styled.closeDt}>D-24</p>
-                </div>
-                <div className={styled.employmentTitle}>
-                  [제로베이스]백엔드/프론트엔드 개발자 모집
-                </div>
-                <div className={styled.employmentInfo}>
-                  <p className={styled.region}>서울전체</p>
-                  <p className={styled.minEdubg}>학력무관</p>
-                  <p className={styled.holidayTpNm}>주5일근무</p>
-                </div>
-                {/* <div className={styled.salWrap}>
-                  <p className={styled.salTpNm}>연봉 : </p>
-                  <p className={styled.sal}>5000만원 ~ 7000만원</p>
-                </div> */}
-                <p className={styled.regDt}>등록일 : 22-10-20</p>
-              </li>
-              <li className={styled.employmentContent}>
-                <div className={styled.companyNameAndCloseDt}>
-                  <p className={styled.companyName}>제로베이스</p>
-                  <p className={styled.closeDt}>D-24</p>
-                </div>
-                <div className={styled.employmentTitle}>
-                  [제로베이스]백엔드/프론트엔드 개발자 모집
-                </div>
-                <div className={styled.employmentInfo}>
-                  <p className={styled.region}>서울전체</p>
-                  <p className={styled.minEdubg}>학력무관</p>
-                  <p className={styled.holidayTpNm}>주5일근무</p>
-                </div>
-                {/* <div className={styled.salWrap}>
-                  <p className={styled.salTpNm}>연봉 : </p>
-                  <p className={styled.sal}>5000만원 ~ 7000만원</p>
-                </div> */}
-                <p className={styled.regDt}>등록일 : 22-10-20</p>
-              </li>
+                    <p className={styled.regDt}>등록일 : {employment.regDt}</p>
+                  </li>
+                ))}
             </div>
           </ul>
         </div>
