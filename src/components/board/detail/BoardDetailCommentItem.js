@@ -78,7 +78,7 @@ export const BoardDetailCommentItem = ({
             <div className={styled.userImg}>
               <img
                 className={styled.img}
-                src="https://via.placeholder.com/50"
+                src="https://via.placeholder.com/40"
                 alt="이미지"
               />
             </div>
@@ -155,7 +155,7 @@ export const BoardDetailCommentItem = ({
             onChange={handleUpdateValueChange}
           />
         ) : (
-          <div className={styled.comment}>{item?.content}</div>
+          <div className={styled.comment}>{item?.content?.split('\n')?.map((item, idx) => <p className={styled.text} key={idx}>{item}<br/></p>)}</div>
         )}
       </div>
     </>

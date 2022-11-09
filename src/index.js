@@ -19,7 +19,7 @@ import ProjectDetail from './pages/ProjectDetail'
 
 import './index.css'
 import Mypage from './pages/Mypage'
-import { MypageUserInfo } from './components/mypage/MypageUserInfo'
+import { ProfileUserInfo } from './components/mypage/profile/ProfileUserInfo'
 import BoardList from './components/board/list/BoardList'
 import BoardDetail from './components/board/detail/BoardDetail'
 import BoardWrite from './components/board/write/BoardWrite'
@@ -33,7 +33,7 @@ root.render(
         <Route path={'/'} element={<App />}>
           <Route path={'/'} element={<Home />} />
           <Route path={'/mypage'} element={<Mypage />}>
-            <Route path={'/mypage'} element={<MypageUserInfo />} />
+            <Route path={'/mypage'} element={<ProfileUserInfo />} />
           </Route>
           <Route path={'/project'} element={<Project />} />
           <Route path={'/project/:id'} element={<ProjectDetail />} />

@@ -3,10 +3,17 @@ import { Link, useParams } from 'react-router-dom'
 import { addHearts, deleteBoard } from '../../../apis/boardApi'
 import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { AiOutlineHeart, AiFillHeart, AiOutlineRight } from 'react-icons/ai'
 import modalShow from '../../Modal'
 
-export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) => {
+export const BoardDetailInfo = ({
+  id,
+  data,
+  heart,
+  user,
+  token,
+  loginCheck,
+}) => {
   const [moreInfo, setMoreInfo] = useState(false)
 
   const [heartState, setHeartState] = useState(false)
@@ -30,10 +37,10 @@ export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) =>
   }
 
   const handleHeartClick = async (token, boardId) => {
-
-    if(loginCheck === false) {
+    if (loginCheck === false) {
       modalShow({
-        title: '로그인이 필요한 기능입니다.<br><br> 로그인 후 이용해주세요.<br>'
+        title:
+          '로그인이 필요한 기능입니다.<br><br> 로그인 후 이용해주세요.<br>',
       })
       return
     }
@@ -52,7 +59,8 @@ export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) =>
 
   useEffect(() => {
     const heartNum = heart?.content.map((item) => item.id)
-    const heartIdxState = heartNum?.indexOf(Number(id)) !== -1 && heartNum !== undefined
+    const heartIdxState =
+      heartNum?.indexOf(Number(id)) !== -1 && heartNum !== undefined
 
     setHeartState(heartIdxState)
   }, [heart?.content, id])
@@ -60,26 +68,17 @@ export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) =>
   if (data)
     return (
       <div className={styled.boardInfo}>
-        <div className={styled.categoryAndheart}>
-          <div className={styled.category}>{data.category}</div>
-          <div className={styled.iconArea}>
-            {heartState ? (
-              <button onClick={() => handleHeartClick(token, data.boardId)}>
-                <AiFillHeart className={styled.redicon} />
-              </button>
-            ) : (
-              <button onClick={() => handleHeartClick(token, data.boardId)}>
-                <AiOutlineHeart className={styled.icon} />
-              </button>
-            )}
-          </div>
+        <div className={styled.categoryArea}>
+          <span>게시판</span>
+          <AiOutlineRight className={styled.right} />
+          <span>{data.category}</span>
         </div>
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
               <img
                 className={styled.img}
-                src="https://via.placeholder.com/50"
+                src="https://via.placeholder.com/40"
                 alt="이미지"
               />
             </div>
@@ -90,6 +89,17 @@ export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) =>
           </div>
           {user && data?.nickname === user?.nickname ? (
             <div className={styled.moreInfo}>
+              <div className={styled.iconArea}>
+                {heartState ? (
+                  <button onClick={() => handleHeartClick(token, data.boardId)}>
+                    <AiFillHeart className={styled.redicon} />
+                  </button>
+                ) : (
+                  <button onClick={() => handleHeartClick(token, data.boardId)}>
+                    <AiOutlineHeart className={styled.icon} />
+                  </button>
+                )}
+              </div>
               <button
                 className={styled.moreInfoBtn}
                 onClick={handleMoreInfoClick}
@@ -120,7 +130,12 @@ export const BoardDetailInfo = ({ id, data, heart, user, token, loginCheck }) =>
           <h1 className={styled.title}>{data.title}</h1>
         </div>
         <div className={styled.boardContents}>
-          <div>{data.content}</div>
+          {data?.content?.split('\n')?.map((item, idx) => (
+            <p key={idx} className={styled.text}>
+              {item}
+              <br />
+            </p>
+          ))}
         </div>
       </div>
     )

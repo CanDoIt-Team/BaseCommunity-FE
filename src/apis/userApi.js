@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useRecoilValue } from 'recoil'
 
 const getUser = async (token) => {
-  console.log(token)
   const res = await axios.get(`/users/info`, {
     headers: {
       'auth-token': token,
