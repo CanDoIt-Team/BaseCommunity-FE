@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom'
 
 import App from './App'
 import Project from './pages/Project'
@@ -24,6 +24,7 @@ import BoardList from './components/board/list/BoardList'
 import BoardDetail from './components/board/detail/BoardDetail'
 import BoardWrite from './components/board/write/BoardWrite'
 import BoardModify from './components/board/modify/BoardModify'
+import MyBoard from './components/mypage/myBoard/MyBoard'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -32,9 +33,7 @@ root.render(
       <Routes>
         <Route path={'/'} element={<App />}>
           <Route path={'/'} element={<Home />} />
-          <Route path={'/mypage'} element={<Mypage />}>
-            <Route path={'/mypage'} element={<ProfileUserInfo />} />
-          </Route>
+          <Route path={'/mypage'} element={<Mypage />} />
           <Route path={'/project'} element={<Project />} />
           <Route path={'/project/:id'} element={<ProjectDetail />} />
           <Route path={'/project/write'} element={<Write />} />

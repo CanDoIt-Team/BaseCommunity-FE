@@ -1,4 +1,4 @@
-import styled from '../../styles/MypageUserInfo.module.scss'
+import styled from '../../styles/mypage/Profile.module.scss'
 
 export const TechList = ({techSearch, filterTech, handleTechClick}) => {
   return (

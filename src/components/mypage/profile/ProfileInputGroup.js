@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { nicknameCheck } from '../../../apis/signApi'
-import styled from '../../../styles/MypageUserInfo.module.scss'
+import styled from '../../../styles/mypage/Profile.module.scss'
 import modalShow from '../../Modal'
 import { Label } from '../../sign/Sign'
 import Tech from '../../tech/Tech'

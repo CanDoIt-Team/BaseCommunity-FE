@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import styled from '../../../styles/boardStyles/Board.module.scss'
-import categoryList from '../../../utils/category'
+import { boardCategory } from '../../../utils/category'
 
 export const BoardCategory = ({ handleClick }) => {
-  const [category, setCategory] = useState(categoryList)
+  const [category, setCategory] = useState(boardCategory)
 
   const handleActionClick = (item) => {
     const val = item

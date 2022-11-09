@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { changePassword } from '../../../apis/userApi'
-import styled from '../../../styles/MypageUserInfo.module.scss'
+import styled from '../../../styles/mypage/Profile.module.scss'
 import modalShow from '../../Modal'
 import { Label } from '../../sign/Sign'
 

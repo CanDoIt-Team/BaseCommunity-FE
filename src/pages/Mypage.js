@@ -1,19 +1,27 @@
-import styled from '../styles/Mypage.module.scss'
-import { Link, Outlet } from 'react-router-dom'
+import styled from '../styles/mypage/Mypage.module.scss'
+import { Outlet } from 'react-router-dom'
+import MypageCategory from '../components/mypage/MypageCategory'
+import { mypageCategory } from '../utils/category'
+import { useState } from 'react'
+import ProfileUserInfo from '../components/mypage/profile/ProfileUserInfo'
+import MyBoard from '../components/mypage/myBoard/MyBoard'
+import MyProject from '../components/mypage/myProject/MyProject'
 
 export const Mypage = () => {
+  const [category, setCategory] = useState(mypageCategory)
+
+  const selectCategory = category.filter((item) => item.active === true)
+
+  console.log(selectCategory[0].title === '내 프로필')
+
   return (
-    <div className={styled.mypageContainer}>
-      <div className={styled.linkContainer}>
-        <ul className={styled.linkGroup}>
-          <li className={styled.linkToPrifile}>
-            <Link to="/mypage">내 프로필</Link>
-          </li>
-          <li className={styled.linkToMyProject}>내 프로젝트</li>
-          <li className={styled.linkToMyBoard}>내가 쓴 게시글</li>
-        </ul>
+    <div className={styled.mypageContainer}>  
+      <MypageCategory category={category} setCategory={setCategory} />
+      <div className={styled.mainContainer}>
+        {selectCategory[0].title === '내 프로필' && <ProfileUserInfo />}
+        {selectCategory[0].title === '내 프로젝트' && <MyProject />}
+        {selectCategory[0].title === '내 활동' && <MyBoard />}
       </div>
-      <Outlet />
     </div>
   )
 }

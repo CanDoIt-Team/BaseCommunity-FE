@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import styled from '../../styles/MypageUserInfo.module.scss'
+import styled from '../../styles/mypage/Profile.module.scss'
 import { techstacks } from '../../utils/techStack'
 import modalShow from '../Modal'
 import TechInput from './TechInput'

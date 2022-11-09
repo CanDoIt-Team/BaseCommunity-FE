@@ -1,5 +1,5 @@
 import { uploadImg } from '../../../apis/userApi'
-import styled from '../../../styles/MypageUserInfo.module.scss'
+import styled from '../../../styles/mypage/Profile.module.scss'
 
 export const ProfileImgChange = ({ data, token }) => {
   

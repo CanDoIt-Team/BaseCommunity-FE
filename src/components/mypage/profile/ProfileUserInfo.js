@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '../../../styles/MypageUserInfo.module.scss'
+import styled from '../../../styles/mypage/Profile.module.scss'
 import { authToken } from '../../../store/store'
 import { useGetUser } from '../../../hooks/useGetUser'
 import { useEffect, useState } from 'react'
