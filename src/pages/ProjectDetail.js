@@ -89,66 +89,67 @@ export default function ProjectDetail() {
   }
 
   return (
-    post &&
-    projectData && (
-      <section className={styled.section}>
-        <h2 className={styled.title}>{post.title}</h2>
-        <div className={styled.expects}>
-          <p className={styled.expect}>모집 인원: {post.maxTotal}</p>
-          <p className={styled.expect}>현재 인원: {post.nowTotal}</p>
-          <p className={styled.expect}>시작 예정일: {post.startDate}</p>
-          <p className={styled.expect}>기간: {post.developPeriod}</p>
-        </div>
-        <div className={styled.infos}>
-          <div className={styled.info}>
-            <p className={styled.skillTitle}>사용 기술:</p>
-            {post.projectSkills.map((skill) => (
-              <p key={skill.name} style={{ marginRight: '10px' }}>
-                {skill.name}
+    <>
+      {post && projectData && (
+        <section className={styled.section}>
+          <h2 className={styled.title}>{post.title}</h2>
+          <div className={styled.expects}>
+            <p className={styled.expect}>모집 인원: {post.maxTotal}</p>
+            <p className={styled.expect}>현재 인원: {post.nowTotal}</p>
+            <p className={styled.expect}>시작 예정일: {post.startDate}</p>
+            <p className={styled.expect}>기간: {post.developPeriod}</p>
+          </div>
+          <div className={styled.infos}>
+            <div className={styled.info}>
+              <p className={styled.skillTitle}>사용 기술:</p>
+              {post.projectSkills.map((skill) => (
+                <p key={skill.name} style={{ marginRight: '10px' }}>
+                  {skill.name}
+                </p>
+              ))}
+            </div>
+            <div className={styled.info}>
+              <p style={{ marginRight: '20px' }}>
+                닉네임: {post.leader.nickname}
               </p>
-            ))}
+              <p>댓글 수: {post.projectComments.length}</p>
+            </div>
           </div>
-          <div className={styled.info}>
-            <p style={{ marginRight: '20px' }}>
-              닉네임: {post.leader.nickname}
-            </p>
-            <p>댓글 수: {post.projectComments.length}</p>
-          </div>
-        </div>
-        <div className={styled.content}>
-          <textarea
-            readOnly
-            className={styled.textarea}
-            defaultValue={post.content}
-          />
-        </div>
-        {projectData.nickname === post.leader.nickname ? (
-          <div className={styled.btnGroup}>
-            <SubmitButton
-              title="삭제"
-              style={{ backgroundColor: '#c4c4c4' }}
-              onClick={handleDeleteClick}
+          <div className={styled.content}>
+            <textarea
+              readOnly
+              className={styled.textarea}
+              value={post.content}
             />
-            <SubmitButton title="수정" onClick={handleUpdateClick} />
           </div>
-        ) : (
-          <SubmitButton title="신청" onClick={handleApplyClick} />
-        )}
+          {projectData.nickname === post.leader.nickname ? (
+            <div className={styled.btnGroup}>
+              <SubmitButton
+                title="삭제"
+                style={{ backgroundColor: '#c4c4c4' }}
+                onClick={handleDeleteClick}
+              />
+              <SubmitButton title="수정" onClick={handleUpdateClick} />
+            </div>
+          ) : (
+            <SubmitButton title="신청" onClick={handleApplyClick} />
+          )}
 
-        <CommentWrite
-          token={token}
-          id={params.id}
-          count={post.projectComments.length}
-          pages="projects"
-        />
+          <CommentWrite
+            token={token}
+            id={params.id}
+            count={post.projectComments.length}
+            pages="projects"
+          />
 
-        <CommentList
-          token={token}
-          id={params.id}
-          data={post.projectComments}
-          pages="projects"
-        />
-      </section>
-    )
+          <CommentList
+            token={token}
+            id={params.id}
+            data={post.projectComments}
+            pages="projects"
+          />
+        </section>
+      )}
+    </>
   )
 }

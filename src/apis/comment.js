@@ -11,7 +11,7 @@ const addComment = async (id, data, token, pages) => {
   return res
 }
 
-const updateComment = async (id, data, token, pages) => {
+const updateComment = async (id, token, data, pages) => {
   const res = await axios.put(`/${pages}/${id}/comments`, data, {
     headers: {
       //   'auth-token': token,
@@ -22,8 +22,9 @@ const updateComment = async (id, data, token, pages) => {
   return res
 }
 
-const deleteComment = async (id, data, token, pages) => {
-  const res = await axios.delete(`/${pages}/comments/${id}`, data, {
+const deleteComment = async (id, token, pages) => {
+  console.log(pages)
+  const res = await axios.delete(`/${pages}/comments/${id}`, {
     headers: {
       //   'auth-token': token,
       'X-AUTH-TOKEN': token,

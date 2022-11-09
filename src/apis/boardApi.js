@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 const getBoardList = async (category, page, searchValue) => {
   console.log(category)
   if (category === '전체') {
@@ -13,6 +12,7 @@ const getBoardList = async (category, page, searchValue) => {
       `/boards?category=${category}&keyword=${searchValue}&page=${page}`,
       searchValue,
     )
+
     return res
   }
 }
@@ -44,7 +44,6 @@ const deleteBoard = async (token, boardId) => {
 }
 
 const updateBoard = async (token, boardId, data) => {
-  console.log(boardId, data)
   const res = await axios.put(`/boards/${boardId}`, data, {
     headers: {
       'x-auth-token': token,
@@ -65,7 +64,6 @@ const addComment = async (id, data, token) => {
 }
 
 const deleteComment = async (id, token) => {
-  console.log(id)
   const res = await axios.delete(`/boards/comments/${id}`, {
     headers: {
       'x-auth-token': token,
@@ -76,7 +74,6 @@ const deleteComment = async (id, token) => {
 }
 
 const updateComment = async (id, token, data) => {
-  console.log(id)
   const res = await axios.put(`/boards/comments/${id}`, data, {
     headers: {
       'x-auth-token': token,
@@ -86,26 +83,25 @@ const updateComment = async (id, token, data) => {
   return res
 }
 
-const addHearts = async(token, boardId) => {
+const addHearts = async (token, boardId) => {
   const res = await axios.get(`/boards/${boardId}/hearts`, {
     headers: {
       'x-auth-token': token,
-    }
+    },
   })
 
   return res
 }
 
-const getHeart = async(token) => {
+const getHeart = async (token) => {
   const res = await axios.get(`/boards/myHeartList`, {
     headers: {
       'x-auth-token': token,
-    }
+    },
   })
 
   return res
 }
-
 
 export {
   getBoardList,

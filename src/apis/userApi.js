@@ -29,8 +29,6 @@ const userUpdate = async (token, data, skill) => {
     },
   })
 
-  console.log(data)
-
   return res
 }
 
