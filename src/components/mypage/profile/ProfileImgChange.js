@@ -1,7 +1,7 @@
-import { uploadImg } from '../../apis/userApi'
-import styled from '../../styles/MypageUserInfo.module.scss'
+import { uploadImg } from '../../../apis/userApi'
+import styled from '../../../styles/MypageUserInfo.module.scss'
 
-export const MypageProfileImgChange = ({ data, token }) => {
+export const ProfileImgChange = ({ data, token }) => {
   
   const handleChangeFile = async (e) => {
     const files = e.target.files[0]
@@ -35,4 +35,4 @@ export const MypageProfileImgChange = ({ data, token }) => {
   )
 }
 
-export default MypageProfileImgChange
+export default ProfileImgChange

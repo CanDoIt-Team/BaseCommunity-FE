@@ -5,7 +5,6 @@ import { BiCommentDetail } from 'react-icons/bi'
 
 export const BoardItem = ({ item }) => {
   const wrtieTime = useGetTime(item?.createdAt)
-  console.log(item.boardId)
   return (
     <>
       <div className={styled.boardItem}>

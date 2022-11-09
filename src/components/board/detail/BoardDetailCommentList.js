@@ -5,9 +5,7 @@ import BoardDetailCommentItem from './BoardDetailCommentItem'
 
 export const BoardDetailCommentList = ({ data, token, user, id }) => {
   const [modify, setModify] = useState()
-
-  console.log(data.comments)
-
+  
   return (
     <>
       <div className={styled.commentList}>

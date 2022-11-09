@@ -80,16 +80,21 @@
 }
 
 .boardSearchBar {
+  position: relative;
   display: flex;
+  width: 350px;
   justify-content: center;
   padding: 10px 0;
+  margin: 0 auto;
 }
 
 .searchBar {
-  width: 344px;
+  width: 350px;
   height: 35px;
   padding-left: 10px;
   border-radius: 8px;
+  border: 1px solid #aaaaaa;
+  outline: none;
 }
 
 .boardContentsList {
@@ -131,11 +136,13 @@
 
 .imgAndTitle {
   display: flex;
+  align-items: center;
 }
 
 .writerName {
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 5px;
+  margin-bottom: 2px;
 }
 
 .wirteTime {
@@ -150,7 +157,6 @@
 .categoryAndcomment {
   display: flex;
   justify-content: space-between;
-  margin-top: 4px;
 }
 
 .itemCategory {
@@ -189,7 +195,7 @@
 .itemTitle {
   display: flex;
   align-items: center;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 700;
 }
 
@@ -247,4 +253,28 @@
   height: 25px;
   font-size: 15px;
   margin: 0 5px;
+}
+
+.searchBtn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 7px;
+  top: 14px;
+  padding-left: 5px;
+  border-left: 1px solid #aaaaaa;
+}
+
+.searchIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.boardListNull{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 60px 0;
+  color: #858585;
 }

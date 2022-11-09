@@ -1,11 +1,18 @@
 import axios from 'axios'
 
-const getBoardList = async (category, page) => {
+const getBoardList = async (category, page, searchValue) => {
+  console.log(category)
   if (category === '전체') {
-    const res = await axios.get(`/boards?page=${page}`)
+    console.log('api', category)
+    const res = await axios.get(`/boards?keyword=${searchValue}&page=${page}`, )
     return res
   } else {
-    const res = await axios.get(`/boards?category=${category}&page=${page}`)
+    console.log('api', category)
+    const res = await axios.get(
+      `/boards?category=${category}&keyword=${searchValue}&page=${page}`,
+      searchValue,
+    )
+
     return res
   }
 }

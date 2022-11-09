@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { nicknameCheck } from '../../apis/signApi'
-import styled from '../../styles/MypageUserInfo.module.scss'
-import modalShow from '../Modal'
-import { Label } from '../sign/Sign'
-import Tech from '../tech/Tech'
+import { nicknameCheck } from '../../../apis/signApi'
+import styled from '../../../styles/MypageUserInfo.module.scss'
+import modalShow from '../../Modal'
+import { Label } from '../../sign/Sign'
+import Tech from '../../tech/Tech'
 
-export const MypageProfileInputGroup = ({
+export const ProfileInputGroup = ({
   data,
   changeInfo,
   handleValueChange,
@@ -102,4 +102,4 @@ export const MypageProfileInputGroup = ({
     )
 }
 
-export default MypageProfileInputGroup
+export default ProfileInputGroup

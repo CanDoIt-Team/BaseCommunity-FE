@@ -1,16 +1,16 @@
 import React from 'react'
-import styled from '../../styles/MypageUserInfo.module.scss'
-import { authToken } from '../../store/store'
-import { useGetUser } from '../../hooks/useGetUser'
+import styled from '../../../styles/MypageUserInfo.module.scss'
+import { authToken } from '../../../store/store'
+import { useGetUser } from '../../../hooks/useGetUser'
 import { useEffect, useState } from 'react'
-import { userUpdate } from '../../apis/userApi'
-import modalShow from '../Modal'
+import { userUpdate } from '../../../apis/userApi'
+import modalShow from '../../Modal'
 import { useRecoilValue } from 'recoil'
-import MypageProfileInputGroup from './MypageProfileInputGroup'
-import MypageProfileImgChange from './MypageProfileImgChange'
-import MypagePasswordAndBtn from './MypagePasswordAndBtn'
+import ProfileInputGroup from './ProfileInputGroup'
+import ProfileImgChange from './ProfileImgChange'
+import ProfilePasswordAndBtn from './ProfilePasswordAndBtn'
 
-export const MypageUserInfo = () => {
+export const ProfileUserInfo = () => {
   const token = useRecoilValue(authToken)
   const { data } = useGetUser(token)
 
@@ -99,7 +99,7 @@ export const MypageUserInfo = () => {
         <form className={styled.profileContainer} onSubmit={handleSubmit}>
           <h1 className={styled.mainTitle}>회원정보</h1>
           <div className={styled.profileWrap}>
-            <MypageProfileInputGroup
+            <ProfileInputGroup
               data={data}
               token={token}
               changeInfo={changeInfo}
@@ -108,10 +108,12 @@ export const MypageUserInfo = () => {
               skill={skill}
               setSkill={setSkill}
             />
-            <MypageProfileImgChange data={data} token={token} />
+            <ProfileImgChange data={data} token={token} />
           </div>
-          <MypagePasswordAndBtn token={token} />
+          <ProfilePasswordAndBtn token={token} />
         </form>
       </>
     )
 }
+
+export default ProfileUserInfo

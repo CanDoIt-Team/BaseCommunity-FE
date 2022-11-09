@@ -23,8 +23,6 @@ export const BoardDetail = () => {
 
   const [boardData, setBoardData] = useState(null)
 
-  console.log(heart)
-
   useEffect(() => {
     if (data) {
       setBoardData(data)
