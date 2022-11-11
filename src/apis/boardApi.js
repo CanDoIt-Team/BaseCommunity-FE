@@ -4,7 +4,7 @@ const getBoardList = async (category, page, searchValue) => {
   console.log(category)
   if (category === '전체') {
     console.log('api', category)
-    const res = await axios.get(`/boards?keyword=${searchValue}&page=${page}`, )
+    const res = await axios.get(`/boards?keyword=${searchValue}&page=${page}`)
     return res
   } else {
     console.log('api', category)
@@ -93,7 +93,17 @@ const addHearts = async (token, boardId) => {
   return res
 }
 
-const getHeart = async (token) => {
+const getMyBoardList = async (token, page) => {
+  const res = await axios.get(`/boards/myBoardList?page=${page}`, {
+    headers: {
+      'x-auth-token': token,
+    },
+  })
+
+  return res
+}
+
+const getMyHeartList = async (token) => {
   const res = await axios.get(`/boards/myHeartList`, {
     headers: {
       'x-auth-token': token,
@@ -113,5 +123,6 @@ export {
   deleteBoard,
   updateBoard,
   addHearts,
-  getHeart,
+  getMyHeartList,
+  getMyBoardList,
 }

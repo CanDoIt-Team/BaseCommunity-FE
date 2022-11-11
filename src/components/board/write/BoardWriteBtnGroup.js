@@ -9,9 +9,9 @@ export const BoardWriteBtnGroup = ({ inputValue }) => {
     try {
       const result = await addBoard(token, data)
 
-      // if (result.status === 200) {
-      //   window.location.replace('/board')
-      // }
+      if (result.status === 200) {
+        window.location.replace('/board')
+      }
     } catch (e) {
       console.log(e)
     }
