@@ -1,0 +1,192 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.myProjectList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.applyContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+
+  .applyTitle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .applyList {
+    border: 1px solid #c4c4c4;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    .nickname {
+      margin-right: 10px;
+    }
+
+    .acceptPerson {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c4cfc4;
+      margin-top: 10px;
+    }
+
+    .btnGroup {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .apply {
+      background-color: red;
+      margin-right: 10px;
+      color: white;
+      width: 60px;
+      height: 20px;
+    }
+
+    .cancel {
+      background-color: blue;
+      color: white;
+      width: 60px;
+      height: 20px;
+    }
+  }
+}
+
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  // width: 240px;
+  height: 100%;
+  padding: 0 20px;
+  border: 1px solid #cecece;
+  transition: all 0.2s;
+  border-radius: 8px;
+  padding-top: 20px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+}
+
+.startDate {
+  display: flex;
+  padding-bottom: 10px;
+  color: #9b9b9b;
+
+  & > span:first-child {
+    padding-right: 5px;
+  }
+
+  & > span {
+    font-size: 16px;
+  }
+}
+
+.startDate {
+  display: flex;
+  padding-bottom: 10px;
+  color: #9b9b9b;
+
+  & > span:first-child {
+    padding-right: 5px;
+  }
+
+  & > span {
+    font-size: 16px;
+  }
+}
+
+.projectTitle {
+  font-size: 25px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 20px 0;
+}
+
+.techList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 20px 0 20px 0;
+
+  & > li {
+    font-size: 18px;
+    padding-right: 10px;
+  }
+}
+
+.writer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #cecece;
+
+  & > span {
+    padding-right: 15px;
+  }
+}
+
+.chatContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+
+  .createChat {
+    width: 120px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    margin-right: 20px;
+  }
+
+  .deleteChat {
+    width: 120px;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    margin-right: 20px;
+  }
+
+  .Lookup {
+    width: 120px;
+    height: 40px;
+    background-color: green;
+    color: white;
+  }
+}
