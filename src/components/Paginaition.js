@@ -1,8 +1,8 @@
-import styled from '../../../styles/boardStyles/Board.module.scss'
+import styled from '../styles/Paginaition.module.scss'
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
 
-export const BoardPaginaition = ({ totalPage, page, setPage }) => {
+export const Paginaition = ({ totalPage, page, setPage }) => {
   const [total, setTotal] = useState([])
 
   let pageGroup = Math.ceil(page / 5)
@@ -62,4 +62,4 @@ export const BoardPaginaition = ({ totalPage, page, setPage }) => {
   )
 }
 
-export default BoardPaginaition
+export default Paginaition

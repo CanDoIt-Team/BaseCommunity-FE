@@ -4,11 +4,13 @@ import { useRecoilValue } from 'recoil'
 import { getMyBoardList, getMyHeartList } from '../../../apis/boardApi'
 import { authToken } from '../../../store/store'
 import styled from '../../../styles/mypage/myBoard.module.scss'
+import Paginaition from '../../Paginaition'
 import MyBoardItems from './MyBoardItems'
 
 export const MyBoardList = ({ name }) => {
   const token = useRecoilValue(authToken)
   const [boardList, setBoardList] = useState('')
+  const [page, setPage] = useState(1)
 
   const getMyBoard = async (token, page) => {
     try {
@@ -16,13 +18,13 @@ export const MyBoardList = ({ name }) => {
         const result = await getMyBoardList(token, page)
 
         if (result.status === 200) {
-          setBoardList(result.data.content)
+          setBoardList(result.data)
         }
       } else {
-        const result = await getMyHeartList(token)
+        const result = await getMyHeartList(token, page)
 
         if (result.status === 200) {
-          setBoardList(result.data.content)
+          setBoardList(result.data)
           console.log(result)
         }
       }
@@ -32,15 +34,21 @@ export const MyBoardList = ({ name }) => {
   }
 
   useEffect(() => {
-    getMyBoard(token, 1)
-    console.log(boardList)
-  }, [token])
+    getMyBoard(token, page)
+  }, [token, page])
 
   if (boardList)
     return (
       <>
-        {boardList &&
-          boardList.map((item) => <MyBoardItems item={item} key={item.id} />)}
+        {boardList.content &&
+          boardList.content.map((item) => (
+            <MyBoardItems item={item} key={item.id} />
+          ))}
+        <Paginaition
+          totalPage={boardList?.totalPages}
+          page={page}
+          setPage={setPage}
+        />
       </>
     )
 }

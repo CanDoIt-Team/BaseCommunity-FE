@@ -7,7 +7,7 @@ import { loginState } from '../../../store/store'
 import styled from '../../../styles/boardStyles/Board.module.scss'
 import modalShow from '../../Modal'
 import BoardItemList from './BoardItemList'
-import BoardPaginaition from './BoardPaginaition'
+import Paginaition from '../../Paginaition'
 import BoardSearchBar from './BoardSearchBar'
 
 export const BoardBody = ({
@@ -77,7 +77,7 @@ export const BoardBody = ({
             </button>
           </div>
           <BoardItemList boardList={boardList} />
-          <BoardPaginaition
+          <Paginaition
             totalPage={data?.totalPages}
             page={page}
             setPage={setPage}
