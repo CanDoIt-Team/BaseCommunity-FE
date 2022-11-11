@@ -29,4 +29,11 @@ module.exports = (app) => {
       changeOrigin: true,
     }),
   )
+  app.use(
+    '/chat',
+    createProxyMiddleware({
+      target: 'http://118.67.128.16:8080',
+      changeOrigin: true,
+    }),
+  )
 }

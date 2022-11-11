@@ -123,6 +123,15 @@
   }
 }
 
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  // width: 240px;
+  height: 100%;
+}
+
 .startDate {
   display: flex;
   padding-bottom: 10px;
@@ -170,6 +179,7 @@
   width: 100%;
   padding-top: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   border-top: 1px solid #cecece;
 
   & > span {

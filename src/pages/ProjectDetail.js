@@ -85,7 +85,10 @@ export default function ProjectDetail() {
       if (result.status === 200) {
         modalShow({ title: '신청이 완료되었습니다.' }, navigate('/project'))
       }
-    } catch {}
+    } catch (err) {
+      console.log(err)
+      modalShow({ title: err.response.data.message })
+    }
   }
 
   return (

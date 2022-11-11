@@ -21,10 +21,8 @@ const updateAPI = async (data, token) => {
 }
 
 // 프로젝트 조회
-const showAPI = async (page = 1, size = 4) => {
-  const res = await axios.get(
-    `/projects?paged=true&pageNumber=${page}&pageSize=${size}`,
-  )
+const showAPI = async (page = 0, size = 4) => {
+  const res = await axios.get(`/projects?page=${page}&size=${size}`)
 
   return res
 }
@@ -65,6 +63,24 @@ const applyAPI = async (id, token) => {
   return res
 }
 
+// 내 프로젝트 조회
+const myProjectAPI = async (token) => {
+  const res = await axios.get(`/projects/myProjectList`, {
+    headers: {
+      'X-AUTH-TOKEN': token,
+    },
+  })
+
+  return res
+}
+
+// 프로젝트 수락
+const acceptAPI = async (id) => {
+  const res = await axios.get(`/projects/accept/${id}`)
+
+  return res
+}
+
 export {
   writeAPI,
   showAPI,
@@ -73,4 +89,6 @@ export {
   deleteSkillAPI,
   updateAPI,
   applyAPI,
+  myProjectAPI,
+  acceptAPI,
 }
