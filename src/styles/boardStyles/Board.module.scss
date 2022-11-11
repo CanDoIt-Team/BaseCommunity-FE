@@ -204,57 +204,6 @@
   align-items: center;
 }
 
-.paginationContainer {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-
-}
-
-.directionContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.directionIcon {
-  width: 25px;
-  height: 25px;
-}
-
-.directionTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 3px;
-}
-
-.pageContainer {
-  display: flex;
-
-}
-
-.selectNum {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #2e6afd;
-  width: 25px;
-  height: 25px;
-  border-radius: 100%;
-  padding-right: 1px;
-  margin: 0 5px;
-}
-
-.num {
-  width: 25px;
-  height: 25px;
-  font-size: 15px;
-  margin: 0 5px;
-}
-
 .searchBtn {
   position: absolute;
   display: flex;

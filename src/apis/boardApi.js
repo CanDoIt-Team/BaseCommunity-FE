@@ -103,8 +103,8 @@ const getMyBoardList = async (token, page) => {
   return res
 }
 
-const getMyHeartList = async (token) => {
-  const res = await axios.get(`/boards/myHeartList`, {
+const getMyHeartList = async (token, page) => {
+  const res = await axios.get(`/boards/myHeartList?page=${page}`, {
     headers: {
       'x-auth-token': token,
     },
