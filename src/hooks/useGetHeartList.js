@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-import { getHeart } from '../apis/boardApi'
+import { getMyHeartList } from '../apis/boardApi'
 import { heartListState } from '../store/heartStore'
 
 export function useGetHeartList(token) {
@@ -11,7 +11,7 @@ export function useGetHeartList(token) {
       set({ data: null })
       try {
         if (token) {
-          const heartData = await getHeart(token)
+          const heartData = await getMyHeartList(token)
           set({ data: heartData.data })
         }
         else {

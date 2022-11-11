@@ -87,44 +87,46 @@ export const BoardDetailInfo = ({
               <div className={styled.writerTime}>{wrtieTime}</div>
             </div>
           </div>
-          {user && data?.nickname === user?.nickname ? (
-            <div className={styled.moreInfo}>
-              <div className={styled.iconArea}>
-                {heartState ? (
-                  <button onClick={() => handleHeartClick(token, data.boardId)}>
-                    <AiFillHeart className={styled.redicon} />
-                  </button>
-                ) : (
-                  <button onClick={() => handleHeartClick(token, data.boardId)}>
-                    <AiOutlineHeart className={styled.icon} />
-                  </button>
-                )}
-              </div>
-              <button
-                className={styled.moreInfoBtn}
-                onClick={handleMoreInfoClick}
-              >
-                ...
-              </button>
-
-              {moreInfo && (
-                <div className={styled.btnGroup}>
-                  <>
-                    <Link to={`/board/modify/${data.id}`}>
-                      <button className={styled.btn}>수정</button>
-                    </Link>
-                    <button
-                      className={styled.btnDeleteAndCancel}
-                      type="button"
-                      onClick={() => handleDeleteClick(token, id)}
-                    >
-                      삭제
-                    </button>
-                  </>
-                </div>
+          <div className={styled.moreInfo}>
+            <div className={styled.iconArea}>
+              {heartState ? (
+                <button onClick={() => handleHeartClick(token, data.boardId)}>
+                  <AiFillHeart className={styled.redicon} />
+                </button>
+              ) : (
+                <button onClick={() => handleHeartClick(token, data.boardId)}>
+                  <AiOutlineHeart className={styled.icon} />
+                </button>
               )}
             </div>
-          ) : null}
+            {user && data?.nickname === user?.nickname ? (
+              <>
+                <button
+                  className={styled.moreInfoBtn}
+                  onClick={handleMoreInfoClick}
+                >
+                  ...
+                </button>
+
+                {moreInfo && (
+                  <div className={styled.btnGroup}>
+                    <>
+                      <Link to={`/board/modify/${data.id}`}>
+                        <button className={styled.btn}>수정</button>
+                      </Link>
+                      <button
+                        className={styled.btnDeleteAndCancel}
+                        type="button"
+                        onClick={() => handleDeleteClick(token, id)}
+                      >
+                        삭제
+                      </button>
+                    </>
+                  </div>
+                )}
+              </>
+            ) : null}
+          </div>
         </div>
         <div className={styled.boardTitle}>
           <h1 className={styled.title}>{data.title}</h1>

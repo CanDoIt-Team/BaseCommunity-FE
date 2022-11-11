@@ -4,7 +4,7 @@ import MypageCategory from '../components/mypage/MypageCategory'
 import { mypageCategory } from '../utils/category'
 import { useState } from 'react'
 import ProfileUserInfo from '../components/mypage/profile/ProfileUserInfo'
-import MyBoard from '../components/mypage/myBoard/MyBoard'
+import MyActivity from '../components/mypage/myActivity/MyActivity'
 import MyProject from '../components/mypage/myProject/MyProject'
 
 export const Mypage = () => {
@@ -20,7 +20,7 @@ export const Mypage = () => {
       <div className={styled.mainContainer}>
         {selectCategory[0].title === '내 프로필' && <ProfileUserInfo />}
         {selectCategory[0].title === '내 프로젝트' && <MyProject />}
-        {selectCategory[0].title === '내 활동' && <MyBoard />}
+        {selectCategory[0].title === '내 활동' && <MyActivity />}
       </div>
     </div>
   )
