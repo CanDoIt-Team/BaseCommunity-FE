@@ -46,6 +46,7 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1",
+    "react-intersection-observer": "^9.4.0",
     "react-js-pagination": "^3.0.3",
     "recoil": "^0.7.6",
     "recoil-persist": "^4.2.0",

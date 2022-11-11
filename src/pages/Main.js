@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import { EmploymentsAPI } from '../apis/employmentsApi'
+import { showAPI as ProjectsAPI } from '../apis/projectsApi'
+
 import styled from '../styles/Main.module.scss'
 import modalShow from '../components/Modal'
+import { useRecoilValue } from 'recoil'
+import { authToken } from '../store/store'
 
 export const Main = () => {
+  const token = useRecoilValue(authToken)
+  const [projects, setProjects] = useState([])
   const [employments, SetEmployments] = useState({})
 
   useEffect(() => {
@@ -14,17 +21,33 @@ export const Main = () => {
         SetEmployments(result.data.content)
       } catch {
         modalShow({
-          title: '데이터를 가져올 수 없습니다.',
+          title: '채용공고 데이터를 가져올 수 없습니다.',
+        })
+      }
+    }
+
+    const getProjects = async () => {
+      try {
+        const result = await ProjectsAPI()
+        setProjects(result.data.content)
+      } catch {
+        modalShow({
+          title: '프로젝트 데이터를 가져올 수 없습니다.',
         })
       }
     }
 
     getEmployments()
-  }, [])
+    getProjects()
+  }, [token])
 
   useEffect(() => {
-    console.log(employments)
-  }, [employments])
+    console.log(projects)
+  }, [projects])
+
+  const handleClick = (wantedInfoUrl) => {
+    window.open(wantedInfoUrl, '_blank')
+  }
 
   return (
     <div className={styled.mainContainer}>
@@ -38,77 +61,31 @@ export const Main = () => {
           </div>
           <ul className={styled.boardContainer}>
             <div className={styled.boardWrap}>
-              <li className={styled.boardContents}>
-                <div className={styled.startDate}>
-                  <span>시작 예정일 :</span>
-                  <span>2022-10-19</span>
-                </div>
-                <h2 className={styled.projectTitle}>
-                  프로젝트 제목 1asasdasdd
-                </h2>
-                <ul className={styled.techList}>
-                  <li>React</li>
-                  <li>SCSS</li>
-                </ul>
-                <div className={styled.writer}>
-                  <span>작성자</span>
-                  <span>JYS</span>
-                </div>
-              </li>
-              <li className={styled.boardContents}>
-                <div className={styled.startDate}>
-                  <span>시작 예정일 :</span>
-                  <span>2022-10-19</span>
-                </div>
-                <h2 className={styled.projectTitle}>
-                  프로젝트 제목 1asasdasdd
-                </h2>
-                <ul className={styled.techList}>
-                  <li>React</li>
-                  <li>SCSS</li>
-                </ul>
-                <div className={styled.writer}>
-                  <span>작성자</span>
-                  <span>JYS</span>
-                </div>
-              </li>
-              <li className={styled.boardContents}>
-                <div className={styled.startDate}>
-                  <span>시작 예정일 :</span>
-                  <span>2022-10-19</span>
-                </div>
-                <h2 className={styled.projectTitle}>
-                  프로젝트 제목 1asasdasdd
-                </h2>
-                <ul className={styled.techList}>
-                  <li>React</li>
-                  <li>SCSS</li>
-                </ul>
-                <div className={styled.writer}>
-                  <span>작성자</span>
-                  <span>JYS</span>
-                </div>
-              </li>
-              <li className={styled.boardContents}>
-                <div className={styled.startDate}>
-                  <span>시작 예정일 :</span>
-                  <span>2022-10-19</span>
-                </div>
-                <h2 className={styled.projectTitle}>
-                  프로젝트 제목 1asasdasdd
-                </h2>
-                <ul className={styled.techList}>
-                  <li>React</li>
-                  <li>SCSS</li>
-                </ul>
-                <div className={styled.writer}>
-                  <span>작성자</span>
-                  <span>JYS</span>
-                </div>
-              </li>
+              {projects &&
+                projects.map((project) => (
+                  <li key={project.id} className={styled.boardContents}>
+                    <Link to={`/project/${project.id}`} className={styled.link}>
+                      <div className={styled.startDate}>
+                        <span>시작 예정일 :</span>
+                        <span>{project.startDate}</span>
+                      </div>
+                      <h2 className={styled.projectTitle}>{project.title}</h2>
+                      <ul className={styled.techList}>
+                        {project.projectSkills.map((skill) => (
+                          <li key={skill.id}>{skill.name}</li>
+                        ))}
+                      </ul>
+                      <div className={styled.writer}>
+                        <span>작성자</span>
+                        <span>{project.leader.nickname}</span>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
             </div>
           </ul>
         </div>
+
         <div className={styled.containerWrap}>
           <div className={styled.containerTitleGroup}>
             <h3 className={styled.containerTitle}>게시판</h3>
@@ -192,6 +169,7 @@ export const Main = () => {
                   <li
                     key={employment.wantedAuthNo}
                     className={styled.employmentContent}
+                    onClick={() => handleClick(employment.wantedInfoUrl)}
                   >
                     <div className={styled.companyNameContainer}>
                       <p className={styled.companyName}>{employment.company}</p>

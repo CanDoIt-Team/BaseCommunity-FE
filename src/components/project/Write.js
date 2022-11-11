@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { writeAPI } from '../../apis/projectsApi'
 import { useRecoilValue } from 'recoil'
 import { authToken } from '../../store/store'
@@ -35,6 +36,7 @@ export default function Write() {
     projectSkills: [],
   })
   const token = useRecoilValue(authToken)
+  const navigate = useNavigate()
 
   useEffect(() => {
     skillChange(skill)
@@ -65,7 +67,9 @@ export default function Write() {
 
     try {
       const result = await writeAPI(projectInputs, token)
-      console.log(result)
+      if (result.status === 200) {
+        navigate(`/project/`)
+      }
     } catch (err) {
       console.log(err)
     }
