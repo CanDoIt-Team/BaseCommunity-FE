@@ -35,6 +35,7 @@ export const MyBoardList = ({ name }) => {
 
   useEffect(() => {
     getMyBoard(token, page)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, page])
 
   if (boardList)

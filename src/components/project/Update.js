@@ -43,6 +43,7 @@ export default function Update() {
 
   useEffect(() => {
     skillChange(skill)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skill])
 
   useEffect(() => {

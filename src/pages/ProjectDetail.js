@@ -44,6 +44,7 @@ export default function ProjectDetail() {
     }
 
     getProjectDetail()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleDeleteClick = () => {

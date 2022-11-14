@@ -91,6 +91,7 @@ export const ProfileUserInfo = () => {
       setSkill(skillValue)
       console.log(skill)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   if (data)

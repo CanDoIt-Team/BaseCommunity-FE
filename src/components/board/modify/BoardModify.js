@@ -33,6 +33,7 @@ export const BoardModify = () => {
     }
 
     console.log(inputValue)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   return (

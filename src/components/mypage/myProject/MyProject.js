@@ -31,6 +31,7 @@ export const MyProject = () => {
 
   useEffect(() => {
     myProject()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
