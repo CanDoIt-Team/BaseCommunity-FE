@@ -13,7 +13,6 @@ export const Paginaition = ({ totalPage, page, setPage }) => {
       : lastPage - (5 - 1)
 
   const handlePageClick = (page) => {
-    console.log(page)
     setPage(page)
   }
 
@@ -25,7 +24,7 @@ export const Paginaition = ({ totalPage, page, setPage }) => {
     }
 
     setTotal(totalarr)
-  }, [firstPage, lastPage, totalPage])
+  }, [firstPage, lastPage])
 
   return (
     <div className={styled.paginationContainer}>

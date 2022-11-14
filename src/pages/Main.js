@@ -16,33 +16,33 @@ export const Main = () => {
 
   console.log(window.location.hostname)
 
-  useEffect(() => {
-    const getEmployments = async () => {
-      try {
-        const result = await EmploymentsAPI(1, 5)
-        SetEmployments(result.data.content)
-        console.log(result.data.content)
-      } catch {
-        modalShow({
-          title: '채용공고 데이터를 가져올 수 없습니다.',
-        })
-      }
-    }
+  // useEffect(() => {
+  //   const getEmployments = async () => {
+  //     try {
+  //       const result = await EmploymentsAPI(1, 5)
+  //       SetEmployments(result.data.content)
+  //       console.log(result.data.content)
+  //     } catch {
+  //       modalShow({
+  //         title: '채용공고 데이터를 가져올 수 없습니다.',
+  //       })
+  //     }
+  //   }
 
-    const getProjects = async () => {
-      try {
-        const result = await ProjectsAPI()
-        setProjects(result.data.content)
-      } catch {
-        modalShow({
-          title: '프로젝트 데이터를 가져올 수 없습니다.',
-        })
-      }
-    }
+  //   const getProjects = async () => {
+  //     try {
+  //       const result = await ProjectsAPI()
+  //       setProjects(result.data.content)
+  //     } catch {
+  //       modalShow({
+  //         title: '프로젝트 데이터를 가져올 수 없습니다.',
+  //       })
+  //     }
+  //   }
 
-    getEmployments()
-    getProjects()
-  }, [token])
+  //   getEmployments()
+  //   getProjects()
+  // }, [token])
 
   useEffect(() => {
     console.log(projects)
