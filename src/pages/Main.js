@@ -14,6 +14,8 @@ export const Main = () => {
   const [projects, setProjects] = useState([])
   const [employments, SetEmployments] = useState([])
 
+  console.log(window.location.hostname)
+
   useEffect(() => {
     const getEmployments = async () => {
       try {
