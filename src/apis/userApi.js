@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { useRecoilValue } from 'recoil'
+import { PROXY } from './proxy'
 
 const getUser = async (token) => {
-  const res = await axios.get(`/users/info`, {
+  const res = await axios.get(`${PROXY}/users/info`, {
     headers: {
       'auth-token': token,
     },
@@ -12,7 +12,7 @@ const getUser = async (token) => {
 }
 
 const uploadImg = async (token, data) => {
-  const res = await axios.post(`/users/profile-img`, data, {
+  const res = await axios.post(`${PROXY}/users/profile-img`, data, {
     headers: {
       'auth-token': token,
       'Content-Type': `multipart/form-data`,
@@ -23,7 +23,7 @@ const uploadImg = async (token, data) => {
 }
 
 const userUpdate = async (token, data, skill) => {
-  const res = await axios.post(`/users/info?skill=${skill}`, data, {
+  const res = await axios.post(`${PROXY}/users/info?skill=${skill}`, data, {
     headers: {
       'auth-token': token,
     },
@@ -33,7 +33,7 @@ const userUpdate = async (token, data, skill) => {
 }
 
 const changePassword = async (token, data) => {
-  const res = await axios.put('/users/password/change', data, {
+  const res = await axios.put(`${PROXY}/users/password/change`, data, {
     headers: {
       'auth-token': token,
     },
