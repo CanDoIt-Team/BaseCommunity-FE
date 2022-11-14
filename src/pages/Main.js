@@ -12,13 +12,14 @@ import { authToken } from '../store/store'
 export const Main = () => {
   const token = useRecoilValue(authToken)
   const [projects, setProjects] = useState([])
-  const [employments, SetEmployments] = useState({})
+  const [employments, SetEmployments] = useState([])
 
   useEffect(() => {
     const getEmployments = async () => {
       try {
         const result = await EmploymentsAPI(1, 5)
         SetEmployments(result.data.content)
+        console.log(result.data.content)
       } catch {
         modalShow({
           title: '채용공고 데이터를 가져올 수 없습니다.',
@@ -164,7 +165,7 @@ export const Main = () => {
           </div>
           <ul className={styled.employmentContainer}>
             <div className={styled.employmentWrap}>
-              {employments.length > 0 &&
+              {employments &&
                 employments.map((employment) => (
                   <li
                     key={employment.wantedAuthNo}
@@ -185,9 +186,9 @@ export const Main = () => {
                       </p>
                     </div>
                     {/* <div className={styled.salWrap}>
-                  <p className={styled.salTpNm}>연봉 : </p>
-                  <p className={styled.sal}>5000만원 ~ 7000만원</p>
-                </div> */}
+                      <p className={styled.salTpNm}>연봉 : </p>
+                      <p className={styled.sal}>5000만원 ~ 7000만원</p>
+                    </div> */}
                     <p className={styled.regDt}>등록일 : {employment.regDt}</p>
                   </li>
                 ))}
