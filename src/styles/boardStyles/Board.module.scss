@@ -195,8 +195,10 @@
 .itemTitle {
   display: flex;
   align-items: center;
+  width: 100%;
   font-size: 19px;
   font-weight: 700;
+
 }
 
 .comment {
@@ -226,4 +228,11 @@
   justify-content: center;
   margin: 40px 0 60px 0;
   color: #858585;
+}
+
+.maxWidth {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -1,13 +1,14 @@
 import styled from '../../../styles/boardStyles/Board.module.scss'
 import BoardItemList from './BoardItemList'
 
-export const BoardBody = ({ loading, data, boardList }) => {
+export const BoardBody = ({ loading, boardList, main }) => {
+  console.log(main)
   if (loading) return null
-  if (data) {
+  if (boardList) {
     return (
       <>
         <div className={styled.boardBody}>
-          <BoardItemList boardList={boardList} />
+          <BoardItemList boardList={boardList} main={main} />
         </div>
       </>
     )

@@ -11,6 +11,7 @@ export function useGetBoardList(category, page, size, searchValue) {
       set({ loading: true, data: null })
       try {
         const boardData = await getBoardList(category, page - 1, size, searchValue)
+        console.log(boardData)
         set({ loading: false, data: boardData.data, error: null })
       } catch (e) {
         console.log(e)
