@@ -3,14 +3,14 @@ import { useRecoilState } from 'recoil'
 import { getBoardDetail, getBoardList } from '../apis/boardApi'
 import { boardDetailStore, boardListState } from '../store/boardStore'
 
-export function useGetBoardList(category, page, searchValue) {
+export function useGetBoardList(category, page, size, searchValue) {
   const [{ loading, data }, set] = useRecoilState(boardListState)
   
   const fetchData = useCallback(
-    async (category, page, searchValue) => {
+    async (category, page, size, searchValue) => {
       set({ loading: true, data: null })
       try {
-        const boardData = await getBoardList(category, page, searchValue)
+        const boardData = await getBoardList(category, page - 1, size, searchValue)
         set({ loading: false, data: boardData.data, error: null })
       } catch (e) {
         console.log(e)
@@ -20,7 +20,8 @@ export function useGetBoardList(category, page, searchValue) {
   )
 
   useEffect(() => {
-    fetchData(category, page, searchValue)
+    fetchData(category, page, size, searchValue)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchData, category, page, searchValue])
 
   return {
