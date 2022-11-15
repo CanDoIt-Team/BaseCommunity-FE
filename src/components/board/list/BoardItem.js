@@ -3,7 +3,8 @@ import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/Board.module.scss'
 import { BiCommentDetail } from 'react-icons/bi'
 
-export const BoardItem = ({ item }) => {
+export const BoardItem = ({ item, main }) => {
+  console.log(main)
   const wrtieTime = useGetTime(item?.createdAt)
   return (
     <>
@@ -22,17 +23,21 @@ export const BoardItem = ({ item }) => {
           </div>
         </div>
         <div className={styled.itembottom}>
-          <Link to={`/board/${item.id}`}>
+          <Link to={`/board/${item.id}`} className={styled.maxWidth}>
             <div className={styled.itemTitle}>{item.title}</div>
           </Link>
         </div>
-        <div className={styled.categoryAndcomment}>
-          <span className={styled.itemCategory}>{item.category}</span>
-          <div className={styled.commentCountArea}>
-            <BiCommentDetail />
-            <span className={styled.commentCount}>{item.comments.length}</span>
+        {!main && (
+          <div className={styled.categoryAndcomment}>
+            <span className={styled.itemCategory}>{item.category}</span>
+            <div className={styled.commentCountArea}>
+              <BiCommentDetail />
+              <span className={styled.commentCount}>
+                {item.comments.length}
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   )

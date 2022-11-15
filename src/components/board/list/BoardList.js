@@ -64,7 +64,7 @@ export const BoardList = () => {
           handleEnterClick={handleEnterClick}
         />
         <BoardAddBtn loginCheck={loginCheck} />
-        <BoardBody loading={loading} data={data} boardList={boardList} />
+        <BoardBody loading={loading} boardList={boardList} />
         <Paginaition
           totalPage={data?.totalPages}
           page={page}

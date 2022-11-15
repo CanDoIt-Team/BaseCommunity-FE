@@ -2,13 +2,14 @@ import { useState } from 'react'
 import styled from '../../../styles/boardStyles/Board.module.scss'
 import BoardItem from './BoardItem'
 
-export const BoardItemList = ({ boardList }) => {
+export const BoardItemList = ({ boardList, main }) => {
+  console.log(main)
   if (boardList)
     return (
       <>
-        <div className={styled.boardContentsList}>
+        <div className={!main ? styled.boardContentsList : ''}>
           {boardList.length !== 0 ? (
-            boardList.map((item, idx) => <BoardItem key={idx} item={item} />)
+            boardList.map((item, idx) => <BoardItem key={idx} item={item} main={main} />)
           ) : (
             <div className={styled.boardListNull}>
               검색하신 내용이 없습니다.

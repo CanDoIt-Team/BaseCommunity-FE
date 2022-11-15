@@ -3,14 +3,14 @@ import { useRecoilState } from 'recoil'
 import { getEmployments } from '../apis/employmentsApi'
 import { employmentsListState } from '../store/employmentsStore'
 
-export function useGetEmployments(page) {
+export function useGetEmployments(page, size) {
   const [{ data }, set] = useRecoilState(employmentsListState)
 
   const fetchData = useCallback(
-    async (page) => {
+    async (page, size) => {
       set({ data: null })
       try {
-        const employmentsData = await getEmployments(page)
+        const employmentsData = await getEmployments(page, size)
         console.log(employmentsData)
         set({ data: employmentsData.data })
       } catch (e) {
@@ -21,8 +21,8 @@ export function useGetEmployments(page) {
   )
 
   useEffect(() => {
-    fetchData(page)
-  }, [fetchData, page])
+    fetchData(page, size)
+  }, [fetchData, page, size])
 
   return {
     data,

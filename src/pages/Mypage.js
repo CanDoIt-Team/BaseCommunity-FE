@@ -12,8 +12,6 @@ export const Mypage = () => {
 
   const selectCategory = category.filter((item) => item.active === true)
 
-  console.log(selectCategory[0].title === '내 프로필')
-
   return (
     <div className={styled.mypageContainer}>  
       <MypageCategory category={category} setCategory={setCategory} />
