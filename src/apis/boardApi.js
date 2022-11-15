@@ -1,16 +1,18 @@
 import axios from 'axios'
 import { PROXY } from './proxy'
 
-const getBoardList = async (category, page, searchValue) => {
-  console.log(category)
+const getBoardList = async (category, page, size, searchValue) => {
+  console.log(searchValue)
   if (category === '전체') {
     console.log('api', category)
-    const res = await axios.get(`${PROXY}/boards?keyword=${searchValue}&page=${page}`)
+    const res = await axios.get(
+      `${PROXY}/boards?sort.sorted=true&keyword=${searchValue}&page=${page}&size=${size}`,
+    )
     return res
   } else {
     console.log('api', category)
     const res = await axios.get(
-      `${PROXY}/boards?category=${category}&keyword=${searchValue}&page=${page}`,
+      `${PROXY}/boards?sort.sorted=true&category=${category}&keyword=${searchValue}&page=${page}&size=${size}`,
       searchValue,
     )
 
@@ -94,8 +96,8 @@ const addHearts = async (token, boardId) => {
   return res
 }
 
-const getMyBoardList = async (token, page) => {
-  const res = await axios.get(`${PROXY}/boards/myBoardList?page=${page}`, {
+const getMyBoardList = async (token, page, size) => {
+  const res = await axios.get(`${PROXY}/boards/myBoardList?sort.sorted=true&page=${page}&size=${size}`, {
     headers: {
       'x-auth-token': token,
     },
@@ -104,12 +106,16 @@ const getMyBoardList = async (token, page) => {
   return res
 }
 
-const getMyHeartList = async (token, page) => {
-  const res = await axios.get(`${PROXY}/boards/myHeartList?page=${page}`, {
-    headers: {
-      'x-auth-token': token,
+const getMyHeartList = async (token, page, size) => {
+  console.log(page)
+  const res = await axios.get(
+    `${PROXY}/boards/myHeartList?sort.sorted=true&page=${page}&size=${size}`,
+    {
+      headers: {
+        'x-auth-token': token,
+      },
     },
-  })
+  )
 
   return res
 }

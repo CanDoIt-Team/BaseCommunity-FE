@@ -12,16 +12,16 @@ export const MyBoardList = ({ name }) => {
   const [boardList, setBoardList] = useState('')
   const [page, setPage] = useState(1)
 
-  const getMyBoard = async (token, page) => {
+  const getMyBoard = async (token, page, size) => {
     try {
       if (name === '게시글') {
-        const result = await getMyBoardList(token, page)
+        const result = await getMyBoardList(token, page - 1, size)
 
         if (result.status === 200) {
           setBoardList(result.data)
         }
       } else {
-        const result = await getMyHeartList(token, page)
+        const result = await getMyHeartList(token, page - 1, size)
 
         if (result.status === 200) {
           setBoardList(result.data)
@@ -34,7 +34,7 @@ export const MyBoardList = ({ name }) => {
   }
 
   useEffect(() => {
-    getMyBoard(token, page)
+    getMyBoard(token, page, 10)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, page])
 
