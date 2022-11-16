@@ -7,50 +7,31 @@
 
 .boardWrap {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 240px);
+  grid-template-columns: repeat(auto-fill, 334px);
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding-top: 5px;
   row-gap: 10px;
   column-gap: 10px;
+  margin-bottom: 40px;
 }
 
-// .boardContents {
-//   display: flex;
-//   flex-wrap: wrap;
-//   flex-direction: column;
-//   align-items: center;
-//   // width: 240px;
-//   height: 100%;
-//   padding: 0 20px;
-//   border: 1px solid #cecece;
-//   transition: all 0.2s;
-//   border-radius: 8px;
-//   padding-top: 20px;
-//   cursor: pointer;
-
-//   &:last-child {
-//     margin-right: 0;
-//   }
-
-//   &:hover {
-//     border: 1px solid rgba(0, 0, 0, 0.3);
-//   }
-// }
-
-.link {
-  display: flex;
+.boardContents {
+  position: relative;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   // width: 240px;
   height: 100%;
-  padding: 0 20px;
+  padding: 60px 30px 40px 30px;
   border: 1px solid #cecece;
   transition: all 0.2s;
   border-radius: 8px;
-  padding-top: 20px;
+  
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+
   cursor: pointer;
 
   &:last-child {
@@ -59,107 +40,120 @@
 
   &:hover {
     border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
   }
 }
 
 .startDate {
   display: flex;
+  font-size: 20px;
   padding-bottom: 10px;
   color: #9b9b9b;
 
   & > span:first-child {
     padding-right: 5px;
   }
-
-  & > span {
-    font-size: 16px;
-  }
 }
 
 .projectTitle {
-  font-size: 25px;
   width: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 30px 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin: 20px 0;
 }
 
 .techList {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  // flex-wrap: wrap;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin: 20px 0 20px 0;
+  margin: 4 0px 0 20px 0;
 
   & > li {
     font-size: 18px;
-    padding-right: 10px;
+  }
+
+  &:hover + .skillList {
+    display: flex;
   }
 }
 
 .writer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  bottom: 0;
-  width: 100%;
-  padding-top: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  justify-content: space-between;
   border-top: 1px solid #cecece;
+  bottom: 0;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  padding-top: 30px;
+  width: 100%;
+}
 
-  & > span {
-    padding-right: 15px;
+.skill {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #555555;
+  border: 1px solid #cecece;
+  border-radius: 12px;
+  padding: 5px 14px;
+  margin: 5px 5px 5px 0;
+}
+
+.commentCountArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    fill: #8a8a8a
   }
 }
 
-.pagination {
+.commentWrap {
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: 15px;
-  list-style: none;
-  padding: 0;
+  margin-left: 10px;
+}
 
-  .li {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #e2e2e2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    font-size: 12px;
-  }
+.commentCount {
+  padding-left: 5px;
+  margin-bottom: 2px;
+  color: #8a8a8a;
+}
 
-  .li:first-child {
-    border-radius: 5px 0 0 5px;
-  }
+.writeBtn {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .li:last-child {
-    border-radius: 0 5px 5px 0;
-  }
+.overSkill {
+  position: absolute;
+  left: 0;
+}
 
-  .li .a {
-    text-decoration: none;
-    color: #337ab7;
-    font-size: 20px;
-  }
-
-  .li.active .a {
-    color: white;
-  }
-
-  .li.active {
-    background-color: #337ab7;
-  }
-
-  .li .a:hover,
-  .li .a.active {
-    color: blue;
-  }
+.skillList {
+  position: absolute;
+  display: none;
+  right: 30px;
+  flex-wrap: wrap;
+  width: 250px;
+  border: 1px solid #8a8a8a;
+  background: rgb(255, 252, 252);
+  padding: 10px;
+  border-radius: 12px;
+  z-index: 99999;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);  
 }

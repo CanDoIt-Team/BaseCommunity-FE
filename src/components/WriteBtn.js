@@ -1,9 +1,8 @@
-import styled from '../../../styles/boardStyles/Board.module.scss'
-import modalShow from '../../Modal'
+import styled from '../styles/boardStyles/Board.module.scss'
+import modalShow from './Modal'
 import { useNavigate } from 'react-router-dom'
 
-export const BoardAddBtn = ({ loginCheck }) => {
-
+export const WriteBtn = ({ loginCheck, link }) => {
   let navigate = useNavigate()
   const handleWriteClick = () => {
     if (loginCheck) {
@@ -11,7 +10,7 @@ export const BoardAddBtn = ({ loginCheck }) => {
         title: '로그인 후 작성이 가능합니다.',
       })
     } else {
-      navigate('/board/write')
+      navigate(link)
     }
   }
 
@@ -24,4 +23,4 @@ export const BoardAddBtn = ({ loginCheck }) => {
   )
 }
 
-export default BoardAddBtn
+export default WriteBtn

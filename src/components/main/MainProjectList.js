@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useGetProject } from '../../hooks/useGetProject'
 
 export const MainProjectList = () => {
-  const { data: projectList } = useGetProject(1, 4)
+  const { data: projectList } = useGetProject(1, 4, '')
 
   return (
     <div className={styled.containerWrap}>
@@ -19,10 +19,10 @@ export const MainProjectList = () => {
             projectList?.content.map((project) => (
               <Link
                 to={`/project/${project.id}`}
-                className={styled.boardContents}
+                className={styled.mgr10}
                 key={project.id}
               >
-                <li>
+                <li className={styled.boardContents}>
                   <div className={styled.startDate}>
                     <span>시작 예정일 :</span>
                     <span>{project.startDate}</span>
@@ -30,7 +30,9 @@ export const MainProjectList = () => {
                   <h2 className={styled.projectTitle}>{project.title}</h2>
                   <ul className={styled.techList}>
                     {project.projectSkills.map((skill) => (
-                      <li className={styled.skill} key={skill.id}>{skill.name}</li>
+                      <li className={styled.skill} key={skill.id}>
+                        {skill.name}
+                      </li>
                     ))}
                   </ul>
                   <div className={styled.writer}>

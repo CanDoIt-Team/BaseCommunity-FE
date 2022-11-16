@@ -102,7 +102,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 223px;
+  max-width: 245px;
+  min-width: 245px;
   width: 100%;
   height: 100%;
   padding: 0 20px;
@@ -111,7 +112,6 @@
   border-radius: 8px;
   padding-top: 20px;
   cursor: pointer;
-  margin-right: 10px;
 
   &:last-child {
     margin-right: 0;
@@ -119,6 +119,14 @@
 
   &:hover {
     border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+}
+
+.mgr10 {
+  margin-right: 8px;
+
+  &:last-child {
+    margin-right: 0;
   }
 }
 
@@ -167,7 +175,6 @@
   bottom: 0;
   width: 100%;
   padding-top: 20px;
-  margin-top: 20px;
   margin-bottom: 20px;
   border-top: 1px solid #cecece;
   font-size: 20px;
@@ -183,6 +190,7 @@
   width: 100%;
   height: 100%;
   margin-bottom: 40px;
+
 }
 
 .employmentWrap {

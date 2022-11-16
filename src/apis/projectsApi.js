@@ -22,8 +22,8 @@ const updateAPI = async (data, token) => {
 }
 
 // 프로젝트 조회
-const showAPI = async (page = 0, size = 4) => {
-  const res = await axios.get(`${PROXY}/projects?page=${page}&size=${size}`)
+const showAPI = async (page, size, keword) => {
+  const res = await axios.get(`${PROXY}/projects?sort.sorted=true&keyword=${keword}&page=${page}&size=${size}`)
 
   return res
 }
