@@ -10,16 +10,20 @@ import styled from '../../../styles/mypage/MyProject.module.scss'
 import modalShow from '../../../components/Modal'
 
 import { Link } from 'react-router-dom'
+import Chat from './Chat'
 
 export const MyProject = () => {
   const token = useRecoilValue(authToken)
   const [myList, setMyList] = useState()
   const [applyList, setApplyList] = useState()
+  const [chatRoom, setChatRoom] = useState(false)
+  const [userData, setUserData] = useState(useGetUser(token))
+
   const { data } = useGetUser(token)
 
   const myProject = async () => {
     try {
-      console.log(token)
+      // console.log(token)
       const result = await myProjectAPI(token)
       console.log(result.data)
       setMyList(result.data)
@@ -30,12 +34,21 @@ export const MyProject = () => {
   }
 
   useEffect(() => {
+    console.log(userData)
+  }, [userData])
+
+  useEffect(() => {
     myProject()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    console.log(myList)
+    if (chatRoom) {
+      myProject()
+    }
+  }, [chatRoom])
+
+  useEffect(() => {
     if (myList) {
       setApplyList(
         myList.projectMembers.filter(
@@ -91,6 +104,14 @@ export const MyProject = () => {
     )
   }
 
+  const handleChatRoom = () => {
+    if (myList.chatRooms.length > 0) {
+      setChatRoom(!chatRoom)
+    } else {
+      modalShow({ title: '입장 가능한 채팅방이 없습니다.' })
+    }
+  }
+
   return (
     <>
       {myList && applyList ? (
@@ -114,7 +135,8 @@ export const MyProject = () => {
                 </div>
               </Link>
             </div>
-            {data.nickname === myList.leader.nickname && (
+
+            {userData.data.nickname === myList.leader.nickname && (
               <div className={styled.applyContainer}>
                 <p className={styled.applyTitle}>
                   {`신청 리스트 (${myList.nowTotal} / ${myList.maxTotal})`}
@@ -146,7 +168,7 @@ export const MyProject = () => {
           </div>
 
           <div className={styled.chatContainer}>
-            {data.nickname === myList.leader.nickname && (
+            {userData.data.nickname === myList.leader.nickname && (
               <>
                 <button
                   className={styled.createChat}
@@ -158,11 +180,31 @@ export const MyProject = () => {
               </>
             )}
 
-            <button className={styled.Lookup}>채팅방 조회</button>
+            {chatRoom ? (
+              <button
+                className={styled.Lookup}
+                onClick={() => handleChatRoom()}
+              >
+                채팅방 퇴장
+              </button>
+            ) : (
+              <button
+                className={styled.Lookup}
+                onClick={() => handleChatRoom()}
+              >
+                채팅방 입장
+              </button>
+            )}
           </div>
         </>
       ) : (
         <div>프로젝트 신청 내역이 없습니다.</div>
+      )}
+      {chatRoom && (
+        <Chat
+          room={myList.chatRooms[0].id}
+          msg={myList.chatRooms[0].messages}
+        />
       )}
     </>
   )

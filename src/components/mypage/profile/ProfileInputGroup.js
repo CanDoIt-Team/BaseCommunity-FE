@@ -12,9 +12,6 @@ export const ProfileInputGroup = ({
   skill,
   setSkill,
 }) => {
-
-  console.log(skill)
-
   const [check, setCheck] = useState(false)
 
   const handleNickNameCheck = async (nickname) => {
@@ -66,10 +63,7 @@ export const ProfileInputGroup = ({
           </button>
         </div>
         <Label className={styled.userLabel} title={'기술 스택'} />
-        <Tech
-          techValue={skill}
-          setTechValue={setSkill}
-        />
+        <Tech techValue={skill} setTechValue={setSkill} />
         <Label className={styled.userLabel} title={'이름'} />
         <input
           className={styled.userInput}

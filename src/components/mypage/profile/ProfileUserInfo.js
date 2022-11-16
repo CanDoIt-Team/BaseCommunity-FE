@@ -22,8 +22,7 @@ export const ProfileUserInfo = () => {
     birth: '',
   })
 
-    console.log(JSON.stringify(skill))
-
+  // console.log(JSON.stringify(skill))
 
   const handleValueChange = (e) => {
     setChangeInfo({ ...changeInfo, [e.target.name]: e.target.value })
@@ -32,8 +31,6 @@ export const ProfileUserInfo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    console.log(skill)
 
     if (changeInfo.nickname.length <= 0) {
       modalShow({
@@ -89,9 +86,8 @@ export const ProfileUserInfo = () => {
 
       const skillValue = data.skills.map((item) => ({ value: item.name }))
       setSkill(skillValue)
-      console.log(skill)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   if (data)
