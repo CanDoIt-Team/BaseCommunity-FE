@@ -36,6 +36,7 @@ export default function ProjectDetail() {
       try {
         const result = await detailAPI(params.id)
         if (result.status === 200) {
+          console.log(result)
           setPost(result.data)
         }
       } catch (err) {
@@ -60,7 +61,7 @@ export default function ProjectDetail() {
         if (e.isConfirmed === true) {
           try {
             const result = await deleteProjectAPI(params.id, token)
-            if (result.status === 200) {
+            if (result.status === 200) {      
               navigate('/project')
             }
           } catch {
@@ -116,6 +117,7 @@ export default function ProjectDetail() {
               <p style={{ marginRight: '20px' }}>
                 닉네임: {post.leader.nickname}
               </p>
+              <p>댓글 수: {post.projectMembers.length}</p>
               <p>댓글 수: {post.projectComments.length}</p>
             </div>
           </div>
