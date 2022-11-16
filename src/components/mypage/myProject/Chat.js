@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as StompJs from '@stomp/stompjs'
 import * as SockJS from 'sockjs-client'
-
+import { SOKET } from './proxy'
 import { useRecoilValue } from 'recoil'
 import { authToken } from '../../../store/store'
 import { useGetUser } from '../../../hooks/useGetUser'
@@ -48,7 +48,7 @@ export default function Chat(props) {
   const connect = () => {
     client.current = new StompJs.Client({
       // brokerURL: "ws://localhost:8080/ws-stomp/websocket", // 웹소켓 서버로 직접 접속
-      webSocketFactory: () => new SockJS('/stomp/chat'), // proxy를 통한 접속
+      webSocketFactory: () => new SockJS(`${SOKET}/stomp/chat`), // proxy를 통한 접속
       connectHeaders: {
         'X-AUTH-TOKEN': token,
       },
