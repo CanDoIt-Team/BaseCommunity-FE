@@ -5,6 +5,13 @@
   force = true
   
 [[redirects]]
+  from = "/socket.io/*"
+  to = "http://118.67.128.16:8080/:splat"
+  status = 200
+  force = true
+  headers = {Connection = "upgrade", Upgrade = "websocket"}
+  
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
