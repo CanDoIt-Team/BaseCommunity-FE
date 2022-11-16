@@ -36,7 +36,7 @@ export const MainBoardList = () => {
       <div className={styled.containerWrap}>
         <div className={styled.containerTitleGroup}>
           <h3 className={styled.containerTitle}>최근 올라온 게시글</h3>
-          <Link to="/project">
+          <Link to="/board">
             <span className={styled.containerMore}>더보기</span>
           </Link>
         </div>

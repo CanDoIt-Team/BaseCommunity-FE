@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useGetTime } from '../../../hooks/useTime'
 import styled from '../../../styles/boardStyles/Board.module.scss'
+import { useGetTime } from '../../../hooks/useTime'
 import { BiCommentDetail } from 'react-icons/bi'
+
+import logo from '../../../asset/Logo.png'
 
 export const BoardItem = ({ item, main }) => {
   console.log(main)
@@ -14,7 +16,7 @@ export const BoardItem = ({ item, main }) => {
             <div className={styled.imgAndTitle}>
               <img
                 className={styled.wirterImg}
-                src="https://via.placeholder.com/20"
+                src={logo}
                 alt="이미지"
               />
               <div className={styled.writerName}>{item.member.nickname}</div>

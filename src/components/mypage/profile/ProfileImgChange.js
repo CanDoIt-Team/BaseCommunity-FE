@@ -16,11 +16,12 @@ export const ProfileImgChange = ({ data, token }) => {
     }
   }
 
+
   return (
     <>
       <div className={styled.profileImgArea}>
         <label htmlFor="file" className={styled.profileLabel}>
-          <img src={data.urlFilename} className={styled.img} alt="프로필" />
+          <img src={`http://118.67.128.16:8080${data.urlFilename}`} className={styled.img} alt="프로필" />
           <div className={styled.imageChangeText}>이미지 변경</div>
         </label>
         <input

@@ -8,7 +8,7 @@ export const ProjectList = ({ data }) => {
   return (
     <div className={styled.container}>
       <ul className={styled.boardWrap}>
-        {data?.content.map((item, idx) => (
+        {data?.content.map((item) => (
           <ProjectItem item={item} key={`list_${item.id}`}/>
         ))}
       </ul>

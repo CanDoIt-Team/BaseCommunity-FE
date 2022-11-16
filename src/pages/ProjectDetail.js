@@ -45,7 +45,7 @@ export default function ProjectDetail() {
     }
 
     getProjectDetail()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleDeleteClick = () => {
@@ -61,7 +61,7 @@ export default function ProjectDetail() {
         if (e.isConfirmed === true) {
           try {
             const result = await deleteProjectAPI(params.id, token)
-            if (result.status === 200) {      
+            if (result.status === 200) {
               navigate('/project')
             }
           } catch {
@@ -97,7 +97,13 @@ export default function ProjectDetail() {
     <>
       {post && projectData && (
         <section className={styled.section}>
-          <h2 className={styled.title}>{post.title}</h2>
+          <div className={styled.titleArea}>
+            <h2 className={styled.title}>{post.title}</h2>
+            <div className={styled.leaderNameAndCreateAt}>
+              <span className={styled.leaderName}>{post.leader.name}</span>
+              <span>{post.createdAt}</span>
+            </div>
+          </div>
           <div className={styled.expects}>
             <p className={styled.expect}>모집 인원: {post.maxTotal}</p>
             <p className={styled.expect}>현재 인원: {post.nowTotal}</p>
@@ -117,7 +123,6 @@ export default function ProjectDetail() {
               <p style={{ marginRight: '20px' }}>
                 닉네임: {post.leader.nickname}
               </p>
-              <p>댓글 수: {post.projectMembers.length}</p>
               <p>댓글 수: {post.projectComments.length}</p>
             </div>
           </div>

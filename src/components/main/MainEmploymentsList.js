@@ -13,7 +13,7 @@ export const MainEmploymentsList = () => {
     <div className={styled.containerWrap}>
       <div className={styled.containerTitleGroup}>
         <h3 className={styled.containerTitle}>채용공고</h3>
-        <Link to="/board">
+        <Link to="/job">
           <span className={styled.containerMore}>더보기</span>
         </Link>
       </div>

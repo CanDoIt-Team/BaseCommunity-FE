@@ -1,20 +1,32 @@
 .section {
-  width: 100%;
+  width: 800px;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #c4c4c4;
 }
 
 .title {
   display: flex;
-  justify-content: center;
   font-size: 40px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.leaderName {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .expects {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   font-size: 18px;
   font-weight: 500;
 }
