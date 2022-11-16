@@ -30,7 +30,7 @@ module.exports = (app) => {
     }),
   )
   app.use(
-    '/chat',
+    '/stomp',
     createProxyMiddleware({
       target: 'http://118.67.128.16:8080',
       changeOrigin: true,

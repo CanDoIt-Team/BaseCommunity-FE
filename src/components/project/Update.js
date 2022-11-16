@@ -43,7 +43,7 @@ export default function Update() {
 
   useEffect(() => {
     skillChange(skill)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skill])
 
   useEffect(() => {
@@ -57,7 +57,6 @@ export default function Update() {
   }
 
   const skillChange = (skill) => {
-    console.log(skill)
     // let skillChange = JSON.stringify(skill)
     setProjectInputs({ ...projectInputs, projectSkills: skill })
   }
