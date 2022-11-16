@@ -95,6 +95,7 @@ export const MyProject = () => {
               modalShow({
                 title: `${result.data.roomName} 방이 생성되었습니다.`,
               })
+              myProject()
             }
           } catch (err) {
             console.log(err)
