@@ -51,8 +51,8 @@ export const CommentItem = ({
     if (pages === 'projects') {
       updateData = {
         content: updateValue,
-        id: Number(id),
-        projectId: Number(commentid),
+        id: Number(commentid),
+        projectId: Number(id),
       }
     }
     if (pages === 'borad') {

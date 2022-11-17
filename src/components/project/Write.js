@@ -69,10 +69,11 @@ export default function Write() {
     try {
       const result = await writeAPI(projectInputs, token, encodeSkill)
       if (result.status === 200) {
-        navigate(`/project/`)
+        modalShow({ title: '신청이 완료되었습니다.' }, navigate('/project'))
       }
     } catch (err) {
       console.log(err)
+      modalShow({ title: '에러', text: err.response.data.message })
     }
   }
 
