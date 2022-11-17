@@ -12,6 +12,8 @@ import styled from '../../styles/project/Write.module.scss'
 
 import Tech from '../tech/Tech'
 
+import modalShow from '../../components/Modal'
+
 const dateFormat = (d) => {
   return (
     d.getFullYear() +
@@ -78,7 +80,7 @@ export default function Update() {
         navigate(`/project/${location.state.data.id}`)
       }
     } catch (err) {
-      console.log(err)
+      modalShow({ title: '에러', text: err.response.data.message })
     }
   }
 
