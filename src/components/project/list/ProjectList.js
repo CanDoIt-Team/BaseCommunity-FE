@@ -1,4 +1,4 @@
-import styled from '../../styles/project/ProjectShow.module.scss'
+import styled from '../../../styles/project/ProjectShow.module.scss'
 import { BiCommentDetail } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import ProjectItem from './ProjectItem'

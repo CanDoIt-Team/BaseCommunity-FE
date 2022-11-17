@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useGetTime } from '../../../hooks/useTime'
+import { useGetTime } from '../../../lib/useTime'
 import styled from '../../../styles/mypage/myBoard.module.scss'
 
 export const MyBoardItems = ({ item }) => {

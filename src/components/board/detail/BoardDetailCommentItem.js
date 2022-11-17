@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import {
-  deleteBoard,
   deleteComment,
   updateComment,
 } from '../../../apis/boardApi'
-import { useGetTime } from '../../../hooks/useTime'
+import { useGetTime } from '../../../lib/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import modalShow from '../../Modal'
+import defaultImg from '../../../asset/Logo.png'
+import Image from '../../common/Image'
 
 export const BoardDetailCommentItem = ({
   idx,
@@ -76,10 +77,9 @@ export const BoardDetailCommentItem = ({
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
-              <img
-                className={styled.img}
-                src="https://via.placeholder.com/40"
-                alt="이미지"
+              <Image
+                size={40}
+                src={item.urlFilename}
               />
             </div>
             <div className={styled.userInfo}>

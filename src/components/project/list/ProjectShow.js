@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import Button from '../../components/Button'
-import Paginaition from '../Paginaition'
-import { useGetProject } from '../../hooks/useGetProject'
+import Paginaition from '../../Paginaition'
+import { useGetProject } from '../../../hooks/useGetProject'
 import ProjectList from './ProjectList'
-import SearchBar from '../SearchBar'
-import styled from '../../styles/mypage/Mypage.module.scss'
+import SearchBar from '../../SearchBar'
 import { useNavigate } from 'react-router-dom'
-import WriteBtn from '../WriteBtn'
+import WriteBtn from '../../WriteBtn'
 import { useRecoilState } from 'recoil'
-import { loginState } from '../../store/store'
+import { loginState } from '../../../store/store'
 
 export default function ProjectShow() {
   const navigate = useNavigate()

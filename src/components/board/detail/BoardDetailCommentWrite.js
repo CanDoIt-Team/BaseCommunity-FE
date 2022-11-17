@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { addComment } from '../../../apis/boardApi'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
+import Image from '../../common/Image'
 import modalShow from '../../Modal'
 
-export const BoardDetailComment = ({ data, id, token, loginCheck }) => {
+export const BoardDetailComment = ({ data, id, token, user, loginCheck }) => {
   let count = data.comments.length
   const [commentValue, setCommentValue] = useState('')
 
@@ -41,10 +42,9 @@ export const BoardDetailComment = ({ data, id, token, loginCheck }) => {
         <div className={styled.commentWriteArea}>
           <div className={styled.commentWriterInfo}>
             <div className={styled.userImg}>
-              <img
-                className={styled.img}
-                src="https://via.placeholder.com/50"
-                alt="이미지"
+              <Image
+                size={40}
+                src={user?.urlFilename}
               />
             </div>
             <textarea

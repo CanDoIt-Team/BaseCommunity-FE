@@ -59,17 +59,16 @@ export const ProfileUserInfo = () => {
       return
     }
 
-    const ttt = JSON.stringify(skill)
-    const test = encodeURIComponent(`${ttt}`)
-    console.log(test)
+    const skillString = JSON.stringify(skill)
+    const encodeSkill = encodeURIComponent(`${skillString}`)
 
     try {
-      const result = await userUpdate(token, changeInfo, test)
+      const result = await userUpdate(token, changeInfo, encodeSkill)
 
-      // if (result.status === 200) {
-      //   window.location.replace('/mypage')
-      //   setCheck(false)
-      // }
+      if (result.status === 200) {
+        window.location.replace('/mypage')
+        setCheck(false)
+      }
     } catch (e) {
       console.log(e)
     }

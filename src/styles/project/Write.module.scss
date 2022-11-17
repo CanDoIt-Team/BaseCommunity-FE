@@ -4,6 +4,7 @@
 }
 
 .Group {
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
 }
@@ -15,4 +16,51 @@
 
 .btnGroup button {
   margin: 20px;
+}
+
+.updateTitle {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.labelAndInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.techLabelAndInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.writeLabel {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.inputBox {
+  width: 100%;
+  height: 50px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #b2b2b2;
+  border-radius: 8px;
+  outline: none;
+
+  &[type=number]::-webkit-outer-spin-button,
+  &[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.textSmall {
+  padding-left: 5px;
+  font-size: 12px;
+  color: #ff5757;
 }

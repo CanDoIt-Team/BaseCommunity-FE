@@ -1,7 +1,8 @@
-import styled from '../../styles/project/ProjectShow.module.scss'
+import styled from '../../../styles/project/ProjectShow.module.scss'
 import { BiCommentDetail, BiSmile } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import Image from '../../common/Image'
 
 export const ProjectItem = ({ item, test1, test2 }) => {
   const skillList = item.projectSkills.map((item) => item.name)
@@ -30,7 +31,10 @@ export const ProjectItem = ({ item, test1, test2 }) => {
             ))}
           </ul>
           <div className={styled.writer}>
-            <span>{item.leader.nickname}</span>
+            <div className={styled.userInfoWrap}> 
+              <Image size={40} src={item.leader.urlFilename} />
+              <span>{item.leader.nickname}</span>
+            </div>
             <div className={styled.commentCountArea}>
               <div className={styled.commentWrap}>
                 <BiSmile />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
+import { useGetTime } from '../lib/useTime'
 import { useRecoilValue } from 'recoil'
 import { authToken } from '../store/store'
 
@@ -14,6 +14,7 @@ import CommentList from '../components/common/CommentLIst'
 import modalShow from '../components/Modal'
 
 import styled from '../styles/ProjectDetail.module.scss'
+import Image from '../components/common/Image'
 
 export default function ProjectDetail() {
   const [post, setPost] = useState()
@@ -22,6 +23,10 @@ export default function ProjectDetail() {
   const params = useParams()
   const { data } = useGetUser(token)
   const navigate = useNavigate()
+
+  const [skill, setSkill] = useState()
+
+  console.log(skill)
 
   useEffect(() => {
     if (data) {
@@ -38,6 +43,7 @@ export default function ProjectDetail() {
         if (result.status === 200) {
           console.log(result)
           setPost(result.data)
+          setSkill(result.data.projectSkills.map((item) => item.name))
         }
       } catch (err) {
         console.log(err)
@@ -96,51 +102,68 @@ export default function ProjectDetail() {
   return (
     <>
       {post && projectData && (
-        <section className={styled.section}>
+        <div className={styled.section}>
           <div className={styled.titleArea}>
             <h2 className={styled.title}>{post.title}</h2>
-            <div className={styled.leaderNameAndCreateAt}>
-              <span className={styled.leaderName}>{post.leader.name}</span>
-              <span>{post.createdAt}</span>
+            <div className={styled.userInfo}>
+              <Image size={40} src={post.leader.urlFilename} />
+              <span>{post.leader.name}</span>
+              <span className={styled.time}>{post.createdAt.slice(0, 10)}</span>
             </div>
           </div>
           <div className={styled.expects}>
-            <p className={styled.expect}>모집 인원: {post.maxTotal}</p>
-            <p className={styled.expect}>현재 인원: {post.nowTotal}</p>
-            <p className={styled.expect}>시작 예정일: {post.startDate}</p>
-            <p className={styled.expect}>기간: {post.developPeriod}</p>
+            <div className={styled.expectWrap}>
+              <p className={styled.expect}>
+                <span>모집 인원</span>
+                <span> {post.maxTotal} 명</span>
+              </p>
+              <p className={styled.expect}>
+                <span>현재 인원</span>
+                <span> {post.nowTotal} 명</span>
+              </p>
+              <p className={styled.expect}>
+                <span>이 메 일</span>
+                <span> {post.leader.email}</span>
+              </p>
+            </div>
+            <div className={styled.expectWrap}>
+              <p className={styled.expect}>
+                <span>시작 예정</span>
+                <span> {post.startDate}</span>
+              </p>
+              <p className={styled.expect}>
+                <span>진행 기간</span>
+                <span> {post.developPeriod} 개월</span>
+              </p>
+            </div>
           </div>
-          <div className={styled.infos}>
-            <div className={styled.info}>
-              <p className={styled.skillTitle}>사용 기술:</p>
-              {post.projectSkills.map((skill) => (
-                <p key={skill.name} style={{ marginRight: '10px' }}>
-                  {skill.name}
+          <div className={styled.skillWrap}>
+            <span>사용 기술</span>
+            <span className={styled.skillList}>
+              {skill.map((item) => (
+                <span className={styled.skill} key={item}>{item}</span>
+              ))}
+            </span>
+          </div>
+          <div className={styled.content}>
+            <h2 className={styled.contentTitle}>프로젝트 내용</h2>
+            <div className={styled.textarea}>
+              {post?.content?.split('\n')?.map((item, idx) => (
+                <p key={idx} className={styled.text}>
+                  {item}
+                  <br />
                 </p>
               ))}
             </div>
-            <div className={styled.info}>
-              <p style={{ marginRight: '20px' }}>
-                닉네임: {post.leader.nickname}
-              </p>
-              <p>댓글 수: {post.projectComments.length}</p>
-            </div>
-          </div>
-          <div className={styled.content}>
-            <textarea
-              readOnly
-              className={styled.textarea}
-              value={post.content}
-            />
           </div>
           {projectData.nickname === post.leader.nickname ? (
             <div className={styled.btnGroup}>
-              <SubmitButton
-                title="삭제"
-                style={{ backgroundColor: '#c4c4c4' }}
-                onClick={handleDeleteClick}
-              />
-              <SubmitButton title="수정" onClick={handleUpdateClick} />
+              <button className={styled.updateBtn} onClick={handleUpdateClick}>
+                수정
+              </button>
+              <button className={styled.cancelBtn} onClick={handleDeleteClick}>
+                삭제
+              </button>
             </div>
           ) : (
             <SubmitButton title="신청" onClick={handleApplyClick} />
@@ -152,14 +175,13 @@ export default function ProjectDetail() {
             count={post.projectComments.length}
             pages="projects"
           />
-
           <CommentList
             token={token}
             id={params.id}
             data={post.projectComments}
             pages="projects"
           />
-        </section>
+        </div>
       )}
     </>
   )
