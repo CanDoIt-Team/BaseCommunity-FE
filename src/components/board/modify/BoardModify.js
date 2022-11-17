@@ -10,7 +10,7 @@ export const BoardModify = () => {
   const { id } = useParams()
   const { loading, data } = useGetBoardDetail(id)
 
-  console.log(data)
+  const param = useParams();
 
   const [inputValue, setInputValue] = useState({
     category: '자유',
@@ -20,7 +20,6 @@ export const BoardModify = () => {
 
   const handleChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-    console.log(inputValue)
   }
 
   useEffect(() => {
@@ -31,8 +30,6 @@ export const BoardModify = () => {
         content: data.content,
       })
     }
-
-    console.log(inputValue)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
@@ -43,7 +40,7 @@ export const BoardModify = () => {
         inputValue={inputValue}
         handleChange={handleChange}
       />
-      <BoardModifyBtnGroup boardId={data?.boardId} inputValue={inputValue} />
+      <BoardModifyBtnGroup boardId={data?.boardId} inputValue={inputValue} param={param} />
     </div>
   )
 }

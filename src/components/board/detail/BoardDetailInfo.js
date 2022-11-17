@@ -15,7 +15,6 @@ export const BoardDetailInfo = ({
   token,
   loginCheck,
 }) => {
-  console.log(data)
   const [moreInfo, setMoreInfo] = useState(false)
 
   const [heartState, setHeartState] = useState(false)
@@ -51,7 +50,6 @@ export const BoardDetailInfo = ({
       const result = await addHearts(token, boardId)
 
       if (result.status === 200) {
-        console.log(result)
         setHeartState(result.data)
       }
     } catch (e) {
@@ -109,7 +107,7 @@ export const BoardDetailInfo = ({
                 {moreInfo && (
                   <div className={styled.btnGroup}>
                     <>
-                      <Link to={`/board/modify/${data.id}`}>
+                      <Link to={`/board/modify/${data.boardId}`}>
                         <button className={styled.btn}>수정</button>
                       </Link>
                       <button

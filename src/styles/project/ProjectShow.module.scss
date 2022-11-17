@@ -146,9 +146,11 @@
 .skillList {
   position: absolute;
   display: none;
-  right: 30px;
+  right: 50%; 
+  transform: translateX(50%);
   flex-wrap: wrap;
-  width: 250px;
+  width: 90%;
+  margin-top: 10px;
   border: 1px solid #8a8a8a;
   background: rgb(255, 255, 255);
   padding: 10px;

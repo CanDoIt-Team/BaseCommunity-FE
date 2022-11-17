@@ -62,12 +62,13 @@ export default function Header() {
         {login.isLoading ? (
           <>
             <div className={styles.mypageAndAlarm} onClick={handleMypageClick}>
-              <Image
-                size={40}
-                src={data?.urlFilename}
-              />
+              <Image size={40} src={data?.urlFilename} />
               {showMypage && (
                 <div className={styles.mypageList}>
+                  <div className={styles.userInfo}>
+                    <Image size={40} src={data?.urlFilename} />
+                    <span className={styles.userNickname}>{data?.nickname}</span>
+                  </div>
                   <div className={styles.pb10}>
                     <Link
                       to="/mypage"

@@ -2,7 +2,6 @@ import styled from '../../../styles/boardStyles/Board.module.scss'
 import BoardItemList from './BoardItemList'
 
 export const BoardBody = ({ loading, boardList, main }) => {
-  console.log(main)
   if (loading) return null
   if (boardList) {
     return (

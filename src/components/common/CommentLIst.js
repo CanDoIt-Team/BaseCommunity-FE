@@ -8,7 +8,6 @@ export const CommentList = ({ token, id, data, pages }) => {
   const params = useParams()
   const [modify, setModify] = useState()
   const { data: user } = useGetUser(token)
-  console.log(data)
 
   return (
     <>

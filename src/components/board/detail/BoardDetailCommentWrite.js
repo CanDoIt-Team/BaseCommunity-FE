@@ -6,13 +6,10 @@ import modalShow from '../../Modal'
 
 export const BoardDetailComment = ({ data, id, token, user, loginCheck }) => {
   let count = data.comments.length
-  // const loginCheck = localStorage.getItem('recoil-perists')
-  // console.log(loginCheck)
   const [commentValue, setCommentValue] = useState('')
 
   const handleCommentChange = (e) => {
     setCommentValue(e.target.value)
-    console.log(commentValue)
   }
 
   const handleCommentAddBtn = async (id, data, token) => {
@@ -21,9 +18,17 @@ export const BoardDetailComment = ({ data, id, token, user, loginCheck }) => {
     if (loginCheck === false) {
       modalShow({
         title:
-          '로그인이 필요한 기능입니다.<br><br> 로그인 후 이용해주세요.<br>',
+          '로그인 후 이용하실 수 있습니다.',
       })
-      return
+      return;
+    }
+
+    if(comment.content.length === 0) {
+      modalShow({
+        title:
+          '댓글을 입력해주세요.',
+      })
+      return;
     }
 
     try {
@@ -54,7 +59,7 @@ export const BoardDetailComment = ({ data, id, token, user, loginCheck }) => {
               type="text"
               name="comment"
               value={commentValue}
-              placeholder={loginCheck ? null : '로그인 후 댓글 작성이 가능합니다.'}
+              placeholder={loginCheck ? null : '로그인 후 댓글을 작성하실 수 있습니다.'}
               readOnly={!loginCheck}
               onChange={handleCommentChange}
             />

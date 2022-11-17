@@ -2,25 +2,31 @@ import { useState } from 'react'
 import { addComment } from '../../apis/comment'
 import { useGetUser } from '../../hooks/useGetUser'
 import styled from '../../styles/common/CommentWrite.module.scss'
+import modalShow from '../Modal'
 import Image from './Image'
 
-export const CommentWrite = ({ id, token, data, count, pages }) => {
+export const CommentWrite = ({ id, token, data, count, loginCheck, pages }) => {
   const [commentValue, setCommentValue] = useState()
   const { data: user } = useGetUser(token)
-
-  console.log(commentValue)
 
   const handleCommentChange = (e) => {
     if (pages === 'projects') {
       setCommentValue({ projectId: id, content: e.target.value })
-      console.log(commentValue)
     } else {
       setCommentValue(e.target.value)
     }
-    console.log(commentValue)
   }
 
   const handleCommentAddBtn = async (id, comment, token) => {
+
+    if(!loginCheck) {
+      modalShow({
+        title:"로그인 후 이용하실 수 있습니다."
+      })
+
+      return;
+    }
+
     try {
       const test = await addComment(id, comment, token, pages)
       if (test.status === 200) {
@@ -47,6 +53,8 @@ export const CommentWrite = ({ id, token, data, count, pages }) => {
               className={styled.commentWrite}
               type="text"
               name="comment"
+              placeholder={loginCheck ? null : '로그인 후 댓글을 작성하실 수 있습니다.'}
+              readOnly={!loginCheck}
               value={
                 commentValue?.content || commentValue
                   ? commentValue.content

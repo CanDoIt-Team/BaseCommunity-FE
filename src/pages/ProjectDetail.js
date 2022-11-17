@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useGetTime } from '../lib/useTime'
-import { useRecoilValue } from 'recoil'
-import { authToken } from '../store/store'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { authToken, loginState } from '../store/store'
 
 import { detailAPI, deleteProjectAPI, applyAPI } from '../apis/projectsApi'
 import { useGetUser } from '../hooks/useGetUser'
@@ -17,23 +16,25 @@ import styled from '../styles/ProjectDetail.module.scss'
 import Image from '../components/common/Image'
 
 export default function ProjectDetail() {
+  const token = useRecoilValue(authToken)
+
+  const [login, setLogin] = useRecoilState(loginState)
+  const [loginCheck, setLoginCheck] = useState(login.id !== '');
+
   const [post, setPost] = useState()
   const [projectData, setProjectData] = useState()
-  const token = useRecoilValue(authToken)
+
   const params = useParams()
+
   const { data } = useGetUser(token)
   const navigate = useNavigate()
 
   const [skill, setSkill] = useState()
 
-  console.log(skill)
-
   useEffect(() => {
     if (data) {
       setProjectData(data)
     }
-
-    console.log(projectData)
   }, [projectData, data])
 
   useEffect(() => {
@@ -41,7 +42,6 @@ export default function ProjectDetail() {
       try {
         const result = await detailAPI(params.id)
         if (result.status === 200) {
-          console.log(result)
           setPost(result.data)
           setSkill(result.data.projectSkills.map((item) => item.name))
         }
@@ -87,6 +87,15 @@ export default function ProjectDetail() {
   }
 
   const handleApplyClick = async () => {
+
+    if(!loginCheck) {
+      modalShow({
+        title: '로그인 후 신청하실 수 있습니다.'
+      })
+
+      return;
+    }
+
     try {
       const result = await applyAPI(params.id, token)
       if (result.status === 200) {
@@ -100,7 +109,7 @@ export default function ProjectDetail() {
 
   return (
     <>
-      {post && projectData && (
+      {post && (
         <div className={styled.section}>
           <div className={styled.titleArea}>
             <h2 className={styled.title}>{post.title}</h2>
@@ -155,7 +164,7 @@ export default function ProjectDetail() {
               ))}
             </div>
           </div>
-          {projectData.nickname === post.leader.nickname ? (
+          {projectData?.nickname === post?.leader.nickname ? (
             <div className={styled.btnGroup}>
               <button className={styled.updateBtn} onClick={handleUpdateClick}>
                 수정
@@ -173,6 +182,7 @@ export default function ProjectDetail() {
             id={params.id}
             data={data}
             count={post.projectComments.length}
+            loginCheck={loginCheck}
             pages="projects"
           />
           <CommentList

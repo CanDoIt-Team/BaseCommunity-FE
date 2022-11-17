@@ -27,7 +27,6 @@ export default function Chat(props) {
     try {
       // console.log(token)
       const result = await myProjectAPI(token)
-      console.log(result)
       if (result.status === 200) {
         setMembers(result.data.projectMembers)
         setChatMessages(result.data.chatRooms[0].messages)
@@ -40,12 +39,11 @@ export default function Chat(props) {
   useEffect(() => {
     myProject()
     connect()
-
     return () => disconnect()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    console.log(members)
   }, [members])
 
   useEffect(() => {

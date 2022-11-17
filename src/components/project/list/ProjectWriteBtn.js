@@ -6,6 +6,13 @@ import { projectConfirm } from '../../../apis/projectsApi'
 export const ProjectWriteBtn = ({ loginCheck, token }) => {
   const navigate = useNavigate()
   const projectWriteConfirm = async (token) => {
+
+    if(loginCheck) {
+      modalShow({
+        title: '로그인 후 작성이 가능합니다.'
+      })
+    }
+
     try {
       const result = await projectConfirm(token)
 

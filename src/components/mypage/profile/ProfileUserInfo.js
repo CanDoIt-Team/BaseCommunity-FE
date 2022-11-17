@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from '../../../styles/mypage/Profile.module.scss'
-import { authToken } from '../../../store/store'
+import { authToken, loginState } from '../../../store/store'
 import { useGetUser } from '../../../hooks/useGetUser'
 import { useEffect, useState } from 'react'
 import { userUpdate } from '../../../apis/userApi'
-import modalShow from '../../Modal'
 import { useRecoilValue } from 'recoil'
+import modalShow from '../../Modal'
 import ProfileInputGroup from './ProfileInputGroup'
 import ProfileImgChange from './ProfileImgChange'
 import ProfilePasswordAndBtn from './ProfilePasswordAndBtn'
@@ -26,7 +26,6 @@ export const ProfileUserInfo = () => {
 
   const handleValueChange = (e) => {
     setChangeInfo({ ...changeInfo, [e.target.name]: e.target.value })
-    console.log(changeInfo)
   }
 
   const handleSubmit = async (e) => {

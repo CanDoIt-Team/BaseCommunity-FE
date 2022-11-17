@@ -6,11 +6,6 @@ import BoardWriteInputGroup from './BoardWriteInputGroup'
 import BoardWriteTitleGroup from './BoardWriteTitleGroup'
 
 export const BoardWrite = () => {
-
-  const { state } = useParams();
-
-  console.log(state)
-
   const [inputValue, setInputValue] = useState({
     category: '자유',
     title: '',
@@ -19,7 +14,6 @@ export const BoardWrite = () => {
 
   const handleChange = (e) => {
     setInputValue({...inputValue, [e.target.name]: e.target.value})
-    console.log(inputValue)
   }
 
   return (

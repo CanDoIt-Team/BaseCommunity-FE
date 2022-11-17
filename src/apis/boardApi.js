@@ -2,15 +2,12 @@ import axios from 'axios'
 import { PROXY } from './proxy'
 
 const getBoardList = async (category, page, size, searchValue) => {
-  console.log(searchValue)
   if (category === '전체') {
-    console.log('api', category)
     const res = await axios.get(
       `${PROXY}/boards?sort.sorted=true&keyword=${searchValue}&page=${page}&size=${size}`,
     )
     return res
   } else {
-    console.log('api', category)
     const res = await axios.get(
       `${PROXY}/boards?sort.sorted=true&category=${category}&keyword=${searchValue}&page=${page}&size=${size}`,
       searchValue,
@@ -107,7 +104,6 @@ const getMyBoardList = async (token, page, size) => {
 }
 
 const getMyHeartList = async (token, page, size) => {
-  console.log(page)
   const res = await axios.get(
     `${PROXY}/boards/myHeartList?sort.sorted=true&page=${page}&size=${size}`,
     {

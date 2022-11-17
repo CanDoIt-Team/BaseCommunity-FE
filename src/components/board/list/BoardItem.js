@@ -7,8 +7,7 @@ import defaultImg from '../../../asset/Logo.png'
 import Image from '../../common/Image'
 
 export const BoardItem = ({ item, main }) => {
-  console.log(item)
-  console.log(main)
+
   const wrtieTime = useGetTime(item?.createdAt)
 
   return (

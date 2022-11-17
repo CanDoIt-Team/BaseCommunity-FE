@@ -3,14 +3,14 @@ import { addBoard, updateBoard } from '../../../apis/boardApi'
 import { authToken } from '../../../store/store'
 import styled from '../../../styles/boardStyles/BoardWrite.module.scss'
 
-export const BoardModifyBtnGroup = ({ inputValue, boardId }) => {
+export const BoardModifyBtnGroup = ({ inputValue, boardId, param }) => {
   const token = useRecoilValue(authToken)
   const handleSubmit = async (token, boardId, data) => {
     try {
       const result = await updateBoard(token, boardId, data)
 
       if (result.status === 200) {
-        window.location.replace('/board')
+        window.location.replace(`/board/${param.id}`)
       }
     } catch (e) {
       console.log(e)
@@ -18,7 +18,7 @@ export const BoardModifyBtnGroup = ({ inputValue, boardId }) => {
   }
 
   const handleCancel = () => {
-    window.location.replace('/board')
+    window.location.replace(`/board/${param.id}`)
   }
 
   return (

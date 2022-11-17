@@ -3,7 +3,6 @@ import styled from '../../../styles/boardStyles/Board.module.scss'
 import BoardItem from './BoardItem'
 
 export const BoardItemList = ({ boardList, main }) => {
-  console.log(main)
   if (boardList)
     return (
       <>

@@ -25,7 +25,6 @@ export const MyBoardList = ({ name }) => {
 
         if (result.status === 200) {
           setBoardList(result.data)
-          console.log(result)
         }
       }
     } catch (e) {

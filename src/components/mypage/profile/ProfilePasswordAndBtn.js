@@ -1,13 +1,16 @@
 import { click } from '@testing-library/user-event/dist/click'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
 import { changePassword, withdraw } from '../../../apis/userApi'
+import { loginState } from '../../../store/store'
 import styled from '../../../styles/mypage/Profile.module.scss'
 import modalShow from '../../Modal'
 import { Label } from '../../sign/Sign'
 
-export const ProfilePasswordAndBtn = ({ token, setLogin }) => {
+export const ProfilePasswordAndBtn = ({ token }) => {
   const navigate = useNavigate()
+  const [login, setLogin] = useRecoilState(loginState)
   const [changePasswordCheck, setChangePasswordCheck] = useState(false)
   const [clickState, setClickState] = useState(false)
   const [changePasswordValue, setChangePasswordValue] = useState({
@@ -72,7 +75,8 @@ export const ProfilePasswordAndBtn = ({ token, setLogin }) => {
         modalShow({
           title: '정상적으로 회원탈퇴가 되었습니다.',
         })
-        // navigate('/')
+        setLogin({ id: '', isLoading: false })
+        navigate('/')
       }
     } catch (e) {
       console.log(e)

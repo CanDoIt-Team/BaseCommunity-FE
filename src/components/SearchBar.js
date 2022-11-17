@@ -9,7 +9,6 @@ export const SearchBar = ({
   const [value, setValue] = useState('')
 
   const handleChange = (e) => {
-    console.log(value)
     setValue(e.target.value)
   }
 

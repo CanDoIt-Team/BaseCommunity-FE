@@ -25,7 +25,6 @@ export const MyProject = () => {
     try {
       // console.log(token)
       const result = await myProjectAPI(token)
-      console.log(result.data)
       setMyList(result.data)
     } catch (err) {
       console.log(err)
@@ -34,7 +33,6 @@ export const MyProject = () => {
   }
 
   useEffect(() => {
-    console.log(userData)
   }, [userData])
 
   useEffect(() => {
@@ -61,7 +59,6 @@ export const MyProject = () => {
   const handleAcceptClick = async (id) => {
     try {
       const result = await acceptAPI(id)
-      console.log(result)
       modalShow({ title: '신청을 수락했습니다.' })
       setApplyList()
       myProject()

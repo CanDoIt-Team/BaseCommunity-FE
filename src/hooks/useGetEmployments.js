@@ -11,7 +11,6 @@ export function useGetEmployments(page, size) {
       set({ data: null })
       try {
         const employmentsData = await getEmployments(page, size)
-        console.log(employmentsData)
         set({ data: employmentsData.data })
       } catch (e) {
         console.log(1)
