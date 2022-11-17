@@ -18,7 +18,6 @@ export const CommentItem = ({
 }) => {
   const [updateValue, setUpdateValue] = useState()
   const [moreInfo, setMoreInfo] = useState(false)
-  console.log(user)
 
   const wrtieTime = useGetTime(
     item?.modifiedAt ? item?.modifiedAt : item?.updateAt,
@@ -52,8 +51,8 @@ export const CommentItem = ({
     if (pages === 'projects') {
       updateData = {
         content: updateValue,
-        id: Number(id),
-        projectId: Number(commentid),
+        id: Number(commentid),
+        projectId: Number(id),
       }
     }
     if (pages === 'borad') {
