@@ -6,6 +6,8 @@ import modalShow from '../../Modal'
 
 export const BoardDetailComment = ({ data, id, token, user, loginCheck }) => {
   let count = data.comments.length
+  // const loginCheck = localStorage.getItem('recoil-perists')
+  // console.log(loginCheck)
   const [commentValue, setCommentValue] = useState('')
 
   const handleCommentChange = (e) => {
@@ -52,6 +54,8 @@ export const BoardDetailComment = ({ data, id, token, user, loginCheck }) => {
               type="text"
               name="comment"
               value={commentValue}
+              placeholder={loginCheck ? null : '로그인 후 댓글 작성이 가능합니다.'}
+              readOnly={!loginCheck}
               onChange={handleCommentChange}
             />
           </div>
