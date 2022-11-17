@@ -4,7 +4,8 @@ import { emailCheck, nicknameCheck, signupSubmit } from '../apis/signApi'
 
 import { Link } from 'react-router-dom'
 import { LogoAndTitle } from '../components/Logo'
-import { Label, Input } from '../components/sign/Sign'
+import { Input, DateInput } from '../components/common/Input'
+import { Label } from '../components/sign/Sign'
 
 import styled from '../styles/Signup.module.scss'
 import modalShow from '../components/Modal'
@@ -162,6 +163,15 @@ export function Signup() {
 
   /* 핸들러 함수 */
   const handleChange = (e) => {
+    if (e.target.name === 'phone') {
+      if (
+        isNaN(e.target.value[e.target.value.length - 1]) === true &&
+        e.target.value.length > 0
+      ) {
+        return
+      }
+    }
+
     setUserInputs({ ...userInputs, [e.target.name]: e.target.value })
 
     if (state.email === true && e.target.name === 'email') {
@@ -223,6 +233,7 @@ export function Signup() {
               className={styled.inputArea}
               type="text"
               name="email"
+              autoComplete="off"
               onChange={handleChange}
               value={userInputs.email}
             />
@@ -235,6 +246,7 @@ export function Signup() {
               className={styled.inputArea}
               type="text"
               name="nickname"
+              autoComplete="off"
               onChange={handleChange}
               value={userInputs.nickname}
             />
@@ -246,6 +258,7 @@ export function Signup() {
             className={styled.inputArea}
             type="text"
             name="name"
+            autoComplete="off"
             onChange={handleChange}
             value={userInputs.name}
           />
@@ -254,8 +267,8 @@ export function Signup() {
           <Input
             className={styled.inputArea}
             type="password"
-            autoComplete="on"
             name="password"
+            autoComplete="off"
             onChange={handleChange}
             value={userInputs.password}
           />
@@ -265,6 +278,7 @@ export function Signup() {
             className={styled.inputArea}
             type="password"
             name="confirmPassword"
+            autoComplete="off"
             onChange={handleChange}
             value={userInputs.confirmPassword}
           />
@@ -272,9 +286,10 @@ export function Signup() {
           <Label title={'전화번호'} className={styled.title} />
           <Input
             className={styled.inputArea}
-            type="phoneNumber"
+            type="tel"
             placeholder=" '-' 없이 입력해주세요"
             name="phone"
+            autoComplete="off"
             onChange={handleChange}
             value={userInputs.phone}
           />
@@ -284,6 +299,7 @@ export function Signup() {
             className={styled.inputArea}
             type="date"
             name="birth"
+            max="9999-12-31"
             onChange={handleChange}
             value={userInputs.birth}
           />

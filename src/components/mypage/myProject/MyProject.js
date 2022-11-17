@@ -1,5 +1,5 @@
 import { myProjectAPI, acceptAPI } from '../../../apis/projectsApi'
-import { createChatAPI } from '../../../apis/chatApi'
+import { createChatAPI, deleteChatAPI } from '../../../apis/chatApi'
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { authToken } from '../../../store/store'
@@ -58,10 +58,6 @@ export const MyProject = () => {
     }
   }, [myList])
 
-  useEffect(() => {
-    console.log(applyList)
-  }, [applyList])
-
   const handleAcceptClick = async (id) => {
     try {
       const result = await acceptAPI(id)
@@ -75,7 +71,7 @@ export const MyProject = () => {
     }
   }
 
-  const handleCreateChat = (id) => {
+  const handleCreateChat = () => {
     modalShow(
       {
         title: '채팅방 이름을 입력하세요',
@@ -103,6 +99,26 @@ export const MyProject = () => {
         }
       },
     )
+  }
+
+  const handleDeleteChat = async (list) => {
+    if (list.chatRooms.length > 0) {
+      try {
+        const result = await deleteChatAPI(list.chatRooms[0].id)
+        if (result.status === 200) {
+          modalShow({
+            title: `채팅방이 삭제되었습니다.`,
+          })
+          myProject()
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    } else {
+      modalShow({
+        title: `채팅방이 존재하지 않습니다`,
+      })
+    }
   }
 
   const handleChatRoom = () => {
@@ -173,11 +189,16 @@ export const MyProject = () => {
               <>
                 <button
                   className={styled.createChat}
-                  onClick={() => handleCreateChat(myList)}
+                  onClick={() => handleCreateChat()}
                 >
                   채팅방 생성
                 </button>
-                <button className={styled.deleteChat}>채팅방 삭제</button>
+                <button
+                  className={styled.deleteChat}
+                  onClick={() => handleDeleteChat(myList)}
+                >
+                  채팅방 삭제
+                </button>
               </>
             )}
 
