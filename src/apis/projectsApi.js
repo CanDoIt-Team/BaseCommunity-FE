@@ -82,6 +82,16 @@ const acceptAPI = async (id) => {
   return res
 }
 
+const projectConfirm = async (token) => {
+  const res = await axios.get(`/projects/writeYn`, {
+    headers: {
+      'X-AUTH-TOKEN': token,
+    },
+  })
+
+  return res
+}
+
 export {
   writeAPI,
   showAPI,
@@ -92,4 +102,5 @@ export {
   applyAPI,
   myProjectAPI,
   acceptAPI,
+  projectConfirm,
 }

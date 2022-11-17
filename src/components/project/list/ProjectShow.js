@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import WriteBtn from '../../WriteBtn'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { authToken, loginState } from '../../../store/store'
-import { writeAPI } from '../../../apis/projectsApi'
+import { projectConfirm, writeAPI } from '../../../apis/projectsApi'
+import ProjectWriteBtn from './ProjectWriteBtn'
 
 export default function ProjectShow() {
   const navigate = useNavigate()
@@ -18,22 +19,11 @@ export default function ProjectShow() {
   const [searchValue, setSearchValue] = useState('')
   const { data } = useGetProject(page, 21, searchValue)
 
-  const title = {title: "test"}
-
-  const test = async (token) => {
-    console.log(1)
-    try {
-      const result = await writeAPI(title, token, [])
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
   return (
     
     <>
       <SearchBar setSearchValue={setSearchValue} />
-      <WriteBtn loginCheck={loginCheck} link={'/project/write'} />
+      <ProjectWriteBtn loginCheck={loginCheck} token={token} />
       <ProjectList data={data} />
       <Paginaition totalPage={data?.totalPages} page={page} setPage={setPage} />
     </>

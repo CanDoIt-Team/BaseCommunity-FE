@@ -18,6 +18,7 @@ export const CommentItem = ({
 }) => {
   const [updateValue, setUpdateValue] = useState()
   const [moreInfo, setMoreInfo] = useState(false)
+  console.log(user)
 
   const wrtieTime = useGetTime(
     item?.modifiedAt ? item?.modifiedAt : item?.updateAt,
@@ -88,7 +89,7 @@ export const CommentItem = ({
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
-              <Image size={40} src={item.member.urlFilename} />
+              <Image size={40} src={item?.member.urlFilename} />
             </div>
             <div className={styled.userInfo}>
               <div className={styled.userNickName}>{item.member.nickname}</div>
@@ -96,7 +97,7 @@ export const CommentItem = ({
             </div>
           </div>
           <div className={styled.moreInfo}>
-            {user && item?.nickname === user?.nickname ? (
+            {user && item?.member.nickname === user.nickname ? (
               <>
                 <button
                   className={styled.moreInfoBtn}

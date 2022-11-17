@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { addComment } from '../../apis/comment'
+import { useGetUser } from '../../hooks/useGetUser'
 import styled from '../../styles/common/CommentWrite.module.scss'
 import Image from './Image'
 
 export const CommentWrite = ({ id, token, data, count, pages }) => {
   const [commentValue, setCommentValue] = useState()
+  const { data: user } = useGetUser(token)
 
   console.log(commentValue)
 
@@ -29,8 +31,6 @@ export const CommentWrite = ({ id, token, data, count, pages }) => {
     }
   }
 
-  console.log(data.urlFilename)
-
   return (
     <>
       <div className={styled.Comment}>
@@ -40,7 +40,7 @@ export const CommentWrite = ({ id, token, data, count, pages }) => {
             <div className={styled.userImg}>
               <Image
                 size={40}
-                src={data.urlFilename}
+                src={user?.urlFilename}
               />
             </div>
             <textarea

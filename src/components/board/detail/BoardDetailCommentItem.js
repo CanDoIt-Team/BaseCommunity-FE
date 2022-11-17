@@ -1,8 +1,5 @@
 import { useState } from 'react'
-import {
-  deleteComment,
-  updateComment,
-} from '../../../apis/boardApi'
+import { deleteComment, updateComment } from '../../../apis/boardApi'
 import { useGetTime } from '../../../lib/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import modalShow from '../../Modal'
@@ -77,10 +74,7 @@ export const BoardDetailCommentItem = ({
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
-              <Image
-                size={40}
-                src={item.urlFilename}
-              />
+              <Image size={40} src={item.urlFilename} />
             </div>
             <div className={styled.userInfo}>
               <div className={styled.userNickName}>{item?.nickname}</div>
@@ -155,7 +149,14 @@ export const BoardDetailCommentItem = ({
             onChange={handleUpdateValueChange}
           />
         ) : (
-          <div className={styled.comment}>{item?.content?.split('\n')?.map((item, idx) => <p className={styled.text} key={idx}>{item}<br/></p>)}</div>
+          <div className={styled.comment}>
+            {item?.content?.split('\n')?.map((item, idx) => (
+              <p className={styled.text} key={idx}>
+                {item}
+                <br />
+              </p>
+            ))}
+          </div>
         )}
       </div>
     </>
