@@ -2,8 +2,8 @@ import axios from 'axios'
 import { PROXY } from './proxy'
 
 // 프로젝트 생성
-const writeAPI = async (data, token) => {
-  const res = await axios.post(`${PROXY}/projects`, data, {
+const writeAPI = async (data, token, skill) => {
+  const res = await axios.post(`${PROXY}/projects?skill=${skill}`, data, {
     headers: {
       'X-AUTH-TOKEN': token,
     },
@@ -12,8 +12,8 @@ const writeAPI = async (data, token) => {
 }
 
 // 프로젝트 수정
-const updateAPI = async (data, token) => {
-  const res = await axios.put(`${PROXY}/projects`, data, {
+const updateAPI = async (data, token, skill) => {
+  const res = await axios.put(`${PROXY}/projects?skill=${skill}`, data, {
     headers: {
       'X-AUTH-TOKEN': token,
     },

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useGetEmployments } from '../../hooks/useGetEmployments'
 
 export const MainEmploymentsList = () => {
-  const { data: employmentsList } = useGetEmployments(1, 20)
+  const { data: employmentsList } = useGetEmployments(1, 10)
 
   const handleClick = (wantedInfoUrl) => {
     window.open(wantedInfoUrl, '_blank')

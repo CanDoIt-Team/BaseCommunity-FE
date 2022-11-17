@@ -10,7 +10,7 @@ import { SubmitButton } from '../common/Button'
 
 import styled from '../../styles/project/Write.module.scss'
 
-import Tech from '../tech/ProjectTech'
+import Tech from '../tech/Tech'
 
 const dateFormat = (d) => {
   return (
@@ -26,9 +26,8 @@ const dateFormat = (d) => {
 
 export default function Update() {
   const location = useLocation()
-  console.log(location)
   const [startDate, setStartDate] = useState('')
-  const [skill, setSkill] = useState(location.state.data.projectSkills)
+  const [skill, setSkill] = useState([])
   const [projectInputs, setProjectInputs] = useState({
     id: location.state.data.id,
     content: location.state.data.content,
@@ -36,19 +35,21 @@ export default function Update() {
     startDate: location.state.data.startDate,
     title: location.state.data.title,
     maxTotal: location.state.data.maxTotal,
-    projectSkills: location.state.data.projectSkills,
   })
   const token = useRecoilValue(authToken)
   const navigate = useNavigate()
 
-  useEffect(() => {
-    skillChange(skill)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skill])
+  // useEffect(() => {
+  //   skillChange(skill)
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [skill])
 
   useEffect(() => {
-    console.log(projectInputs)
-  }, [projectInputs])
+    const skillValue = location.state.data.projectSkills.map((item) => ({
+      value: item.name,
+    }))
+    setSkill(skillValue)
+  }, [location.state.data.projectSkills])
 
   const handleDateChange = (date) => {
     setStartDate(date)
@@ -56,10 +57,10 @@ export default function Update() {
     setProjectInputs({ ...projectInputs, startDate: dateString })
   }
 
-  const skillChange = (skill) => {
-    // let skillChange = JSON.stringify(skill)
-    setProjectInputs({ ...projectInputs, projectSkills: skill })
-  }
+  // const skillChange = (skill) => {
+  //   // let skillChange = JSON.stringify(skill)
+  //   setProjectInputs({ ...projectInputs, projectSkills: skill })
+  // }
 
   const handleChange = (e) => {
     setProjectInputs({ ...projectInputs, [e.target.name]: e.target.value })
@@ -68,13 +69,13 @@ export default function Update() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    const skillString = JSON.stringify(skill)
+    const encodeSkill = encodeURIComponent(`${skillString}`)
+
     try {
-      const result = await deleteSkillAPI(location.state.data.id)
+      const result = await updateAPI(projectInputs, token, encodeSkill)
       if (result.status === 200) {
-        const result = await updateAPI(projectInputs, token)
-        if (result.status === 200) {
-          navigate(`/project/${location.state.data.id}`)
-        }
+        navigate(`/project/${location.state.data.id}`)
       }
     } catch (err) {
       console.log(err)
@@ -89,45 +90,79 @@ export default function Update() {
     <>
       {projectInputs && (
         <div className={styled.Container}>
-          <form className={styled.Group} onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              name="title"
-              placeholder="프로젝트 제목"
-              value={projectInputs.title}
-              onChange={handleChange}
-            />
-            <DateInput
-              type="text"
-              name="startDate"
-              selected={startDate}
-              onChange={handleDateChange}
-              dateFormat="yyyy-MM-dd"
-              placeholderText="시작 예정일"
-              value={projectInputs.startDate}
-            />
-            <Input
-              type="text"
-              name="developPeriod"
-              placeholder="예상기간"
-              onChange={handleChange}
-              value={projectInputs.developPeriod}
-            />
-            <Input
-              type="text"
-              name="maxTotal"
-              placeholder="모집 인원"
-              onChange={handleChange}
-              value={projectInputs.maxTotal}
-            />
-            <Tech techValue={skill} setTechValue={setSkill} />
-
-            <TextArea
-              name="content"
-              placeholder="상세 내용"
-              onChange={handleChange}
-              value={projectInputs.content}
-            />
+          <div>
+            <h2 className={styled.updateTitle}>프로젝트 수정</h2>
+          </div>
+          <form
+            className={styled.Group}
+            onSubmit={handleSubmit}
+            autocomplete="off"
+          >
+            <div className={styled.labelAndInput}>
+              <label className={styled.writeLabel}>프로젝트 명</label>
+              <Input
+                type="text"
+                name="title"
+                value={projectInputs.title}
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styled.labelAndInput}>
+              <label className={styled.writeLabel}>시작 예정</label>
+              <DateInput
+                type="text"
+                name="startDate"
+                selected={startDate}
+                onChange={handleDateChange}
+                dateFormat="yyyy-MM-dd"
+                value={projectInputs.startDate}
+              />
+            </div>
+            <div className={styled.labelAndInput}>
+              <label className={styled.writeLabel}>
+                예상 기간
+                <span className={styled.textSmall}>
+                  ( 개월 단위 - 최대 12개월 )
+                </span>
+              </label>
+              <Input
+                type="number"
+                name="developPeriod"
+                className={styled.inputBox}
+                onChange={handleChange}
+                value={projectInputs.developPeriod}
+                max={12}
+                min={1}
+              />
+            </div>
+            <div className={styled.labelAndInput}>
+              <label className={styled.writeLabel}>
+                모집 인원
+                <span className={styled.textSmall}>( 최대 12명 )</span>
+              </label>
+              <input
+                type="number"
+                name="maxTotal"
+                className={styled.inputBox}
+                onChange={handleChange}
+                value={projectInputs.maxTotal}
+                max={12}
+                min={1}
+              />
+            </div>
+            <div className={styled.techLabelAndInput}>
+              <label className={styled.writeLabel}>프로젝트 기술</label>
+              <Tech techValue={skill} setTechValue={setSkill} />
+            </div>
+            <div className={styled.labelAndInput}>
+              <label className={styled.writeLabel}>내용</label>
+              <TextArea
+                name="content"
+                placeholder="상세 내용"
+                onChange={handleChange}
+                value={projectInputs.content}
+              />
+            </div>
 
             <div className={styled.btnGroup}>
               <SubmitButton

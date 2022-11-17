@@ -1,23 +1,25 @@
 import { Link } from 'react-router-dom'
 import styled from '../../../styles/boardStyles/Board.module.scss'
-import { useGetTime } from '../../../hooks/useTime'
+import { useGetTime } from '../../../lib/useTime'
 import { BiCommentDetail } from 'react-icons/bi'
 
-import logo from '../../../asset/Logo.png'
+import defaultImg from '../../../asset/Logo.png'
+import Image from '../../common/Image'
 
 export const BoardItem = ({ item, main }) => {
+  console.log(item)
   console.log(main)
   const wrtieTime = useGetTime(item?.createdAt)
+
   return (
     <>
       <div className={styled.boardItem}>
         <div className={styled.itemHeader}>
           <div className={styled.writerInfo}>
             <div className={styled.imgAndTitle}>
-              <img
-                className={styled.wirterImg}
-                src={logo}
-                alt="이미지"
+              <Image
+                size={20}
+                src={item.member.urlFilename}
               />
               <div className={styled.writerName}>{item.member.nickname}</div>
             </div>

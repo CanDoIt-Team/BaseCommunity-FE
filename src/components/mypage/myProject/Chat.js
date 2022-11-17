@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as StompJs from '@stomp/stompjs'
 import * as SockJS from 'sockjs-client'
-
 import { useRecoilValue } from 'recoil'
 import { authToken } from '../../../store/store'
 import { useGetUser } from '../../../hooks/useGetUser'

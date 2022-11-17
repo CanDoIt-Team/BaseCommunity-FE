@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { addHearts, deleteBoard } from '../../../apis/boardApi'
-import { useGetTime } from '../../../hooks/useTime'
+import { useGetTime } from '../../../lib/useTime'
 import styled from '../../../styles/boardStyles/BoardDetail.module.scss'
 import { AiOutlineHeart, AiFillHeart, AiOutlineRight } from 'react-icons/ai'
 import modalShow from '../../Modal'
+import Image from '../../common/Image'
 
 export const BoardDetailInfo = ({
   id,
@@ -14,6 +15,7 @@ export const BoardDetailInfo = ({
   token,
   loginCheck,
 }) => {
+  console.log(data)
   const [moreInfo, setMoreInfo] = useState(false)
 
   const [heartState, setHeartState] = useState(false)
@@ -76,11 +78,7 @@ export const BoardDetailInfo = ({
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
-              <img
-                className={styled.img}
-                src="https://via.placeholder.com/40"
-                alt="이미지"
-              />
+              <Image size={40} src={data.urlFilename} className={styled.img}  />
             </div>
             <div className={styled.userInfo}>
               <div className={styled.userNickName}>{data.nickname}</div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { deleteComment, updateComment } from '../../apis/comment'
-import { useGetTime } from '../../hooks/useTime'
+import { useGetTime } from '../../lib/useTime'
 
 import styled from '../../styles/common/CommontItem.module.scss'
 import modalShow from '../Modal'
@@ -47,7 +47,6 @@ export const CommentItem = ({
     }
 
     let updateData
-
     if (pages === 'projects') {
       updateData = {
         content: updateValue,

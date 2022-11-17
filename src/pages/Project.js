@@ -1,4 +1,4 @@
-import ProjectShow from './../components/project/ProjectShow'
+import ProjectShow from '../components/project/list/ProjectShow'
 
 export default function Project() {
   return (
