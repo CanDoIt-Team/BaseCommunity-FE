@@ -6,6 +6,9 @@ import styled from '../../../styles/boardStyles/BoardWrite.module.scss'
 export const BoardWriteBtnGroup = ({ inputValue }) => {
   const token = useRecoilValue(authToken)
   const handleSubmit = async (token, data) => {
+
+    console.log(data.title)
+
     try {
       const result = await addBoard(token, data)
 

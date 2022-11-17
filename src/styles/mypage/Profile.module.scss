@@ -273,3 +273,91 @@
   padding-left: 4px;
 }
 
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.withdraw {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 3px;
+  color: rgb(206, 29, 29);
+}
+
+.successModal {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 320px;
+  border: 1px solid #000000;
+  background: white;
+  padding: 40px 0 0 0;
+}
+
+.mainTitle {
+  font-size: 32px;
+  font-weight: 700;
+  padding-bottom: 30px;
+}
+
+.subTitle {
+  font-size: 21px;
+  font-weight: 600;
+  padding-bottom: 40px;
+}
+
+.descript {
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.mainBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 35px;
+  margin-top: 40px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background: #fd2e2e;
+
+  &:hover {
+    background: #ff6363
+  }
+}
+
+.cancelBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 35px;
+  margin-top: 40px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background: #2e6afd;
+
+  &:hover {
+    background: #5282fa
+  }
+}
+
+.modalBtnGroup {
+  display: flex;
+
+  button {
+    margin-right: 10px;
+  }
+}

@@ -43,7 +43,6 @@ export default function Write() {
   // }, [skill])
 
   useEffect(() => {
-    console.log(projectInputs)
   }, [projectInputs])
 
   const handleDateChange = (date) => {
@@ -86,7 +85,7 @@ export default function Write() {
         <form
           className={styled.Group}
           onSubmit={handleSubmit}
-          autocomplete="off"
+          autoComplete="off"
         >
           <div className={styled.labelAndInput}>
             <label className={styled.writeLabel}>프로젝트 명</label>

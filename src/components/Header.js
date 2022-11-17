@@ -12,8 +12,6 @@ export default function Header() {
   const token = useRecoilValue(authToken)
   const { data } = useGetUser(token)
 
-  console.log(data)
-
   const [showMypage, setShowMypage] = useState(false)
   const [login, setLogin] = useRecoilState(loginState)
 
@@ -72,27 +70,11 @@ export default function Header() {
                 <div className={styles.mypageList}>
                   <div className={styles.pb10}>
                     <Link
-                      to="mypage"
+                      to="/mypage"
                       className={styles.mypageLink}
                       onClick={handleMypageClick}
                     >
                       마이페이지
-                    </Link>
-                  </div>
-                  <div className={styles.pb10}>
-                    <Link
-                      to="/mypage"
-                      className={styles.mypageLink}
-                    >
-                      내 프로젝트
-                    </Link>
-                  </div>
-                  <div className={styles.pb10}>
-                    <Link
-                      to="/mypage"
-                      className={styles.mypageLink}
-                    >
-                      내가 쓴 글
                     </Link>
                   </div>
                   <div className={styles.pb10}>

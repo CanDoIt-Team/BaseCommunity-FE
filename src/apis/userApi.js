@@ -42,4 +42,15 @@ const changePassword = async (token, data) => {
   return res
 }
 
-export { getUser, uploadImg, userUpdate, changePassword }
+const withdraw = async (token) => {
+  console.log(token)
+  const res = await axios.delete(`${PROXY}/users/withdraw`, {
+    headers: {
+      'auth-token': token,
+    },
+  })
+
+  return res
+}
+
+export { getUser, uploadImg, userUpdate, changePassword, withdraw }

@@ -18,7 +18,6 @@ export const CommentItem = ({
 }) => {
   const [updateValue, setUpdateValue] = useState()
   const [moreInfo, setMoreInfo] = useState(false)
-  console.log(user)
 
   const wrtieTime = useGetTime(
     item?.modifiedAt ? item?.modifiedAt : item?.updateAt,

@@ -13,6 +13,7 @@ export const CommentWrite = ({ id, token, data, count, pages }) => {
   const handleCommentChange = (e) => {
     if (pages === 'projects') {
       setCommentValue({ projectId: id, content: e.target.value })
+      console.log(commentValue)
     } else {
       setCommentValue(e.target.value)
     }
@@ -20,7 +21,6 @@ export const CommentWrite = ({ id, token, data, count, pages }) => {
   }
 
   const handleCommentAddBtn = async (id, comment, token) => {
-    console.log(pages)
     try {
       const test = await addComment(id, comment, token, pages)
       if (test.status === 200) {

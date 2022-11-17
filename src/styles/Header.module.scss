@@ -80,6 +80,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 20px;
+  cursor: pointer;
 
   & > a {
     margin-left: 20px;
@@ -103,7 +104,7 @@
   border: 1px solid #000000;
   background: white;
   width: 100px;
-  height: 150px;
+  height: 90px;
   z-index: 999;
   padding: 10px;
 }
