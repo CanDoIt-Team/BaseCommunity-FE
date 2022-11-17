@@ -97,9 +97,7 @@ export const ProfileUserInfo = () => {
           <div className={styled.profileWrap}>
             <ProfileInputGroup
               data={data}
-              token={token}
               changeInfo={changeInfo}
-              setChangeInfo={setChangeInfo}
               setCheck={setCheck}
               handleValueChange={handleValueChange}
               skill={skill}
