@@ -9,10 +9,10 @@ export const ProfileInputGroup = ({
   data,
   changeInfo,
   handleValueChange,
+  setCheck,
   skill,
   setSkill,
 }) => {
-  const [check, setCheck] = useState(false)
 
   const handleNickNameCheck = async (nickname) => {
     if (changeInfo.nickname.length === 0) {

@@ -100,6 +100,7 @@ export const ProfileUserInfo = () => {
               token={token}
               changeInfo={changeInfo}
               setChangeInfo={setChangeInfo}
+              setCheck={setCheck}
               handleValueChange={handleValueChange}
               skill={skill}
               setSkill={setSkill}
