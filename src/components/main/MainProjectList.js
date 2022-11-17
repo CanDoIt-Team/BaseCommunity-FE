@@ -1,6 +1,7 @@
 import styled from '../../styles/Main.module.scss'
 import { Link } from 'react-router-dom'
 import { useGetProject } from '../../hooks/useGetProject'
+import Image from '../common/Image'
 
 export const MainProjectList = () => {
   const { data: projectList } = useGetProject(1, 4, '')
@@ -36,6 +37,7 @@ export const MainProjectList = () => {
                     ))}
                   </ul>
                   <div className={styled.writer}>
+                    <Image size={40} src={project.leader.urlFilename} />
                     <span>{project.leader.nickname}</span>
                   </div>
                 </li>

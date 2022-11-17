@@ -3,11 +3,17 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { loginState, authToken } from '../store/store'
 
 import styles from '../styles/Header.module.scss'
-import { BsBell, BsPersonFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { Logo } from './Logo'
+import Image from './common/Image'
+import { useGetUser } from '../hooks/useGetUser'
 
 export default function Header() {
+  const token = useRecoilValue(authToken)
+  const { data } = useGetUser(token)
+
+  console.log(data)
+
   const [showMypage, setShowMypage] = useState(false)
   const [login, setLogin] = useRecoilState(loginState)
 
@@ -57,11 +63,10 @@ export default function Header() {
         ))}
         {login.isLoading ? (
           <>
-            <div className={styles.mypageAndAlarm}>
-              <BsBell className={styles.icon} />
-              <BsPersonFill
-                className={styles.icon}
-                onClick={handleMypageClick}
+            <div className={styles.mypageAndAlarm} onClick={handleMypageClick}>
+              <Image
+                size={40}
+                src={data?.urlFilename}
               />
               {showMypage && (
                 <div className={styles.mypageList}>
