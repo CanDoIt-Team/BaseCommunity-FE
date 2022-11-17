@@ -89,7 +89,6 @@ export default function ProjectDetail() {
   const handleApplyClick = async () => {
     try {
       const result = await applyAPI(params.id, token)
-      console.log(result)
       if (result.status === 200) {
         modalShow({ title: '신청이 완료되었습니다.' }, navigate('/project'))
       }
@@ -172,6 +171,7 @@ export default function ProjectDetail() {
           <CommentWrite
             token={token}
             id={params.id}
+            data={data}
             count={post.projectComments.length}
             pages="projects"
           />

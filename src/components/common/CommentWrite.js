@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { addComment } from '../../apis/comment'
 import styled from '../../styles/common/CommentWrite.module.scss'
+import Image from './Image'
 
-export const CommentWrite = ({ id, token, count, pages }) => {
+export const CommentWrite = ({ id, token, data, count, pages }) => {
   const [commentValue, setCommentValue] = useState()
 
   console.log(commentValue)
@@ -28,6 +29,8 @@ export const CommentWrite = ({ id, token, count, pages }) => {
     }
   }
 
+  console.log(data.urlFilename)
+
   return (
     <>
       <div className={styled.Comment}>
@@ -35,10 +38,9 @@ export const CommentWrite = ({ id, token, count, pages }) => {
         <div className={styled.commentWriteArea}>
           <div className={styled.commentWriterInfo}>
             <div className={styled.userImg}>
-              <img
-                className={styled.img}
-                src="https://via.placeholder.com/50"
-                alt="이미지"
+              <Image
+                size={40}
+                src={data.urlFilename}
               />
             </div>
             <textarea

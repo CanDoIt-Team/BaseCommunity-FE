@@ -3,10 +3,7 @@ import styled from '../../styles/Image.module.scss'
 
 export const Image = ({size, src}) => {
 
-  console.log(src)
-
   const onErrorImg = (e) => {
-    console.log(e.target.src)
     e.target.src = defaultImg;
   }
 

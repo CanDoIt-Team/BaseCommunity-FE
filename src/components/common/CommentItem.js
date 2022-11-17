@@ -4,6 +4,7 @@ import { useGetTime } from '../../lib/useTime'
 
 import styled from '../../styles/common/CommontItem.module.scss'
 import modalShow from '../Modal'
+import Image from './Image'
 
 export const CommentItem = ({
   idx,
@@ -87,11 +88,7 @@ export const CommentItem = ({
         <div className={styled.writerInfoWrap}>
           <div className={styled.writerInfo}>
             <div className={styled.userImg}>
-              <img
-                className={styled.img}
-                src="https://via.placeholder.com/50"
-                alt="이미지"
-              />
+              <Image size={40} src={item.member.urlFilename} />
             </div>
             <div className={styled.userInfo}>
               <div className={styled.userNickName}>{item.member.nickname}</div>

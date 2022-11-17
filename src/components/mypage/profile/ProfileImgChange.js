@@ -10,7 +10,9 @@ export const ProfileImgChange = ({ data, token }) => {
     formData.append('file', files)
     try {
       const result = await uploadImg(token, formData)
-      console.log(result.data)
+      if(result.status === 200) {
+        window.location.reload();
+      }
     } catch (e) {
       console.log(e)
     }
