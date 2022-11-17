@@ -11,7 +11,7 @@ export const ProfileImgChange = ({ data, token }) => {
     try {
       const result = await uploadImg(token, formData)
       if(result.status === 200) {
-        window.location.reload();
+        window.location.replace('/mypage');
       }
     } catch (e) {
       console.log(e)
