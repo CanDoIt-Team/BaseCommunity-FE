@@ -1,10 +1,9 @@
 import defaultImg from '../../asset/Logo.png'
 import styled from '../../styles/Image.module.scss'
 
-export const Image = ({size, src}) => {
-
+export const Image = ({ size, src }) => {
   const onErrorImg = (e) => {
-    e.target.src = defaultImg;
+    e.target.src = defaultImg
   }
 
   return (
