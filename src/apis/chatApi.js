@@ -15,4 +15,10 @@ const createChatAPI = async (name, token) => {
   return res
 }
 
-export { createChatAPI }
+// 채팅방 삭제
+const deleteChatAPI = async (roomId) => {
+  const res = await axios.delete(`${SOKET}/chat/room/${roomId}`)
+  return res
+}
+
+export { createChatAPI, deleteChatAPI }

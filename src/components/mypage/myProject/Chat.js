@@ -9,9 +9,11 @@ import { useGetUser } from '../../../hooks/useGetUser'
 import { myProjectAPI } from '../../../apis/projectsApi'
 
 import styled from '../../../styles/mypage/Chat.module.scss'
+import MemberProfile from './MemberProfile'
 
 export default function Chat(props) {
   const client = useRef({})
+  const [members, setMembers] = useState()
   const [chatMessages, setChatMessages] = useState()
   const [message, setMessage] = useState('')
   const token = useRecoilValue(authToken)
@@ -27,6 +29,7 @@ export default function Chat(props) {
       const result = await myProjectAPI(token)
       console.log(result)
       if (result.status === 200) {
+        setMembers(result.data.projectMembers)
         setChatMessages(result.data.chatRooms[0].messages)
       }
     } catch (err) {
@@ -40,6 +43,10 @@ export default function Chat(props) {
 
     return () => disconnect()
   }, [])
+
+  useEffect(() => {
+    console.log(members)
+  }, [members])
 
   useEffect(() => {
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight
@@ -120,11 +127,12 @@ export default function Chat(props) {
                 <li key={index} className={styled.li}>
                   <p className={styled.senderYou}>{_chatMessages.sender}</p>
                   <div className={styled.msgImgYou}>
-                    <img
-                      className={styled.img}
-                      src="https://via.placeholder.com/40"
-                      alt="이미지"
-                    />
+                    <div className={styled.img}>
+                      <MemberProfile
+                        users={members}
+                        nickname={_chatMessages.sender}
+                      />
+                    </div>
                     <p className={styled.you}>{_chatMessages.message}</p>
                   </div>
                   <p className={styled.createdAtYou}>

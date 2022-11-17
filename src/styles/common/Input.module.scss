@@ -8,6 +8,12 @@
   outline: none;
 }
 
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
 .dateArea {
   width: 100%;
   height: 50px;
