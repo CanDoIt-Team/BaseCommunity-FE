@@ -42,8 +42,7 @@ export default function Write() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [skill])
 
-  useEffect(() => {
-  }, [projectInputs])
+  useEffect(() => {}, [projectInputs])
 
   const handleDateChange = (date) => {
     setStartDate(date)
@@ -69,7 +68,7 @@ export default function Write() {
     try {
       const result = await writeAPI(projectInputs, token, encodeSkill)
       if (result.status === 200) {
-        modalShow({ title: '신청이 완료되었습니다.' }, navigate('/project'))
+        modalShow({ title: '게시글을 작성했습니다.' }, navigate('/project'))
       }
     } catch (err) {
       console.log(err)
