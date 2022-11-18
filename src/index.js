@@ -23,6 +23,7 @@ import BoardList from './components/board/list/BoardList'
 import BoardDetail from './components/board/detail/BoardDetail'
 import BoardWrite from './components/board/write/BoardWrite'
 import BoardModify from './components/board/modify/BoardModify'
+import Success from './pages/Success'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -48,6 +49,7 @@ root.render(
         <Route path={'/signup'} element={<Signup />} />
         <Route path={'/findPassword'} element={<FindPassword />} />
         <Route path={'/password/new'} element={<ConfirmChangePassword />} />
+        <Route path={'/success'} element={<Success />} />
       </Routes>
     </BrowserRouter>
   </RecoilRoot>,
