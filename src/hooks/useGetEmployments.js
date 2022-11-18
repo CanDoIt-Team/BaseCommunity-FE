@@ -13,7 +13,7 @@ export function useGetEmployments(page, size) {
         const employmentsData = await getEmployments(page, size)
         set({ data: employmentsData.data })
       } catch (e) {
-        console.log(1)
+        console.log(e)
       }
     },
     [set],

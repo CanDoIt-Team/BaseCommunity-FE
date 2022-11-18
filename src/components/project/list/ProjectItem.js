@@ -33,7 +33,7 @@ export const ProjectItem = ({ item, test1, test2 }) => {
           <div className={styled.writer}>
             <div className={styled.userInfoWrap}> 
               <Image size={40} src={item.leader.urlFilename} />
-              <span>{item.leader.nickname}</span>
+              <span className={styled.writerNickname} >{item.leader.nickname}</span>
             </div>
             <div className={styled.commentCountArea}>
               <div className={styled.commentWrap}>

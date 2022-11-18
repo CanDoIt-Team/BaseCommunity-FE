@@ -38,7 +38,7 @@ export const MainProjectList = () => {
                   </ul>
                   <div className={styled.writer}>
                     <Image size={40} src={project.leader.urlFilename} />
-                    <span>{project.leader.nickname}</span>
+                    <span className={styled.writerNickname}>{project.leader.nickname}</span>
                   </div>
                 </li>
               </Link>

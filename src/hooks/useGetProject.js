@@ -14,7 +14,7 @@ export function useGetProject(page, size, keyword) {
         const projectData = await showAPI(page, size, keyword)
         set({ data: projectData.data })
       } catch (e) {
-        console.log(1)
+        console.log(e)
       }
     },
     [set],

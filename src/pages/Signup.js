@@ -118,6 +118,13 @@ const submitCheck = (
       })
     }
 
+    const reg = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
+    console.log(reg.test(password))
+    if(reg.test(password)) {
+      console.log(1)
+      return true
+    }
+
     return false
   }
 
@@ -197,6 +204,11 @@ export function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const reg = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
+    console.log(reg.test(userInputs.password))
+    // if(reg.test(password))
+
     if (!submitCheck(userInputs, state)) {
       return
     }
