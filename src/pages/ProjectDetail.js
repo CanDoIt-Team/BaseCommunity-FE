@@ -19,7 +19,7 @@ export default function ProjectDetail() {
   const token = useRecoilValue(authToken)
 
   const [login, setLogin] = useRecoilState(loginState)
-  const [loginCheck, setLoginCheck] = useState(login.id !== '');
+  const [loginCheck, setLoginCheck] = useState(login.id !== '')
 
   const [post, setPost] = useState()
   const [projectData, setProjectData] = useState()
@@ -87,13 +87,12 @@ export default function ProjectDetail() {
   }
 
   const handleApplyClick = async () => {
-
-    if(!loginCheck) {
+    if (!loginCheck) {
       modalShow({
-        title: '로그인 후 신청하실 수 있습니다.'
+        title: '로그인 후 신청하실 수 있습니다.',
       })
 
-      return;
+      return
     }
 
     try {
@@ -115,7 +114,7 @@ export default function ProjectDetail() {
             <h2 className={styled.title}>{post.title}</h2>
             <div className={styled.userInfo}>
               <Image size={40} src={post.leader.urlFilename} />
-              <span>{post.leader.name}</span>
+              <span>{post.leader.nickname}</span>
               <span className={styled.time}>{post.createdAt.slice(0, 10)}</span>
             </div>
           </div>
@@ -149,7 +148,9 @@ export default function ProjectDetail() {
             <span>사용 기술</span>
             <span className={styled.skillList}>
               {skill.map((item) => (
-                <span className={styled.skill} key={item}>{item}</span>
+                <span className={styled.skill} key={item}>
+                  {item}
+                </span>
               ))}
             </span>
           </div>
