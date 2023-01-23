@@ -28,6 +28,7 @@ export const BoardDetail = () => {
       setBoardData(data)
     }
   }, [boardData, data, heart])
+  console.log(1)
 
   if (loading) return null
   if (boardData)
